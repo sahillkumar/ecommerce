@@ -1,13 +1,13 @@
 import { Dialog, DialogTitle,Button, DialogContent, TextField,FormControl } from '@material-ui/core';
 import React,{useState} from 'react';
 
-const SignIn = () => {
+const SignIn = ({style}) => {
     const [open, setopen] = useState(false)
     
 
     return ( 
         <>
-        <Button color="inherit" onClick={()=>setopen(!open)}>Login</Button>
+        <div style={style}  onClick={()=>setopen(!open)}>LOGIN</div>
         <Dialog open={open} onClose={()=>setopen(!open)}>
             <DialogTitle>Sign up</DialogTitle>
             <DialogContent>

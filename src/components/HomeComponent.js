@@ -1,6 +1,5 @@
 import React from 'react'
 import { Parallax } from 'react-parallax';
-import Header from './layout/header';
 const img3='https://www.glimmernet.com/wp-content/uploads/2019/02/clip-path-example-bg.jpg'
 const organiBg = 'https://d3tqqxrx8st2s6.cloudfront.net/img/blogs/start-an-organic-food-product-business-in-india.webp'
 const aboveFooterImage = 'https://cdn.telanganatoday.com/wp-content/uploads/2018/01/f.jpg'
@@ -13,11 +12,11 @@ const style={
         transform:'translate(-50%,-50%)'
         },
     inPara:{
-        height:400,
-        width:300,
+        height:200,
+        width:150,
         border:'1px solid white',
         display:'inline-grid',
-        margin:50,
+        margin:80,
         color:'#eee'
     }
 }
@@ -39,10 +38,10 @@ const Home = () => {
             <Parallax strength={500} bgImage={img3}
                 renderLayer={
                     comp=>(
-                        <div style={{height:'100vh',transform:'translateY(20%)'}} >
-                            <div style={style.inPara}>Buy</div>
-                            <div style={style.inPara}>Log</div>
-                            <div style={style.inPara}>XTRA</div>
+                        <div style={{height:'100vh',transform:'translateY(30%)'}} >
+                            <div style={{...style.inPara, transform:`scale(${comp*3})`}}>Buy</div>
+                            <div style={{...style.inPara, transform:`scale(${comp*3})`}}>Log</div>
+                            <div style={{...style.inPara, transform:`scale(${comp*3})`}}>XTRA</div>
                         </div>
                     )
           }>
