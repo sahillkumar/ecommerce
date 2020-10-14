@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import SignIn from './signinModal';
 
 const headerDiv = {
-  marginLeft:"68%"
+  marginLeft:"63%"
 }
 
 const style={
@@ -22,14 +22,23 @@ const style={
 
 }
 
+const toolbarStyle = {
+    backgroundColor:"#3FDEC9",
+    color:'white',
+    borderRadius:"30px",
+    padding: "5px 10px",
+    width:"10%",
+    fontWeight:'500'
+
+}
+
 const Header = () => {
 
     return ( 
-      <>
-        
+      <> 
         <AppBar color="transparent" position="sticky">
         <Toolbar >
-          <Typography variant="h6" style={{ flex:0}}>
+          <Typography variant="h6" style={toolbarStyle}>
             Organikart 
           </Typography>
             <div style={headerDiv}>

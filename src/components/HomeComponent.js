@@ -1,7 +1,7 @@
 import React from 'react'
 import { Parallax } from 'react-parallax';
 const img3='https://www.glimmernet.com/wp-content/uploads/2019/02/clip-path-example-bg.jpg'
-const organiBg = 'https://d3tqqxrx8st2s6.cloudfront.net/img/blogs/start-an-organic-food-product-business-in-india.webp'
+const organiBg = 'https://images.pexels.com/photos/158179/lake-constance-sheep-pasture-sheep-blue-158179.jpeg?cs=srgb&dl=pexels-pixabay-158179.jpg&fm=jpg'
 const aboveFooterImage = 'https://cdn.telanganatoday.com/wp-content/uploads/2018/01/f.jpg'
 const style={
     inlineStyle:{
@@ -30,8 +30,8 @@ const Home = () => {
             <Parallax bgImage={organiBg} strength={600}>
                 <div style={{height:'100vh'}}>
                     <div style={style.inlineStyle}>
-                        <p style={{fontSize:'4em'}}>OrganiKart</p>
-                        <p style={{fontSize:'2em'}}>The home of Organic Products</p>
+                        <p style={{fontSize:'4em',transform:'translateY(-90%)', overflow:'none'}}>OrganiKart</p>
+                        <p style={{fontSize:'2em',transform:'translateY(-320%)'}}>The home of Organic Products</p>
                     </div>
                 </div>
             </Parallax>
