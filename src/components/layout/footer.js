@@ -1,10 +1,7 @@
 import React from 'react';
 import "images/tree.svg"
 import { Link } from 'react-router-dom';
-const headerDiv = {
-    marginLeft:"63%"
-  }
-  
+
   const style2={
       marginRight:"5px",
       padding: "5px 15px",
