@@ -37,7 +37,7 @@ const Header = () => {
 
     return ( 
       <> 
-        <AppBar color="transparent" position="sticky">
+        <AppBar color="transparent" position="sticky" elevation="0">
         <Toolbar >
           <Typography variant="h6" style={toolbarStyle}>
             Organikart 
