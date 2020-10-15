@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+@font-face {
+  font-family: 'Benillia';
+  src: local('Benilia'), url(./fonts/Benillia.ttf)  format('truetype');
+  }
+
+@font-face {
+ font-family: 'Arrows';    
+ src: local('Arrows'), url(./fonts/Arrows.ttf)  format('truetype');  
+}  

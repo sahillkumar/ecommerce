@@ -34,8 +34,8 @@ const Home = () => {
             <Parallax bgImage={organiBg} strength={600}>
                 <div style={{height:'100vh'}}>
                     <div style={style.inlineStyle}>
-                        <p style={{fontSize:'4em',transform:'translateY(-90%)', overflow:'none'}}>OrganiKart</p>
-                        <p style={{fontSize:'2em',transform:'translateY(-320%)'}}>The home of Organic Products</p>
+                        <p className='organikart'style={{fontSize:'4em',transform:'translateY(-50%)', overflow:'none'}}>OrganiKart</p>
+                        <p style={{fontSize:'2em',transform:'translateY(-350%)'}}>The home of Organic Products</p>
                     </div>
                 </div>
             </Parallax>
