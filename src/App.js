@@ -7,7 +7,7 @@ import {Route,Switch,withRouter} from 'react-router-dom';
 import Shope from './components/shop/shop';
 import Contact from './components/contact';
 import About from './components/about';
-import {dishes} from './store'
+import {dishes} from './shared/store.json'
 
  export default withRouter( class App extends React.Component {
   state = { 

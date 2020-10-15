@@ -2,7 +2,7 @@
 	"dishes": [{
 			"id": 0,
 			"name": "Uthappizza",
-			"image": "images/uthappizza.png",
+			"image": "images/tree.svg",
 			"category": "mains",
 			"label": "Hot",
 			"price": "4.99",
