@@ -28,7 +28,8 @@ const toolbarStyle = {
     borderRadius:"30px",
     padding: "5px 10px",
     width:"10%",
-    fontWeight:'500'
+    fontWeight:'500',
+    fontFamily: "Arrows"
 
 }
 
