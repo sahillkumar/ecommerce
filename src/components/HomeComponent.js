@@ -6,6 +6,7 @@ const img3='https://www.nationalgeographic.com/content/dam/environment/photos/fu
 const organiBg = 'https://images.pexels.com/photos/158179/lake-constance-sheep-pasture-sheep-blue-158179.jpeg?cs=srgb&dl=pexels-pixabay-158179.jpg&fm=jpg'
 const aboveFooterImage = 'https://cdn.telanganatoday.com/wp-content/uploads/2018/01/f.jpg'
 const img2="images/main.jpg"
+
 const style={
     inlineStyle:{
         top:'50%',

@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import { AppBar,Button,Toolbar,Typography} from '@material-ui/core';
+import { AppBar,Button,makeStyles,Toolbar,Typography} from '@material-ui/core';
 import {Link} from 'react-router-dom';
 import SignIn from './signinModal';
 
@@ -8,15 +8,13 @@ const headerDiv = {
 }
 
 const style={
-    backgroundColor:"#eceff1",
-    borderRadius:"30px",
     marginRight:"5px",
     padding: "10px 15px",
     textAlign: "center",
     textDecoration: "none",
     display:" inline-block",
     cursor:'pointer',
-    color:'black',
+    color:'white',
     fontSize:'12px',
     fontWeight:"600"
 
@@ -30,16 +28,47 @@ const toolbarStyle = {
     width:"10%",
     fontWeight:'500',
     fontFamily: "Arrows"
-
 }
 
+const app = makeStyles(theme=>({
+  appbarBefore:{
+    backdropFilter:'blur(0px)',
+    height:200,
+    backgroundColor:'yellow'
+  },
+  appbarAfter:{
+   backdropFilter:'blur(10px)',
+   height:100,
+   background:'teal'
+  }
+}))
 const Header = () => {
+  const classes= app();
+  const [appbarDesign, setappbarDesign] = useState('appbarBefore')
+
+  const appbarRef= React.useRef();
+  appbarRef.current=appbarDesign
+
+  useEffect(() => {
+
+    const handleScoll=()=>{
+      const height = window.scrollY>320;
+      if(height){
+        setappbarDesign('appbarAfter')
+      }
+      else{
+        setappbarDesign('appbarBefore')
+      }
+    }
+
+    document.addEventListener('scroll',handleScoll)
+
+  })
 
     return ( 
       <> 
-       
-        <AppBar color="transparent" elevation="-1">
-        <Toolbar >
+        <AppBar color="transparent" elevation="0" className={classes[appbarRef.current]}>
+        <Toolbar>
           <Typography variant="h6" style={toolbarStyle}>
             Organikart 
           </Typography>
