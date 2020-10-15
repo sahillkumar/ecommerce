@@ -1,8 +1,9 @@
 import React from 'react'
 import { Parallax } from 'react-parallax';
-const img3='https://www.glimmernet.com/wp-content/uploads/2019/02/clip-path-example-bg.jpg'
+const img3='https://www.nationalgeographic.com/content/dam/environment/photos/future_of_food/organic_farming_rough/01_organic_farming_i8860_20181003_11260.adapt.1900.1.jpg'
 const organiBg = 'https://images.pexels.com/photos/158179/lake-constance-sheep-pasture-sheep-blue-158179.jpeg?cs=srgb&dl=pexels-pixabay-158179.jpg&fm=jpg'
 const aboveFooterImage = 'https://cdn.telanganatoday.com/wp-content/uploads/2018/01/f.jpg'
+
 const style={
     inlineStyle:{
         top:'50%',
@@ -18,6 +19,9 @@ const style={
         display:'inline-grid',
         margin:80,
         color:'#eee'
+    },
+    container:{
+        margin:10
     }
 }
 
@@ -35,24 +39,42 @@ const Home = () => {
                     </div>
                 </div>
             </Parallax>
-            <Parallax strength={500} bgImage={img3}
-                renderLayer={
-                    comp=>(
-                        <div style={{height:'100vh',transform:'translateY(30%)'}} >
-                            <div style={{...style.inPara, transform:`scale(${comp*3})`}}>Buy</div>
-                            <div style={{...style.inPara, transform:`scale(${comp*3})`}}>Log</div>
-                            <div style={{...style.inPara, transform:`scale(${comp*3})`}}>XTRA</div>
-                        </div>
-                    )
-          }>
-          </Parallax>
-        <Parallax bgImage={aboveFooterImage} >
-            <div style={{height:'100vh',backgroundSize:'cover'}}>
+            <div style={style.container}>
+                <div style={{height:500, background:'yellow'}}>
+                    <h1>what we do</h1>
+                <h4>In teeno dabbo me left me text aur right me photos lagadio </h4>
+                </div>
                 
+                <div style={{height:500, background:'red'}}>
+                       <h1>hum kya kya bechte hain</h1>
+                </div>
+                <div style={{height:500, background:'blue'}}>
+                        <h1>baaki soch lio... kese better ho skta hai...</h1>
+                </div>
             </div>
-        </Parallax>
+           
         </>
      );
 }
  
 export default Home;
+
+
+
+
+{/* // <Parallax strength={500} bgImage={img3}
+// renderLayer={
+//     comp=>(
+//         <div style={{height:'100vh',transform:'translateY(30%)'}} >
+//             <div style={{...style.inPara, transform:`scale(${comp*3})`}}>Buy</div>
+//             <div style={{...style.inPara, transform:`scale(${comp*3})`}}>Log</div>
+//             <div style={{...style.inPara, transform:`scale(${comp*3})`}}>XTRA</div>
+//         </div>
+//     )
+// }>
+// </Parallax>
+// <Parallax bgImage={aboveFooterImage} >
+// <div style={{height:'100vh',backgroundSize:'cover'}}>
+
+// </div>
+// </Parallax> */}
