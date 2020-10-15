@@ -5,8 +5,7 @@ import { Parallax } from 'react-parallax';
 const img3='https://www.nationalgeographic.com/content/dam/environment/photos/future_of_food/organic_farming_rough/01_organic_farming_i8860_20181003_11260.adapt.1900.1.jpg'
 const organiBg = 'https://images.pexels.com/photos/158179/lake-constance-sheep-pasture-sheep-blue-158179.jpeg?cs=srgb&dl=pexels-pixabay-158179.jpg&fm=jpg'
 const aboveFooterImage = 'https://cdn.telanganatoday.com/wp-content/uploads/2018/01/f.jpg'
-
-
+const img2="images/main.jpg"
 const style={
     inlineStyle:{
         top:'50%',
@@ -34,7 +33,7 @@ const Home = () => {
 
     return (
         <> 
-            <Parallax bgImage="images/main.jpg" strength={600}>
+            <Parallax bgImage={img2} strength={600}>
                 <div style={{height:'100vh'}}>
                     <div style={style.inlineStyle}>
                         <p className='organikart'style={{fontSize:'4em',transform:'translateY(-50%)', overflow:'none'}}>OrganiKart</p>
