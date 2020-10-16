@@ -4,18 +4,19 @@ import {Link} from 'react-router-dom';
 import SignIn from './signinModal';
 
 const headerDiv = {
-  marginLeft:"48%"
+  marginLeft:"59%"
 }
 
 const style={
-    padding:"10px 50px 25px 0px",
-    textAlign: "center",
-    textDecoration: "none",
+    padding:"8px 10px ",
+    marginLeft:"4px",
     display:" inline-block",
     cursor:'pointer',
-    color:'white',
     fontSize:'12px',
     fontWeight:"600",
+    backgroundColor:"whitesmoke",
+    color:"black",
+    borderRadius: "20px"
 }
 
 const toolbarStyle = {
