@@ -4,42 +4,39 @@ import {Link} from 'react-router-dom';
 import SignIn from './signinModal';
 
 const headerDiv = {
-  marginLeft:"63%"
+  marginLeft:"48%"
 }
 
 const style={
-    marginRight:"5px",
-    padding: "10px 15px",
+    padding:"10px 50px 25px 0px",
     textAlign: "center",
     textDecoration: "none",
     display:" inline-block",
     cursor:'pointer',
     color:'white',
     fontSize:'12px',
-    fontWeight:"600"
-
+    fontWeight:"600",
 }
 
 const toolbarStyle = {
-    backgroundColor:"#3FDEC9",
+    display:"absolute",
     color:'white',
-    borderRadius:"30px",
     padding: "5px 10px",
     width:"10%",
     fontWeight:'500',
-    fontFamily: "Arrows"
+    fontFamily: "Arrows",
+    transform:"translate(-70%,84%)",
+    fontSize:'1em'
 }
 
 const app = makeStyles(theme=>({
   appbarBefore:{
     backdropFilter:'blur(0px)',
-    height:200,
-    backgroundColor:'yellow'
+    height:75,
   },
   appbarAfter:{
    backdropFilter:'blur(10px)',
-   height:100,
-   background:'teal'
+   height:75,
   }
 }))
 const Header = () => {
@@ -52,7 +49,7 @@ const Header = () => {
   useEffect(() => {
 
     const handleScoll=()=>{
-      const height = window.scrollY>320;
+      const height = window.scrollY>310;
       if(height){
         setappbarDesign('appbarAfter')
       }
@@ -69,6 +66,7 @@ const Header = () => {
       <> 
         <AppBar color="transparent" elevation="0" className={classes[appbarRef.current]}>
         <Toolbar>
+          <img src="images/tree.svg" width="120"/>
           <Typography variant="h6" style={toolbarStyle}>
             Organikart 
           </Typography>

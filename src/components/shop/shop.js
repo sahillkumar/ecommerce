@@ -12,10 +12,10 @@ import { Grid, Paper } from '@material-ui/core';
 
 const style={
     paper:{
-        height:'100vh',
+        height:'500px',
         color:'red',
         background:'black',
-        position:'block'
+        overflowY:'auto',
     }
 }
 
