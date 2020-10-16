@@ -20,3 +20,8 @@ code {
  font-family: 'Arrows';    
  src: local('Arrows'), url(./fonts/Arrows.ttf)  format('truetype');  
 }  
+
+@font-face {
+  font-family: 'SweetPurple';    
+  src: local('Sweet purple'), url(./fonts/sweet\ purple.ttf)  format('truetype');  
+ }  

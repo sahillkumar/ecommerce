@@ -1,6 +1,7 @@
 import React from 'react'
 import { Parallax } from 'react-parallax';
 
+import ShowWhatWeDo from "./layout/WhatWeDo";
 
 const img3='https://www.nationalgeographic.com/content/dam/environment/photos/future_of_food/organic_farming_rough/01_organic_farming_i8860_20181003_11260.adapt.1900.1.jpg'
 const organiBg = 'https://images.pexels.com/photos/158179/lake-constance-sheep-pasture-sheep-blue-158179.jpeg?cs=srgb&dl=pexels-pixabay-158179.jpg&fm=jpg'
@@ -43,9 +44,8 @@ const Home = () => {
                 </div>
             </Parallax>
             <div style={style.container}>
-                <div style={{height:500, background:'yellow'}}>
-                    <h1>what we do</h1>
-                <h4>In teeno dabbo me left me text aur right me photos lagadio </h4>
+                <div style={{height:500, background:'transparent'}}>
+                    <ShowWhatWeDo/>
                 </div>
                 
                 <div style={{height:500, background:'red'}}>
