@@ -1,9 +1,10 @@
 import React from 'react';
+import ItemDetails from './shop/detail';
 
 const About = () => {
     return ( 
         <div>
-            About
+      
         </div>
      );
 }

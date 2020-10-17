@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Grid, Paper } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 
 const style={
@@ -23,21 +24,25 @@ const Item = ({item}) => {
     return ( 
 
         <Card key={item.id} style={{maxWidth:345,height:350}} raised>
+            
             <CardActionArea>
-            <CardMedia
-                style={{height:140}}
-                image={item.image}
-                title={item.name}
-            />
-            <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                {item.name}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                {item.description}
-                </Typography>
-            </CardContent>
+                <Link to={`/shop/${item.id}`}>
+                <CardMedia
+                    style={{height:140}}
+                    image={item.image}
+                    title={item.name}
+                />
+                <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                    {item.name}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                    {item.description}
+                    </Typography>
+                </CardContent>
+            </Link>
             </CardActionArea>
+            
       </Card>
      );
 }
