@@ -1,56 +1,90 @@
-import { Dialog, DialogTitle,Button, DialogContent, TextField,FormControl } from '@material-ui/core';
-import React,{useState} from 'react';
+import { Dialog, DialogTitle,Button, DialogContent, TextField } from '@material-ui/core';
+import React from 'react';
 
-const SignIn = ({style}) => {
-    const [open, setopen] = useState(false)
-    
+class SignIn extends React.Component {
+  state = { 
+    open:false,
+    form:{
+      name:'',
+      email:'',
+      password:''
+    }
+   }
 
+  handleModal=()=>{
+    this.setState({
+      open:!this.state.open,
+      form:{
+        name:'',
+        email:'',
+        password:''
+      }
+    })
+  }
+
+  handleChange=name=>({target:{value}})=>{
+  
+    this.setState(({form})=>({
+      form:{
+        ...form,
+        [name]:value
+      }
+    }))
+  }
+
+  render() { 
+    const {style}=this.props,
+          {name,email,password}=this.state.form
     return ( 
-        <>
-        <div style={style}  onClick={()=>setopen(!open)}>LOGIN</div>
-        <Dialog open={open} onClose={()=>setopen(!open)}>
-            <DialogTitle>Sign up</DialogTitle>
-            <DialogContent>
-            <FormControl>
+      <>
+      <div style={style} onClick={this.handleModal}>LOGIN</div>
+      <Dialog open={this.state.open} onClose={this.handleModal} >
+        <DialogTitle>Sign up</DialogTitle>
+          <DialogContent>
             <TextField
             autoFocus
             required
             margin="normal"
             id="name"
-            label="Email Address"
+            value={name}
+            label="Name"
             type="Name"
             fullWidth
+            onChange={this.handleChange('name')}
           />
-           <TextField
+            <TextField
             margin="normal"
-            id="name"
+            id="email"
             label="Email Address"
             type="email"
+            name={email}
             fullWidth
             required
+            onChange={this.handleChange('email')}
           />
-           <TextField
+            <TextField
             margin="normal"
-            id="name"
+            id="password"
             label="Password"
             type="password"
+            value={password}
             fullWidth
             required
-          />
+            onChange={this.handleChange('password')}
+          /><br/>
             <Button    
             type="submit" 
             margin="normal"
             color="primary"
             variant="contained"
-            >
-                Sign in
-            </Button>
-
-            </FormControl>
-          
-            </DialogContent>
-        </Dialog>
-        </>
+            disabled={!name || !email || !password}
+            onClick={this.handleModal}
+          >Sign in</Button>
+        </DialogContent>
+      </Dialog>
+      </>
      );
+  }
 }
+ 
 export default SignIn;
