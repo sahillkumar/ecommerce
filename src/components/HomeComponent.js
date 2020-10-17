@@ -1,7 +1,8 @@
 import React from 'react'
 import { Parallax } from 'react-parallax';
-
 import ShowWhatWeDo from "./layout/WhatWeDo";
+
+import Typical from 'react-typical'
 
 const img3='https://www.nationalgeographic.com/content/dam/environment/photos/future_of_food/organic_farming_rough/01_organic_farming_i8860_20181003_11260.adapt.1900.1.jpg'
 const organiBg = 'https://images.pexels.com/photos/158179/lake-constance-sheep-pasture-sheep-blue-158179.jpeg?cs=srgb&dl=pexels-pixabay-158179.jpg&fm=jpg'
@@ -38,7 +39,14 @@ const Home = () => {
             <Parallax bgImage={organiBg} strength={600}>
                 <div style={{height:'100vh'}}>
                     <div style={style.inlineStyle}>
-                        <p className='organikart'style={{fontSize:'4em',transform:'translateY(-50%)', overflow:'none'}}>OrganiKart</p>
+                        <p id='typed-strings' className='organikart'style={{fontSize:'4em',transform:'translateY(-50%)', overflow:'none'}}>
+                        
+                        <Typical 
+                            loop= {1}
+                            wrapper='p'
+                            steps= {[ 'Organikart']}
+                        />
+                        </p>
                         <p style={{fontSize:'2em',transform:'translateY(-350%)'}}>The home of Organic Products</p>
                     </div>
                 </div>
