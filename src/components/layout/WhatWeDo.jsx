@@ -1,20 +1,28 @@
 import React from 'react';
 
+
+
+
 function ShowWhatWeDO(){
     return(
     <div>
-        <h2 style ={{fontFamily:'SweetPurple', fontSize:'50px', fontWeight:"100"}}>From the mountains to your doorstep</h2>
+        <h2 style ={{fontFamily:'SweetPurple', fontSize:'50px', fontWeight:"100"}}>
+   
+            From the mountains to your doorstep
+
+        </h2>
+        
         <div  style={pictureStyle}>
             <div className='fade-in' style={picCards}>
-                <img style ={img} src= 'https://images.pexels.com/photos/1117272/pexels-photo-1117272.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'/>
+                <img style ={img} className = 'zoom' src= 'https://images.pexels.com/photos/1117272/pexels-photo-1117272.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'/>
             </div>
            
             <div className='fade-in' style={picCards}>
-                <img style ={img} src= 'https://images.pexels.com/photos/3669640/pexels-photo-3669640.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'/>
+                <img style ={img} className = 'zoom'  src= 'https://images.pexels.com/photos/3669640/pexels-photo-3669640.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'/>
             </div>
            
             <div className='fade-in'  style={picCards}>
-                <img style ={img} src= 'https://images.pexels.com/photos/531446/pexels-photo-531446.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'/>
+                <img style ={img} className = 'zoom'  src= 'https://images.pexels.com/photos/531446/pexels-photo-531446.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'/>
             </div>
 
 
@@ -45,7 +53,7 @@ const picCards = {
 }
 
 const img = { 
-    maxWidth: '98%', 
+    maxWidth: '95%', 
     maxHeight: '100%',
     
 }
