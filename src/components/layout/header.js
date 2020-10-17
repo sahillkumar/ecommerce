@@ -4,12 +4,12 @@ import {Link} from 'react-router-dom';
 import SignIn from './signinModal';
 
 const headerDiv = {
-  marginLeft:"59%"
+  marginLeft:"55%"
 }
 
 const style={
     padding:"8px 10px ",
-    marginLeft:"4px",
+    marginLeft:"10px",
     display:" inline-block",
     cursor:'pointer',
     fontSize:'12px',
