@@ -1,6 +1,4 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheckSquare, faCoffee } from '@fortawesome/fontawesome-free-solid'
 
 
 
@@ -9,7 +7,7 @@ function ShowWhatWeDO(){
     return(
     <div>
         <h2 style ={{fontFamily:'SweetPurple', fontSize:'50px', fontWeight:"100"}}>
-        <FontAwesomeIcon icon = {faCoffee}/>
+   
             From the mountains to your doorstep
 
         </h2>
