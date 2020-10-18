@@ -86,3 +86,8 @@
  overflow-x: hidden;
 
 }  
+
+.itemviewcard{
+  max-width: 480;
+  background:'teal';
+}
