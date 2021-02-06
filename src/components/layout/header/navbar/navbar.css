@@ -1,0 +1,40 @@
+.appbar {
+  background-color: #b8d8be;
+  height: 90px;
+}
+
+.toolbar {
+  font-family: Arrows;
+  font-weight: 500;
+}
+
+.logo-brand {
+  display: flex;
+}
+
+.logo {
+  height: 80px;
+  margin: 5px 10px;
+}
+
+.brand {
+  transform: translate(-95%, 74%);
+}
+
+.appbar-nav {
+  margin-left: 45%;
+}
+
+a {
+  cursor: pointer;
+  color: black;
+  display: inline-block;
+  padding: 20px;
+  margin: auto 0px;
+}
+
+a:link {
+  font-family: "AdobeCaslonPro";
+  text-decoration: none;
+  font-size: 20px;
+}

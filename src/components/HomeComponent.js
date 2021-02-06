@@ -56,11 +56,11 @@ const Home = () => {
                     <ShowWhatWeDo/>
                 </div>
                 
-                <div style={{height:500, background:'red'}}>
-                       <h1>hum kya kya bechte hain</h1>
+                <div style={{height:500, background:'#D291BC '}}>
+                       <h1>ABout us</h1>
                 </div>
-                <div style={{height:500, background:'blue'}}>
-                        <h1>baaki soch lio... kese better ho skta hai...</h1>
+                <div style={{height:500, background:'#FEC8D8 '}}>
+                        <h1></h1>
                 </div>
             </div>
            

@@ -1,5 +1,5 @@
 import React from 'react';
-import ItemDetails from './shop/detail';
+import ItemDetails from '../shop/detail';
 
 const About = () => {
     return ( 

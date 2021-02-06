@@ -5,12 +5,15 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 
+import { StylesProvider } from '@material-ui/core/styles';
 
 ReactDOM.render(
   <React.StrictMode>
-  <BrowserRouter>
-    <App />
-    </BrowserRouter>
+    <StylesProvider injectFirst>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </StylesProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
