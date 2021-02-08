@@ -1,8 +1,10 @@
 import React from 'react'
 import { Parallax } from 'react-parallax';
-import ShowWhatWeDo from "./layout/WhatWeDo";
+import './userDashboard.css'
 
 import Typical from 'react-typical'
+import Categories from '../../SellByCategories/Categories';
+
 
 const img3='https://www.nationalgeographic.com/content/dam/environment/photos/future_of_food/organic_farming_rough/01_organic_farming_i8860_20181003_11260.adapt.1900.1.jpg'
 const organiBg = 'https://images.pexels.com/photos/158179/lake-constance-sheep-pasture-sheep-blue-158179.jpeg?cs=srgb&dl=pexels-pixabay-158179.jpg&fm=jpg'
@@ -32,12 +34,12 @@ const style={
 
 
 
-const Home = () => {
+const UserDashboard = () => {
 
     return (
         <> 
             <Parallax bgImage={organiBg} strength={600}>
-                <div style={{height:'100vh'}}>
+                <div className="parallax-img">
                     <div style={style.inlineStyle}>
                         <p id='typed-strings' className='organikart'style={{fontSize:'4em',transform:'translateY(-50%)', overflow:'none'}}>
                         
@@ -53,10 +55,10 @@ const Home = () => {
             </Parallax>
             <div style={style.container}>
                 <div style={{height:500, background:'transparent'}}>
-                    <ShowWhatWeDo/>
+                    <Categories/>
                 </div>
                 
-                <div style={{height:500, background:'#D291BC '}}>
+                <div style={{height:500, background:'#D291BC '}} className="md-4">
                        <h1>ABout us</h1>
                 </div>
                 <div style={{height:500, background:'#FEC8D8 '}}>
@@ -68,7 +70,7 @@ const Home = () => {
      );
 }
  
-export default Home;
+export default UserDashboard;
 
 
 

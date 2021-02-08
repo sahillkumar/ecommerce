@@ -1,11 +1,10 @@
 import React from 'react';
 import './App.css';
-import Home from './components/HomeComponent';
+import UserDashboard from './components/dashboards/userdashboard/UserDashboard';
 import Footer from './components/layout/footer/footer';
-import {Route,Switch,withRouter} from 'react-router-dom';
+import {Redirect, Route,Switch,withRouter} from 'react-router-dom';
 import Shope from './components/shop/shop';
 import Contact from './components/contact/contact';
-import About from './components/about/about';
 import {dishes} from './shared/store.json'
 import ItemDetails from './components/shop/detail';
 import Navbar from './components/layout/header/navbar/Navbar';
@@ -29,12 +28,12 @@ import Navbar from './components/layout/header/navbar/Navbar';
       <div className="App">
         <Navbar />
           <Switch>
-            {/* <Route exact path="/" component={Home}/>
-            <Route exact path="/shop" component={()=><Shope items={dishes}/>} />
+            <Route exact path="/" component={UserDashboard}/>
+            {/* <Route exact path="/shop" component={()=><Shope items={dishes}/>} />
             <Route path="/shop/:id" component={SelectedItem}/>
             <Route path="/about" component={About}/>
-            <Route path="/contact" component={Contact} />
-             */}
+            <Route path="/contact" component={Contact} /> */}
+            <Redirect to="/"/>
           </Switch>
         <Footer/>
       </div>

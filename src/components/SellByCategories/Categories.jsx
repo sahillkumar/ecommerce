@@ -1,9 +1,6 @@
 import React from 'react';
 
-
-
-
-function ShowWhatWeDO(){
+function Categories(){
     return(
     <div>
         <h2 style ={{fontFamily:'SweetPurple', fontSize:'50px', fontWeight:"100"}}>
@@ -59,4 +56,4 @@ const img = {
 }
 
 
-export default ShowWhatWeDO; 
+export default Categories; 
