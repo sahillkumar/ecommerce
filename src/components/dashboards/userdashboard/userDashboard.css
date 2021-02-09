@@ -2,3 +2,13 @@
   height: 100vh;
   margin-top: 80px;
 }
+
+.our-story {
+  height: 100vh;
+  background-color: blanchedalmond;
+}
+
+.our-story-img {
+  width: 70%;
+  height: 90vh;
+}

@@ -31,7 +31,6 @@ function Categories(){
 
 const pictureStyle = {
     background: 'url(https://images.pexels.com/photos/37728/pexels-photo-37728.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940") no-repeat center center/cover',
-    position:'absolute',
     display : 'flex',
     height:'400px',
     //backgroundColor:'red',

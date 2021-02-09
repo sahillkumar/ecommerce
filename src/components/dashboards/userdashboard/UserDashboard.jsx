@@ -4,6 +4,11 @@ import './userDashboard.css'
 
 import Typical from 'react-typical'
 import Categories from '../../SellByCategories/Categories';
+import { Grid } from '@material-ui/core';
+import Story from '../../about/story/Story';
+import Partners from '../../about/partners/Partners';
+import WhyUs from '../../about/why-us/WhyUs';
+import Certifications from '../../about/certifications/Certifications';
 
 
 const img3='https://www.nationalgeographic.com/content/dam/environment/photos/future_of_food/organic_farming_rough/01_organic_farming_i8860_20181003_11260.adapt.1900.1.jpg'
@@ -53,19 +58,21 @@ const UserDashboard = () => {
                     </div>
                 </div>
             </Parallax>
-            <div style={style.container}>
-                <div style={{height:500, background:'transparent'}}>
-                    <Categories/>
-                </div>
-                
-                <div style={{height:500, background:'#D291BC '}} className="md-4">
-                       <h1>ABout us</h1>
-                </div>
-                <div style={{height:500, background:'#FEC8D8 '}}>
-                        <h1></h1>
-                </div>
+            <div className="categories">
+                <Categories/>
+           </div>
+           <Grid container className="our-story">
+               <Story/>
+           </Grid>
+           <Grid container >
+               <Partners/>
+           </Grid>
+           <div className="whyus">
+                <WhyUs/>
+            </div>  
+            <div className="certifications">
+                <Certifications/>
             </div>
-           
         </>
      );
 }
