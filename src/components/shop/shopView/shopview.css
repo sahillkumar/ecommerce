@@ -1,0 +1,16 @@
+.shop-by-cat {
+  margin: auto;
+  margin-top: 90px;
+  padding: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 30px;
+  row-gap: 30px;
+}
+
+.catergory {
+  background-color: #222;
+  height: 400px;
+  width: 400px;
+  color: wheat;
+}

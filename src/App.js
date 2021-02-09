@@ -8,6 +8,7 @@ import Contact from './components/contact/contact';
 import {dishes} from './shared/store.json'
 import ItemDetails from './components/shop/detail';
 import Navbar from './components/layout/header/navbar/Navbar';
+import ShopView from './components/shop/shopView/ShopView';
 
  export default withRouter( class App extends React.Component {
   state = { 
@@ -29,10 +30,10 @@ import Navbar from './components/layout/header/navbar/Navbar';
         <Navbar />
           <Switch>
             <Route exact path="/" component={UserDashboard}/>
-            {/* <Route exact path="/shop" component={()=><Shope items={dishes}/>} />
-            <Route path="/shop/:id" component={SelectedItem}/>
+            <Route  path="/shop" component={ShopView} />
+            {/* <Route path="/shop/:id" component={SelectedItem}/>
             <Route path="/about" component={About}/>
-            <Route path="/contact" component={Contact} /> */}
+            <Route path="/contact" component={Contact} /> */} 
             <Redirect to="/"/>
           </Switch>
         <Footer/>
