@@ -1,0 +1,21 @@
+.category {
+  height: 400px;
+}
+
+.card-img {
+  height: 400px;
+}
+
+.card-text {
+  position: absolute;
+  color: whitesmoke;
+  font-family: "AdobeCaslonPro";
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+}
+
+.card-content {
+  height: 0;
+}

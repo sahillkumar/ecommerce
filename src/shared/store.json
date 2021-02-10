@@ -240,5 +240,47 @@
 			"description": "A delectable, semi-sweet New York Style Cheese Cake, with Graham cracker crust and spiced with Indian cardamoms"
 		}
 
+	],
+	"categories":[
+		{
+			"name":"All Products",
+			"image":"images/categories/all.jpg"
+		},
+		{
+			"name":"Beauty Essentials",
+			"image":"images/categories/beauty.jpg"
+		},
+		{
+			"name":"Beverages",
+			"image":"images/categories/beverages.jpg"
+		},
+		{
+			"name":"Clothing",
+			"image":"images/categories/clothing.jpg"
+		},
+		{
+			"name":"Eatables",
+			"image":"images/categories/eatables.jpg"
+		},
+		{
+			"name":"Furniture",
+			"image":"images/categories/furniture.jpg"
+		},
+		{
+			"name":"Handicrafts",
+			"image":"images/categories/handicrafts.jpg"
+		},
+		{
+			"name":"Mugs",
+			"image":"images/categories/mugs.jpg"
+		},
+		{
+			"name":"Pottery",
+			"image":"images/categories/pottery.jpg"
+		},
+		{
+			"name":"Spices",
+			"image":"images/categories/spices.jpg"
+		}
 	]
 }
