@@ -1,12 +1,12 @@
-.category {
+.product {
   height: 400px;
 }
 
-.card-img {
+.prod-img {
   height: 400px;
 }
 
-.card-text {
+.prod-text {
   position: absolute;
   color: whitesmoke;
   font-family: "AdobeCaslonPro";
@@ -16,6 +16,6 @@
   font-size: 50px;
 }
 
-.card-content {
+.prod-content {
   height: 0;
 }

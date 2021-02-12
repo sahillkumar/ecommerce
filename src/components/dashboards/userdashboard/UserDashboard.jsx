@@ -3,7 +3,6 @@ import { Parallax } from 'react-parallax';
 import './userDashboard.css'
 
 import Typical from 'react-typical'
-import Categories from '../../SellByCategories/Categories';
 import { Grid } from '@material-ui/core';
 import Story from '../../about/story/Story';
 import Partners from '../../about/partners/Partners';
@@ -58,9 +57,6 @@ const UserDashboard = () => {
                     </div>
                 </div>
             </Parallax>
-            <div className="categories">
-                <Categories/>
-           </div>
            <Grid container className="our-story">
                <Story/>
            </Grid>

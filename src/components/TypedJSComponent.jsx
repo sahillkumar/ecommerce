@@ -5,7 +5,7 @@ class TypedJS extends React.Component {
   componentDidMount() {
     const options = {
       strings: words,
-      typeSpeed: 50,
+      typeSpeed: 30,
       backSpeed: 50,
       loop: true,
       cursorChar: "|",

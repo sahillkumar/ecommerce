@@ -241,6 +241,10 @@
 			"image":"images/categories/handicrafts.jpg"
 		},
 		{
+			"name":"Jewellery",
+			"image":"images/categories/jewelery.jpg"
+		},
+		{
 			"name":"Mugs",
 			"image":"images/categories/mugs.jpg"
 		},

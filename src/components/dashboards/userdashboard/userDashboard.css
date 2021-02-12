@@ -1,6 +1,7 @@
 .parallax-img {
   height: 100vh;
   margin-top: 80px;
+  background-size: contain;
 }
 
 .our-story {
@@ -11,4 +12,8 @@
 .our-story-img {
   width: 70%;
   height: 90vh;
+}
+
+.organikart {
+  font-family: "Benillia";
 }
