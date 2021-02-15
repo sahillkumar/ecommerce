@@ -1,9 +1,11 @@
 .products {
-  margin: auto;
-  margin-top: 90px;
-  padding: 100px;
+  padding: 0px 100px 100px 100px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 50px;
   row-gap: 50px;
+}
+
+.search-comp {
+  padding: 100px;
 }
