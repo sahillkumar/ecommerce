@@ -1,0 +1,14 @@
+.filters {
+  margin-top: 30px;
+}
+
+.tabs {
+  background-color: #b8d8be;
+  height: 70px;
+  width: 100%;
+}
+.tab {
+  height: 70px;
+  width: 20%;
+  font-family: "AdobeCaslonPro";
+}

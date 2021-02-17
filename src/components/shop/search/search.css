@@ -12,20 +12,3 @@
   font-size: 25px;
   font-weight: lighter;
 }
-
-.filters {
-  margin-top: 30px;
-}
-
-.filter {
-  height: 90px;
-  width: 20%;
-}
-
-.tabs {
-  background-color: #b8d8be;
-  height: 70px;
-}
-.tab {
-  height: 70px;
-}

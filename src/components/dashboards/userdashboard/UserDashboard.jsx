@@ -42,7 +42,7 @@ const UserDashboard = () => {
 
     return (
         <> 
-            <Parallax bgImage={organiBg} strength={600}>
+            <Parallax bgImage="/images/main.jpg" strength={600}>
                 <div className="parallax-img">
                     <div style={style.inlineStyle}>
                         <p id='typed-strings' className='organikart'style={{fontSize:'4em',transform:'translateY(-50%)', overflow:'none'}}>
