@@ -1,12 +1,13 @@
 import { CardActionArea, CardContent, CardMedia, Card, Typography} from '@material-ui/core'
-import React from 'react'
 import { Link } from 'react-router-dom';
+
+import React from 'react'
 import './categoryCard.css'
 
 const CategoryCard = ({category}) => {
     return (
         <Link to={`/shop/${category.name}`}>
-            <Card className="category fade-in ">
+            <Card className="category fade-in " id="cat">
                 <CardActionArea>
                     <CardMedia
                         image={category.image}

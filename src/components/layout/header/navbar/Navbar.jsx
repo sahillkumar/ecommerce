@@ -1,6 +1,5 @@
-import React,{useEffect,useState} from 'react';
+import React from 'react';
 import { AppBar,Toolbar} from '@material-ui/core';
-import SignIn from '../signinModal';
 import './navbar.css'
 import { NavLink } from 'react-router-dom';
 
@@ -12,7 +11,7 @@ const Navbar = () => {
         <AppBar className="appbar" position="fixed">
           <Toolbar className="toolbar">
             <div className="logo-brand">
-              <img src="images/tree.svg" className="logo"/>
+              <img src="images/tree.svg" className="logo" alt="organikart"/>
               <div className="brand">OrganiKart</div>
             </div>
             <div className="appbar-nav">

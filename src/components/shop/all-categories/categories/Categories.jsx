@@ -1,9 +1,8 @@
 import React from 'react'
-import {categories} from '../../../../shared/store.json'
 import CategoryCard from '../categoryCard/CategoryCard'
 import './categories.css'
 
-const ShopView = () => {
+const ShopView = ({categories}) => {
     return(
         <div className="shop-by-cat">
             {

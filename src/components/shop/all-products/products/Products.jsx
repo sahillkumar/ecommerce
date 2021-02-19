@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { withRouter } from 'react-router-dom'
 import Search from '../../search/Search'
 import ProductCard from '../productCard/ProductCard'
 import './products.css'
 
 
-const Products = ({products,category}) => {
-    console.log(products);
+const Products = ({products}) => {
+
     return (
         <>  
             <div className="search-comp">

@@ -12,3 +12,12 @@
   width: 20%;
   font-family: "AdobeCaslonPro";
 }
+
+.btn {
+  border-radius: 30px;
+  margin: 15px;
+}
+
+.slider {
+  margin: 15px;
+}
