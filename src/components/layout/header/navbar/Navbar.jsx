@@ -21,12 +21,6 @@ const Navbar = () => {
               <NavLink to="/shop">
                 <div className="nav-link">Shop</div>
               </NavLink>
-              <NavLink to="/about">
-                <div className="nav-link">About</div>
-              </NavLink>
-              <NavLink to="/contact">
-                <div className="nav-link">Contact</div>
-              </NavLink>
               <button>
                 Signup or Logout
               </button>

@@ -12,7 +12,6 @@ const CategoryCard = ({category}) => {
                     <CardMedia
                         image={category.image}
                         className="cat-img zoom"
-                        
                     />
                     <CardContent className ="cat-content" >
                         <Typography className="cat-text">{category.name}</Typography>

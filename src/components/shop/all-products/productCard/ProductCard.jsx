@@ -7,11 +7,11 @@ import './productCard.css'
 const ProductCard = ({product}) => {
     return ( 
         <Link>
-            <Card className="product">
+            <Card className="product fade-in ">
                 <CardActionArea>
                     <CardMedia
-                        image={require(`../../../../../public/${product.image}`)}
-                        className="prod-img"
+                        image={product.image}
+                        className="prod-img zoom"
                     /> 
                     <CardContent className ="prod-content">
                         <Typography className="prod-text">{product.name}</Typography>

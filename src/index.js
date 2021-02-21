@@ -8,13 +8,11 @@ import { BrowserRouter } from 'react-router-dom';
 import { StylesProvider } from '@material-ui/core/styles';
 
 ReactDOM.render(
-  <React.StrictMode>
     <StylesProvider injectFirst>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </StylesProvider>
-  </React.StrictMode>,
+    </StylesProvider>,
   document.getElementById('root')
 );
 

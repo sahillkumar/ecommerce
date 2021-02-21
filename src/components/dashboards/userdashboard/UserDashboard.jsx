@@ -7,6 +7,7 @@ import Story from '../../about/story/Story';
 import Partners from '../../about/partners/Partners';
 import WhyUs from '../../about/why-us/WhyUs';
 import Certifications from '../../about/certifications/Certifications';
+import useFirestore from '../../../firebase/useFirestore';
 
 
 const style={
@@ -33,7 +34,6 @@ const style={
 
 
 const UserDashboard = () => {
-
     return (
         <> 
             <Parallax bgImage="/images/main.jpg" strength={600}>

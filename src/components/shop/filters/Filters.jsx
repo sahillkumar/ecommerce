@@ -18,6 +18,7 @@ const TabPanel = ({value,index,children})=>{
 const Filters = () => {
     const [value,setValue]=useState(0)
     const [hide,setHide] = useState(false)
+    const categories = ['Beauty Essentials','Eatables','Pottery','Mugs','Clothing']
     const handleTabChange = (e,val)=>{
         setValue(val)
         setHide(true)
@@ -26,26 +27,28 @@ const Filters = () => {
     return (
         <div className="filters">
                 <Tabs onChange={handleTabChange} value={value} className="tabs" indicatorColor="primary">
+                <Tab label="CATEGORIES" className="tab"/>
                     <Tab label="SORT BY" className="tab"/>
                     <Tab label="AVAILABILITY" className="tab"/>
                     <Tab label="PRICE" className="tab"/>
                     <Tab label="SIZE" className="tab"/>
-                    <Link to="/shop" className="tab">
-                        <Tab label="CATEGORIES" className="tab"/>
-                    </Link>
-                        
-        
                 </Tabs>
                 <TabPanel value={value} index={0}>
+                    <Button variant="outlined" className="btn">ALL</Button>
+                    {
+                        categories && categories.map(category=><Button variant="outlined" className="btn">{category}</Button>)
+                    }
+                </TabPanel>
+                <TabPanel value={value} index={1}>
                     <Button variant="outlined" className="btn">High to low</Button>
                     <Button variant="outlined" className="btn">low to high</Button>
                     <Button variant="outlined" className="btn">Best Seller</Button>
                 </TabPanel>
-                <TabPanel value={value} index={1}>
+                <TabPanel value={value} index={2}>
                     <Button variant="outlined" className="btn">available</Button>
                     <Button variant="outlined" className="btn">outofStock</Button>
                 </TabPanel>
-                <TabPanel value={value} index={2}>
+                <TabPanel value={value} index={3}>
                     <Grid container spacing={3} justify="center">
                         <Grid item>
                             min
@@ -59,7 +62,7 @@ const Filters = () => {
                 </Grid>
      
                 </TabPanel>
-                <TabPanel value={value} index={3}>
+                <TabPanel value={value} index={4}>
                     <Button variant="outlined" className="btn">small</Button>
                     <Button variant="outlined" className="btn">medium</Button>
                     <Button variant="outlined" className="btn">large</Button>
