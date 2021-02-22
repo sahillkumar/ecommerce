@@ -2,7 +2,6 @@ import { useState,useEffect } from "react"
 import { firestore } from "./config"
 
 const useFirestore = (collection) => {
-    console.log('call from ',collection);
     const [docs, setDocs] = useState([])
     useEffect(() => {
         let documents = []

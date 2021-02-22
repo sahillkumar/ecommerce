@@ -2,7 +2,7 @@ import React from 'react'
 import Filters from '../filters/Filters'
 import './search.css'
 
-const Search = () => {
+const Search = ({setFilter,filter}) => {
 
     return (
         <div className="search">
@@ -13,7 +13,7 @@ const Search = () => {
                     placeholder="Search For Products..."
                 />
             </div>
-            <Filters/>
+            <Filters setFilter ={setFilter} filter={filter}/>
         </div>
     )
 }

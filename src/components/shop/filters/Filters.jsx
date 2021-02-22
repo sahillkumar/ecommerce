@@ -5,7 +5,7 @@ import './filters.css'
 
 const TabPanel = ({value,index,children})=>{
     return(
-        <div className="tab-panel" hidden={value != index }>
+        <div className="tab-panel" hidden={value !== index }>
             {
                 value === index && (
                     <h1>{children}</h1>
@@ -15,14 +15,25 @@ const TabPanel = ({value,index,children})=>{
     )
  }
 
-const Filters = () => {
+const Filters = ({setFilter,filter}) => {
     const [value,setValue]=useState(0)
     const [hide,setHide] = useState(false)
+    const [remove,setRemove] = useState(false)
     const categories = ['Beauty Essentials','Eatables','Pottery','Mugs','Clothing']
     const handleTabChange = (e,val)=>{
         setValue(val)
         setHide(true)
     }
+
+    const handleFilter = (category,name) => (e)=>{
+        document.getElementById(name).classList.add('active')
+        // document.getElementById(name).children[0].style.display = 'visible'
+        setFilter({
+            ...filter,
+            [category] : name
+        })
+    }
+    
    
     return (
         <div className="filters">
@@ -36,7 +47,12 @@ const Filters = () => {
                 <TabPanel value={value} index={0}>
                     <Button variant="outlined" className="btn">ALL</Button>
                     {
-                        categories && categories.map(category=><Button variant="outlined" className="btn">{category}</Button>)
+                        categories && 
+                        categories.map(category=>
+                            <Button id={category}  variant="outlined" className="btn" onClick={handleFilter("category",category)}>
+                                {category}
+                                <span className="remove" id="remove" style={{display:'none'}}> &#10005;</span> 
+                            </Button>)
                     }
                 </TabPanel>
                 <TabPanel value={value} index={1}>
@@ -44,8 +60,13 @@ const Filters = () => {
                     <Button variant="outlined" className="btn">low to high</Button>
                     <Button variant="outlined" className="btn">Best Seller</Button>
                 </TabPanel>
-                <TabPanel value={value} index={2}>
-                    <Button variant="outlined" className="btn">available</Button>
+                <TabPanel value={value} index={2} >
+                    <Button variant="outlined" className="btn" onClick={()=>{
+                        setFilter({
+                            ...filter,
+                            ["available"]:true
+                        })
+                    }}>available</Button>
                     <Button variant="outlined" className="btn">outofStock</Button>
                 </TabPanel>
                 <TabPanel value={value} index={3}>

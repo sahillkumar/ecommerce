@@ -16,8 +16,23 @@
 .btn {
   border-radius: 30px;
   margin: 15px;
+  border-color: #b8d8be;
+  color: grey;
+}
+.btn:hover {
+  background-color: coral;
 }
 
 .slider {
   margin: 15px;
+}
+
+.active {
+  background-color: #b8d8be;
+  color: black;
+}
+
+.remove {
+  color: grey;
+  margin-left: 10px;
 }
