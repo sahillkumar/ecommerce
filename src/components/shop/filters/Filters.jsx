@@ -16,25 +16,45 @@ const TabPanel = ({value,index,children})=>{
  }
 
 const Filters = ({setFilter,filter}) => {
+
     const [value,setValue]=useState(0)
     const [hide,setHide] = useState(false)
     const [remove,setRemove] = useState(false)
-    const categories = ['Beauty Essentials','Eatables','Pottery','Mugs','Clothing']
+    const categories = ['beauty essentials','eatables','handicrafts','mugs','clothing']
     const handleTabChange = (e,val)=>{
         setValue(val)
         setHide(true)
     }
 
-    const handleFilter = (category,name) => (e)=>{
-        document.getElementById(name).classList.add('active')
-        // document.getElementById(name).children[0].style.display = 'visible'
-        setFilter({
-            ...filter,
-            [category] : name
-        })
+    const addDel = (value)=>{
+        let element = document.getElementById(value)
+        element.classList.add('active')
+        element.children[1].setAttribute("style", "display:visible;")
     }
+
+    const removeDel = (value) =>{
+        let element = document.getElementById(value)
+        element.classList.remove('active')
+        element.children[1].setAttribute("style", "display:none;")
+    }
+
+    const handleFilter = (key,value,method) => (e)=>{
+        if(method === 'add'){
+            addDel(value)
+            setFilter({
+                ...filter,
+                [key]:value
+            })
+        }
+        else if(method === 'remove'){
+            removeDel(value)
+            delete filter[key]
+            setFilter({
+                ...filter,
+            })
+    }
+}
     
-   
     return (
         <div className="filters">
                 <Tabs onChange={handleTabChange} value={value} className="tabs" indicatorColor="primary">
@@ -45,20 +65,31 @@ const Filters = ({setFilter,filter}) => {
                     <Tab label="SIZE" className="tab"/>
                 </Tabs>
                 <TabPanel value={value} index={0}>
-                    <Button variant="outlined" className="btn">ALL</Button>
+                    <Grid container justify="center">
+                    <Grid item  className="grid-item"  id="all" justify="center">
+                        <Button variant="outlined" className="btn" onClick={handleFilter("category","all")}>
+                            add
+                        </Button>
+                    </Grid>
                     {
                         categories && 
                         categories.map(category=>
-                            <Button id={category}  variant="outlined" className="btn" onClick={handleFilter("category",category)}>
-                                {category}
-                                <span className="remove" id="remove" style={{display:'none'}}> &#10005;</span> 
-                            </Button>)
+                            <Grid item  key={category} className="grid-item"  id={category} justify="center">
+                                <Button  className="btn" onClick={handleFilter("category",category,"add")}>
+                                    {category}
+                                </Button>
+                                <span className="remove" style={{display:"none"}} onClick={handleFilter("category",category,"remove")}>&#10005;</span>
+                                </Grid>
+                           )
                     }
+                    </Grid>
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                    <Button variant="outlined" className="btn">High to low</Button>
-                    <Button variant="outlined" className="btn">low to high</Button>
-                    <Button variant="outlined" className="btn">Best Seller</Button>
+                <Grid container justify="center">
+                    <Grid item> <Button variant="outlined" className="btn">High to low</Button></Grid>
+                    <Grid item><Button variant="outlined" className="btn">low to high</Button></Grid>
+                    <Grid item><Button variant="outlined" className="btn">Best Seller</Button></Grid>
+              </Grid>
                 </TabPanel>
                 <TabPanel value={value} index={2} >
                     <Button variant="outlined" className="btn" onClick={()=>{

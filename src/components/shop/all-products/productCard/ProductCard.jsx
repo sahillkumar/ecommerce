@@ -10,7 +10,7 @@ const ProductCard = ({product}) => {
             <Card className="product fade-in ">
                 <CardActionArea>
                     <CardMedia
-                        image={product.image}
+                        image={product.picUrl}
                         className="prod-img zoom"
                     /> 
                     <CardContent className ="prod-content">

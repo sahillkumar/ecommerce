@@ -9,7 +9,7 @@ import useFirestore from './firebase/useFirestore';
 import Products from './components/shop/all-products/products/Products';
 
  const App = () => {
-  const products = useFirestore('products')
+  const products = useFirestore('PRODUCTS')
 
   
   // const SelectedCategory=({match})=>{

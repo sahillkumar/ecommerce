@@ -7,25 +7,21 @@ import './products.css'
 
 const Products = ({products}) => {
 const [filter, setFilter] = useState(null)
-console.log("filter ",filter);
-
 const [prods,setProds] = useState(products)
 
-
 useEffect(() => {
-        products = filter != null ? products.filter(prod=>{
+        products = filter != null || filter == {}? products.filter(prod=>{
             for(var key in filter){
-                if(prod[key]===undefined ||  prod[key] != filter[key]) {
+                if(prod[key]===undefined || filter[key] === undefined ||  prod[key].title != filter[key]) {
                     return false;
                 }  
             }       
             return true;
         }
         ) : products 
-
     setProds(products)
 }, [filter])
-
+// console.log(products);
     return (
         <>  
             <div className="search-comp">

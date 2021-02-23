@@ -13,14 +13,19 @@
   font-family: "AdobeCaslonPro";
 }
 
-.btn {
-  border-radius: 30px;
+.grid-item {
+  height: 50px;
+  display: flex;
   margin: 15px;
-  border-color: #b8d8be;
-  color: grey;
+  border: 3px solid #618669;
 }
-.btn:hover {
-  background-color: coral;
+.grid-item:hover {
+  background-color: rgb(69, 110, 79);
+}
+
+.btn {
+  color: grey;
+  border-radius: 0;
 }
 
 .slider {
@@ -34,5 +39,6 @@
 
 .remove {
   color: grey;
-  margin-left: 10px;
+  background-color: red;
+  width: 45px;
 }
