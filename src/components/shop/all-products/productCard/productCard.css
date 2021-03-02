@@ -1,16 +1,17 @@
 .product {
-  height: 400px;
+  width: 100%;
+  height: 375px;
   border-radius: 0;
+  padding: 0;
+  position: relative;
 }
 
 .prod-img {
-  height: 400px;
+  height: 250px;
 }
 
 .prod-text {
-  position: absolute;
   color: whitesmoke;
-  font-family: "AdobeCaslonPro";
   top: 50%;
   left: 50%;
   transform: translate(-50%, 80%);
@@ -20,11 +21,70 @@
   padding: 10px;
   font-weight: lighter;
 }
+.prod-content {
+  font-family: "ProximaNova";
+  height: 100px;
+  padding: 5px;
+}
 
-/* .cat-content {
-  
-  background: red;
-} */
+.prod-name {
+  display: block;
+  text-align: left;
+  text-decoration: none;
+  font-size: 18px;
+  height: 30px;
+  padding: 15px 15px 0px 15px;
+}
+
+.short-description {
+  display: block;
+  text-align: left;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 0px 15px 10px 15px;
+  color: gray;
+}
+
+.price {
+  height: 30px;
+  padding: 5px 15px 15px 15px;
+  text-align: left;
+  font-size: 16px;
+  align-content: center;
+}
+
+.prod-mrp {
+  text-align: left;
+  margin-right: 5px;
+  font-size: 14px;
+}
+
+.prod-discount {
+  margin-right: 10px;
+}
+
+.discount-percent {
+  font-size: 14px;
+}
+
+.favorite {
+  color: #fff;
+  position: relative;
+  top: 20px;
+  right: 20px;
+  float: right;
+}
+
+.addtocart {
+  color: rgb(138, 135, 135);
+  position: relative;
+  float: right;
+  bottom: 10px;
+}
+
+.addtocart:hover {
+  color: black;
+}
 
 .fade-in {
   animation: fadeIn ease 8s;
@@ -85,4 +145,8 @@
 .zoom:hover {
   transform: scale(1.2);
   overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
 }

@@ -1,6 +1,10 @@
 import { Button, Grid, Slider, Tab, Tabs } from '@material-ui/core'
 import React,{useState} from 'react'
+import sort from 'fast-sort'
 import { Link } from 'react-router-dom'
+import { byNumber, byValue } from 'sort-es'
+import useFirestore from '../../../firebase/useFirestore'
+import { AllProducts, getAllSortedProducts, getProducts, getProductsByCategory, sortProductsByCategory } from '../shopHelper/shopHelper'
 import './filters.css'
 
 const TabPanel = ({value,index,children})=>{
@@ -15,15 +19,14 @@ const TabPanel = ({value,index,children})=>{
     )
  }
 
-const Filters = ({setFilter,filter}) => {
+const Filters = ({setProds,allproducts,currentProds}) => {
 
     const [value,setValue]=useState(0)
-    const [hide,setHide] = useState(false)
-    const [remove,setRemove] = useState(false)
+    const [category,setCategory] = useState(null)
+
     const categories = ['beauty essentials','eatables','handicrafts','mugs','clothing']
     const handleTabChange = (e,val)=>{
         setValue(val)
-        setHide(true)
     }
 
     const addDel = (value)=>{
@@ -41,36 +44,65 @@ const Filters = ({setFilter,filter}) => {
     const handleFilter = (key,value,method) => (e)=>{
         if(method === 'add'){
             addDel(value)
-            setFilter({
-                ...filter,
-                [key]:value
-            })
+            setCategory(value)
+            getProdsByCat(value)
         }
         else if(method === 'remove'){
             removeDel(value)
-            delete filter[key]
-            setFilter({
-                ...filter,
-            })
+            setCategory(null)
+            setProds(allproducts)
+        }
     }
-}
+
+    const handleSort = (field, direction,method,id) => (e)=>{
+        if(method === 'add'){
+            addDel(id)
+            sortProducts(field,direction)
+        }else{
+            removeDel(id)
+            sortProducts('name','asc')
+        }
+    }
+
+    const getProdsByCat = async (filter) =>{
+        if(filter == 'all')
+            setProds(allproducts)
+        else{
+            const products = await getProductsByCategory(filter)
+            setProds(products)
+        }   
+    }
+
+    const sortProducts = async (field,direction) =>{
+        
+        if(currentProds.length < allproducts.length && category){
+            const products = await sortProductsByCategory(category,field,direction)
+            setProds(products)
+        }else{
+           const products = await getAllSortedProducts(field,direction)
+           setProds(products)
+        }
+        
+    }
+
     
     return (
         <div className="filters">
-                <Tabs onChange={handleTabChange} value={value} className="tabs" indicatorColor="primary">
-                <Tab label="CATEGORIES" className="tab"/>
+
+                <Tabs onChange={handleTabChange} value={value} className="tabs" indicatorColor="primary" centered>
+                    <Tab label="CATEGORIES" className="tab"/>
                     <Tab label="SORT BY" className="tab"/>
-                    <Tab label="AVAILABILITY" className="tab"/>
-                    <Tab label="PRICE" className="tab"/>
-                    <Tab label="SIZE" className="tab"/>
+                    <Tab label="PRICE RANGE" className="tab"/>
                 </Tabs>
+
                 <TabPanel value={value} index={0}>
                     <Grid container justify="center">
-                    <Grid item  className="grid-item"  id="all" justify="center">
-                        <Button variant="outlined" className="btn" onClick={handleFilter("category","all")}>
-                            add
-                        </Button>
-                    </Grid>
+                        <Grid item  className="grid-item" justify="center" id="all" >
+                            <Button  className="btn" onClick={handleFilter("category","all","add")}>
+                                all
+                            </Button>
+                            <span className="remove" style={{display:"none"}} onClick={handleFilter("category","all","remove")}>&#10005;</span>
+                        </Grid>
                     {
                         categories && 
                         categories.map(category=>
@@ -79,28 +111,44 @@ const Filters = ({setFilter,filter}) => {
                                     {category}
                                 </Button>
                                 <span className="remove" style={{display:"none"}} onClick={handleFilter("category",category,"remove")}>&#10005;</span>
-                                </Grid>
+                            </Grid>
                            )
                     }
                     </Grid>
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                <Grid container justify="center">
-                    <Grid item> <Button variant="outlined" className="btn">High to low</Button></Grid>
-                    <Grid item><Button variant="outlined" className="btn">low to high</Button></Grid>
-                    <Grid item><Button variant="outlined" className="btn">Best Seller</Button></Grid>
-              </Grid>
+                    <Grid container justify="center">
+                        <Grid item id="sort-lth"  className="grid-item" justify="center"> 
+                            <Button className="btn" onClick={handleSort('discountMrp','asc','add',"sort-lth")}>
+                                price : low to high
+                            </Button>
+                            <span className="remove" style={{display:"none"}} onClick={handleSort("discountMrp","asc","remove","sort-lth")}>&#10005;
+                            </span>
+                        </Grid>
+                        <Grid item id="sort-htl"  className="grid-item" justify="center">
+                            <Button className="btn" onClick={handleSort('discountMrp','desc','add',"sort-htl")}>
+                                price : high to low
+                            </Button>
+                            <span className="remove" style={{display:"none"}} onClick={handleSort("discountMrp","desc","remove","sort-htl")}>&#10005;
+                            </span>
+                        </Grid>
+                        <Grid item id="sort-discount"  className="grid-item" justify="center">
+                            <Button className="btn" onClick={handleSort('discountPercentage','desc','add','sort-discount')}>
+                                discount
+                            </Button>
+                            <span className="remove" style={{display:"none"}} onClick={handleSort("discountPercentage","desc","remove","sort-discount")}>&#10005;
+                            </span>
+                        </Grid>
+                        <Grid item id="sort-rating"  className="grid-item" justify="center">
+                            <Button className="btn" onClick={handleSort('rating','desc','add','sort-rating')}> 
+                                customer ratings
+                            </Button>
+                            <span className="remove" style={{display:"none"}} onClick={handleSort("rating","desc","remove","sort-rating")}>&#10005;
+                            </span>
+                        </Grid>
+                    </Grid>
                 </TabPanel>
-                <TabPanel value={value} index={2} >
-                    <Button variant="outlined" className="btn" onClick={()=>{
-                        setFilter({
-                            ...filter,
-                            ["available"]:true
-                        })
-                    }}>available</Button>
-                    <Button variant="outlined" className="btn">outofStock</Button>
-                </TabPanel>
-                <TabPanel value={value} index={3}>
+                <TabPanel value={value} index={2}>
                     <Grid container spacing={3} justify="center">
                         <Grid item>
                             min
@@ -111,13 +159,7 @@ const Filters = ({setFilter,filter}) => {
                         <Grid item>
                             max
                         </Grid>
-                </Grid>
-     
-                </TabPanel>
-                <TabPanel value={value} index={4}>
-                    <Button variant="outlined" className="btn">small</Button>
-                    <Button variant="outlined" className="btn">medium</Button>
-                    <Button variant="outlined" className="btn">large</Button>
+                    </Grid>
                 </TabPanel>
             </div>
     )

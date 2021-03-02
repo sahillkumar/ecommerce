@@ -5,7 +5,8 @@ const useFirestore = (collection) => {
     const [docs, setDocs] = useState([])
     useEffect(() => {
         let documents = []
-        const unsub =  firestore.collection(collection).onSnapshot(docs=>{
+        const unsub =  firestore.collection(collection)
+            .onSnapshot(docs=>{
             docs.forEach(doc=>{
             documents.push({
                 ...doc.data(),

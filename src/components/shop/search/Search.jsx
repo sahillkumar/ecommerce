@@ -2,7 +2,7 @@ import React from 'react'
 import Filters from '../filters/Filters'
 import './search.css'
 
-const Search = ({setFilter,filter}) => {
+const Search = ({setProds,allproducts,currentProds}) => {
 
     return (
         <div className="search">
@@ -13,7 +13,7 @@ const Search = ({setFilter,filter}) => {
                     placeholder="Search For Products..."
                 />
             </div>
-            <Filters setFilter ={setFilter} filter={filter}/>
+            <Filters setProds={setProds} allproducts={allproducts} currentProds={currentProds}/>
         </div>
     )
 }

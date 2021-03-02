@@ -7,11 +7,34 @@ import Categories from './components/shop/all-categories/categories/Categories';
 import './App.css';
 import useFirestore from './firebase/useFirestore';
 import Products from './components/shop/all-products/products/Products';
+import ShopView from '../src/components/shop/all-products/shopView/ShopView'
+import Cart from './components/shop/all-order/cart/Cart';
 
  const App = () => {
+
   const products = useFirestore('PRODUCTS')
 
+  return ( 
+    <div className="App">
+      <Navbar />
+        <Switch>
+          <Route exact path="/" component={UserDashboard}/>
+          <Route exact path="/shop" component={()=><ShopView products={products} />} />
+          <Route path="/shop/cart" component={Cart}/>
+          {/* <Route exact path="/shop/:categoryName" component={SelectedCategory}/> */}
+          {/* <Route path="/shop/:id" component={SelectedItem}/>
+          
+          <Route path="/contact" component={Contact} /> */} 
+          <Redirect to="/"/>
+        </Switch>
+      <Footer/>
+    </div>
+   );
   
+}
+
+export default App
+
   // const SelectedCategory=({match})=>{
   //   console.log('select category render ');
   
@@ -28,24 +51,4 @@ import Products from './components/shop/all-products/products/Products';
   //     </>
   //   )}
 
-
-  return ( 
-    <div className="App">
-      <Navbar />
-        <Switch>
-          <Route exact path="/" component={UserDashboard}/>
-          <Route exact path="/shop" component={()=><Products products={products} />} />
-          {/* <Route exact path="/shop/:categoryName" component={SelectedCategory}/> */}
-          {/* <Route path="/shop/:id" component={SelectedItem}/>
-          <Route path="/about" component={About}/>
-          <Route path="/contact" component={Contact} /> */} 
-          <Redirect to="/"/>
-        </Switch>
-      <Footer/>
-    </div>
-   );
-  
-}
-
-export default App
  

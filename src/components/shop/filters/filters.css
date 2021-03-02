@@ -20,7 +20,7 @@
   border: 3px solid #618669;
 }
 .grid-item:hover {
-  background-color: rgb(69, 110, 79);
+  background-color: rgb(141, 199, 155);
 }
 
 .btn {
@@ -38,7 +38,14 @@
 }
 
 .remove {
-  color: grey;
-  background-color: red;
+  color: red;
+  background-color: rgb(221, 206, 206);
   width: 45px;
+  border: 1px solid red;
+  cursor: pointer;
+}
+
+.remove:hover {
+  color: rgb(221, 206, 206);
+  background-color: red;
 }
