@@ -1,0 +1,60 @@
+.auth-container {
+  /* background: url("/images/bg-auth.jpg") no-repeat; */
+  background-size: cover;
+  height: 100vh;
+  display: block;
+}
+
+.backdrop {
+  backdrop-filter: blur(1px);
+  height: 100vh;
+  padding: 100px;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.paper {
+  margin: 60px auto;
+  width: 40%;
+  padding: 0px 40px;
+  height: 500px;
+  background-color: rgb(231, 236, 233);
+}
+
+.auth-tab {
+  height: 70px;
+  width: 50%;
+  font-family: "AdobeCaslonPro";
+}
+
+.auth-tabs {
+  margin-bottom: 50px;
+}
+
+.btn-auth {
+  background-color: #222;
+  height: 50px;
+  width: 100%;
+  margin-top: 30px;
+  border-radius: 0;
+}
+
+.btn-auth:hover {
+  background-color: #222;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.forgotpass {
+  font-size: medium;
+  margin: 12px auto;
+  font-weight: thin;
+}
+
+.forgotpass :active {
+  color: #222;
+}

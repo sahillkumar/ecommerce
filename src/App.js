@@ -9,6 +9,7 @@ import useFirestore from './firebase/useFirestore';
 import Products from './components/shop/all-products/products/Products';
 import ShopView from '../src/components/shop/all-products/shopView/ShopView'
 import Cart from './components/shop/all-order/cart/Cart';
+import Auth from './components/auth/authComp/Auth';
 
  const App = () => {
 
@@ -21,6 +22,7 @@ import Cart from './components/shop/all-order/cart/Cart';
           <Route exact path="/" component={UserDashboard}/>
           <Route exact path="/shop" component={()=><ShopView products={products} />} />
           <Route path="/shop/cart" component={Cart}/>
+          <Route path="/auth" component={Auth}/>
           {/* <Route exact path="/shop/:categoryName" component={SelectedCategory}/> */}
           {/* <Route path="/shop/:id" component={SelectedItem}/>
           

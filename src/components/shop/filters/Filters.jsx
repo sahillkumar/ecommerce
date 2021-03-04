@@ -6,18 +6,8 @@ import { byNumber, byValue } from 'sort-es'
 import useFirestore from '../../../firebase/useFirestore'
 import { AllProducts, getAllSortedProducts, getProducts, getProductsByCategory, sortProductsByCategory } from '../shopHelper/shopHelper'
 import './filters.css'
+import TabPanel from '../../Reusable Components/TabPanel'
 
-const TabPanel = ({value,index,children})=>{
-    return(
-        <div className="tab-panel" hidden={value !== index }>
-            {
-                value === index && (
-                    <h1>{children}</h1>
-                )
-            }
-        </div>
-    )
- }
 
 const Filters = ({setProds,allproducts,currentProds}) => {
 
@@ -149,7 +139,7 @@ const Filters = ({setProds,allproducts,currentProds}) => {
                     </Grid>
                 </TabPanel>
                 <TabPanel value={value} index={2}>
-                    <Grid container spacing={3} justify="center">
+                    <Grid container justify="center">
                         <Grid item>
                             min
                         </Grid>

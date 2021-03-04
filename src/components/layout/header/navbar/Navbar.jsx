@@ -4,7 +4,6 @@ import './navbar.css'
 import { NavLink } from 'react-router-dom';
 
 
-
 const Navbar = () => {
 
     return ( 
@@ -24,9 +23,11 @@ const Navbar = () => {
               <NavLink to="/shop/cart">
                 <div className="nav-link">cart</div>
               </NavLink>
-              <button>
-                Signup or Logout
-              </button>
+              <NavLink to="/auth">
+                <div className="nav-link">
+                  SignUp
+                </div>
+              </NavLink>
             </div>
           </Toolbar>
         </AppBar>
