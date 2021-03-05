@@ -1,12 +1,15 @@
-import {Button, TextField, FormGroup, Tabs,Tab, Grid, Paper } from '@material-ui/core';
-import React, { useEffect, useState } from 'react';
+import {Button, Tabs,Tab } from '@material-ui/core';
+import React, { useState } from 'react';
 import DoneAllIcon from '@material-ui/icons/DoneAll';
 import './auth.css'
 import { logIn, signUp } from '../authHelper/authHelper';
 import TabPanel from '../../Reusable Components/TabPanel';
+import CssTextField from '../../Reusable Components/CssTextField';
+import { Link } from 'react-router-dom';
+import EmailSent from '../../Reusable Components/EmailSent';
+import ErrorMessage from '../../Reusable Components/ErrorMessage';
 
-
-const Auth = () => {
+const Auth = ({setUser}) => {
 
   const [error, setError] = useState(false)
   const [emailSent, setEmailSent] = useState(false)
@@ -38,30 +41,9 @@ const Auth = () => {
 
   const logInSubmit = (email,password) => (e) =>{
     e.preventDefault()
-    logIn(email,password,setError,setForm)
+    logIn(email,password,setError,setForm,setUser)
    }
 
- //Comp EmailSent
-  const EmailSent = () =>{
-   return (
-       <div className="emailsent" color="#4caf50">
-         <p>
-           Verification email sent <DoneAllIcon color="secondary"/><br/>
-           Please verify your email before signing In..
-         </p>
-       </div>
-   )
-  }
-
- //Comp ErrorMess
-  const ErrorMessage = () =>{
-   return(
-     error &&
-       <div className="errorfromMail">
-         <p>{error}</p>
-       </div>
-   )
-  }
 
   //handleTabchage
   const handleTabChange = (e,val) =>{  
@@ -75,97 +57,97 @@ const Auth = () => {
   }
 
   return (
-     <div className="auth-container">
-          <div className="backdrop">
-     <div className="paper">
-      <Tabs value={value} onChange={handleTabChange} className="auth-tabs" centered indicatorColor="primary">
-        <Tab label="Register" className="auth-tab"/>
-        <Tab label="Login" className="auth-tab"/>
-      </Tabs>
-      <TabPanel index={0} value={value}>
-        
-        <form onSubmit={signUpSubmit(email,password)}>
-          <ErrorMessage />
-          {
-            emailSent ? 
-              <EmailSent/> 
-            :  <> 
-              <TextField 
-                autoFocus
-                required
-                margin="normal"
-                id="name"
-                value={name}
-                label="Name"
-                type="Name"
-                fullWidth
-                variant="outlined"
-                onChange={handleChange('name')}
-                inputProps={{
-                     className:'input'
-                }}
-                color="text.main"
-              /> 
-              <TextField
-                margin="normal"
-                id="email"
-                label="Email"
-                type="email"
-                name={email}
-                variant="outlined"
-                fullWidth
-                required
-                onChange={handleChange('email')}
-                inputProps={{
-                    className:'input'
-               }}
-              />
-              <TextField
-                margin="normal"
-                id="password"
-                label="Password"
-                type="password"
-                value={password}
-                fullWidth
-                required
-                variant="outlined"
-                onChange={handleChange('password')}
-                inputProps={{
-                    className:'input'
-               }}
-              />
-              <Button    
-                type="submit" 
-                margin="normal"
-                variant="contained"
-                color="primary"
-                className="btn-auth"
-              >
-                Register
-              </Button>
-            </>
-          }
-        </form>
+    <div className="auth-container">
+      <div className="paper">
+        <Tabs 
+          value={value} 
+          onChange={handleTabChange} 
+          className="auth-tabs" 
+          indicatorColor="primary"
+          textColor="primary"
+          centered 
+          TabIndicatorProps={{
+            style:{
+              height:0.7
+            }
+        }}>
+          <Tab label="Register" className="auth-tab"/>
+          <Tab label="Login" className="auth-tab"/>
+        </Tabs>
+        <TabPanel index={0} value={value}>
+          <form onSubmit={signUpSubmit(email,password)}>
+            <ErrorMessage error={error}/>
+            {
+              emailSent ? 
+                <EmailSent>
+                    <span className="box">Verification email sent  
+                      <DoneAllIcon fontSize="large" className="senticon"/>
+                    </span>
+                </EmailSent>
+              : <> 
+                  <CssTextField 
+                    autoFocus
+                    required
+                    margin="normal"
+                    id="name"
+                    value={name}
+                    label="Name"
+                    type="Name"
+                    fullWidth
+                    variant="outlined"
+                    onChange={handleChange('name')}
+                  /> 
+                  <CssTextField
+                    margin="normal"
+                    id="email"
+                    label="Email"
+                    type="email"
+                    value={email}
+                    variant="outlined"
+                    fullWidth
+                    required
+                    onChange={handleChange('email')}
+                  />
+                  <CssTextField
+                    margin="normal"
+                    id="password"
+                    label="Password"
+                    type="password"
+                    value={password}
+                    fullWidth
+                    required
+                    variant="outlined"
+                    onChange={handleChange('password')}
+                  />
+                  <Button    
+                    type="submit" 
+                    margin="normal"
+                    variant="contained"
+                    color="primary"
+                    className="btn-auth"
+                  >
+                    Register
+                  </Button>
+                </>
+            }
+          </form>
       </TabPanel>
-      <TabPanel index={1} value={value}>
-        <form onSubmit={logInSubmit(email,password)}>
-          <ErrorMessage />
-          <TextField
+        <TabPanel index={1} value={value}>
+          <form onSubmit={logInSubmit(email,password)}>
+            <ErrorMessage error={error}/>
+              <CssTextField
                margin="normal"
                id="email"
                label="Email"
                type="email"
-               name={email}
+               value={email}
                fullWidth
                variant="outlined"
                required
-               inputProps={{
-                    className:'input'
-               }}
                onChange={handleChange('email')}
                autoFocus
-          />
-          <TextField
+            />
+            <CssTextField
                margin="normal"
                id="password"
                label="Password"
@@ -175,28 +157,24 @@ const Auth = () => {
                fullWidth
                required
                onChange={handleChange('password')}
-               inputProps={{
-                    className:'input'
-               }}
-          />
-          <Button    
-                type="submit" 
-                margin="normal"
-                color="primary"
-                variant="contained"
-                className="btn-auth"
-              >
-                Login
-              </Button>
+            />
+            <Button    
+              type="submit" 
+              margin="normal"
+              color="primary"
+              variant="contained"
+              className="btn-auth"
+            >
+              Login
+            </Button>
         </form>
-        <span className="forgotpass">
-            <a href="/home">Forgot Password ? </a> 
-        </span>
-    
-      </TabPanel>
+          <span className="forgotpass">
+            <Link to="/auth/forgotpassword">Forgot Password ? </Link>
+          </span>
+        </TabPanel>
       </div>
-      </div>
-      </div>
+    </div>
+      
   )
 }
 

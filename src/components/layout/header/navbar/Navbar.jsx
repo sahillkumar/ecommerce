@@ -2,32 +2,58 @@ import React from 'react';
 import { AppBar,Toolbar} from '@material-ui/core';
 import './navbar.css'
 import { NavLink } from 'react-router-dom';
+import { signOut } from '../../../auth/authHelper/authHelper';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 
-const Navbar = () => {
+const Navbar = ({user,setUser}) => {
 
     return ( 
-        <AppBar className="appbar" position="fixed">
-          <Toolbar className="toolbar">
+        <AppBar className="appbar" position="fixed" elevation="0">
+          <Toolbar className="toolbar" >
             <div className="logo-brand">
               <img src="images/tree.svg" className="logo" alt="organikart"/>
               <div className="brand">OrganiKart</div>
             </div>
             <div className="appbar-nav">
-              <NavLink to="/">
-                <div className="nav-link">Home</div>
-              </NavLink>
-              <NavLink to="/shop">
-                <div className="nav-link">Shop</div>
-              </NavLink>
-              <NavLink to="/shop/cart">
-                <div className="nav-link">cart</div>
-              </NavLink>
-              <NavLink to="/auth">
-                <div className="nav-link">
-                  SignUp
-                </div>
-              </NavLink>
+              <div className="nav-link">
+                <NavLink to="/home" activeClassName="active" className="link">
+                  Home
+                </NavLink>
+              </div>
+              <div className="nav-link">
+                <NavLink to="/shop" activeClassName="active" className="link"> 
+                  Shop
+                </NavLink>
+              </div>
+              {
+                  user ? 
+                  (
+                    <>
+                      <div className="nav-link">
+                        <NavLink to="/shop/cart" activeClassName="active" className="link"> 
+                          Cart
+                        </NavLink>
+                      </div>
+                      <div className="nav-link">
+                        <NavLink to="/home" activeClassName="active" className="link"> 
+                          <AccountCircleIcon fontSize="large" />
+                        </NavLink>
+                      </div>
+                      <div className="nav-link">
+                        <NavLink to="#" onClick={()=>signOut(setUser)} className="link"> 
+                          Logout
+                        </NavLink>
+                      </div> 
+                    </>
+                  ) : (
+                    <div className="nav-link" >
+                      <NavLink to="/auth" className="link"> 
+                        Register / Login
+                      </NavLink>
+                  </div> 
+                  )
+              }
             </div>
           </Toolbar>
         </AppBar>

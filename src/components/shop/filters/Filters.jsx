@@ -21,13 +21,13 @@ const Filters = ({setProds,allproducts,currentProds}) => {
 
     const addDel = (value)=>{
         let element = document.getElementById(value)
-        element.classList.add('active')
+        element.classList.add('act')
         element.children[1].setAttribute("style", "display:visible;")
     }
 
     const removeDel = (value) =>{
         let element = document.getElementById(value)
-        element.classList.remove('active')
+        element.classList.remove('act')
         element.children[1].setAttribute("style", "display:none;")
     }
 

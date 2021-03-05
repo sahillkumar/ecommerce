@@ -1,8 +1,7 @@
 import { auth } from "../../../firebase/config";
 
-
-export const signUp = async (email,password,setEmailSent,setError,setForm) =>{
-  await auth.createUserWithEmailAndPassword(email, password)
+export const signUp =  (email,password,setEmailSent,setError,setForm) =>{
+   auth.createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
       var user = userCredential.user; 
 
@@ -29,22 +28,21 @@ export const signUp = async (email,password,setEmailSent,setError,setForm) =>{
     });
 } 
 
-
-export const logIn = async (email,password,setError,setForm) =>{
-  await auth.signInWithEmailAndPassword(email,password)
+export const logIn =  (email,password,setError,setForm,setUser) =>{
+   auth.signInWithEmailAndPassword(email,password)
   .then((userCredential) => {
     var user = userCredential.user;
     if(!user.emailVerified){
       setError('Please verify your email first :(')
       return;
     }
-    console.log('success full logged in');
     setForm({
       email:'',
       name:'',
       password:''
     })
     setError(false)
+    setUser(user)
   },err => setError(err.message))
   .catch((error) => {
     var errorCode = error.code;
@@ -53,10 +51,23 @@ export const logIn = async (email,password,setError,setForm) =>{
   });
 }
 
-export const signOut = () =>{
-
+export const signOut = (setUser) =>{
+  auth.signOut()
+    .then(()=>{
+      console.log('successfully signed out');
+      setUser(null)
+    },err=>console.log(err.message))
+    .catch(err=>{
+      console.log(err.message)
+    })
 }
 
-export const isAuthenticated = () =>{
-    
+export const forgotPass = (email,setEmail,setEmailSent,setError) =>{
+  console.log('sahil');
+  auth.sendPasswordResetEmail(email)
+    .then(()=>{
+      setEmailSent(true)
+      setEmail('')
+    },err=>setError(err.message))
+    .catch(err=>setError(err.message))
 }
