@@ -1,0 +1,7 @@
+.itemDiv{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    background-color: red;
+    height: 200px;
+    
+}

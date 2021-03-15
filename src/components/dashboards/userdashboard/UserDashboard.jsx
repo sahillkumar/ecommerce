@@ -64,7 +64,7 @@ const UserDashboard = () => {
            <Grid container className="our-story">
                <Story/>
            </Grid>
-           <Grid container >
+           <Grid container className='partners' >
                <Partners/>
            </Grid>
            <div className="whyus">
