@@ -6,13 +6,13 @@ const Search = ({setProds,allproducts,currentProds}) => {
 
     return (
         <div className="search">
-            <div >
+            {/* <div >
                 <input 
                     type="text" 
                     className="search-bar"
                     placeholder="Search For Products..."
                 />
-            </div>
+            </div> */}
             <Filters setProds={setProds} allproducts={allproducts} currentProds={currentProds}/>
         </div>
     )

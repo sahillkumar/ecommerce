@@ -1,5 +1,5 @@
 import {Button, Tabs,Tab } from '@material-ui/core';
-import React, { useState } from 'react';
+import React, { useContext, useReducer, useState } from 'react';
 import DoneAllIcon from '@material-ui/icons/DoneAll';
 import './auth.css'
 import { logIn, signUp } from '../authHelper/authHelper';
@@ -8,13 +8,16 @@ import CssTextField from '../../Reusable Components/CssTextField';
 import { Link } from 'react-router-dom';
 import EmailSent from '../../Reusable Components/EmailSent';
 import ErrorMessage from '../../Reusable Components/ErrorMessage';
+import { DataContext } from '../../../context';
+
 
 const Auth = ({setUser}) => {
 
   const [error, setError] = useState(false)
   const [emailSent, setEmailSent] = useState(false)
   const [value, setValue] = useState(0)
-
+  const {state,dispatch} = useContext(DataContext)
+  
   //setForm
   const [form, setForm] = useState({
      name:'',
@@ -41,7 +44,7 @@ const Auth = ({setUser}) => {
 
   const logInSubmit = (email,password) => (e) =>{
     e.preventDefault()
-    logIn(email,password,setError,setForm,setUser)
+    logIn(email,password,setError,setForm,setUser,dispatch)
    }
 
 

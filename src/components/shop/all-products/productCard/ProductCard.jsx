@@ -1,16 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { CardActionArea, CardContent, CardMedia, Card, Typography, Tooltip} from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import './productCard.css'
 import AddShoppingCartSharpIcon from '@material-ui/icons/AddShoppingCartSharp';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import { addItemToCart } from '../../all-order/cart/cartHelper';
+import { addItemToCart } from '../../all-order/cardhelper/cartHelper';
+import { DataContext } from '../../../../context';
 
 const ProductCard = ({product}) => {
 
+    const {user} = useContext(DataContext)
+    
+
     const handleAddToCart = (product) => () =>{
-        addItemToCart(product)
-        console.log('added');
+        addItemToCart(product,user.uid)
     }
 
     return ( 

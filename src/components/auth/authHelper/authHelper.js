@@ -1,10 +1,10 @@
-import { auth } from "../../../firebase/config";
+import { auth, firestore } from "../../../firebase/config";
+
 
 export const signUp =  (email,password,setEmailSent,setError,setForm) =>{
    auth.createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
       var user = userCredential.user; 
-
       user.sendEmailVerification()
         .then(()=>{
           setEmailSent(true)
@@ -28,7 +28,7 @@ export const signUp =  (email,password,setEmailSent,setError,setForm) =>{
     });
 } 
 
-export const logIn =  (email,password,setError,setForm,setUser) =>{
+export const logIn = (email,password,setError,setForm,setUser,dispatch) =>{
    auth.signInWithEmailAndPassword(email,password)
   .then((userCredential) => {
     var user = userCredential.user;
@@ -36,13 +36,22 @@ export const logIn =  (email,password,setError,setForm,setUser) =>{
       setError('Please verify your email first :(')
       return;
     }
+    
+    dispatch({
+      type:'user',
+      user:user
+    })
+    
+    
+    
+  })
+  .then(()=>{
     setForm({
       email:'',
       name:'',
       password:''
     })
     setError(false)
-    setUser(user)
   },err => setError(err.message))
   .catch((error) => {
     var errorCode = error.code;
@@ -51,11 +60,10 @@ export const logIn =  (email,password,setError,setForm,setUser) =>{
   });
 }
 
-export const signOut = (setUser) =>{
+export const signOut = () =>{
   auth.signOut()
     .then(()=>{
       console.log('successfully signed out');
-      setUser(null)
     },err=>console.log(err.message))
     .catch(err=>{
       console.log(err.message)

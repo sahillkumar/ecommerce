@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {Redirect, Route,Switch} from 'react-router-dom';
 import UserDashboard from './components/dashboards/userdashboard/UserDashboard';
 import Footer from './components/layout/footer/footer';
@@ -9,21 +9,22 @@ import ShopView from '../src/components/shop/all-products/shopView/ShopView'
 import Cart from './components/shop/all-order/cart/Cart';
 import Auth from './components/auth/authComp/Auth';
 import ForgotPass from './components/auth/ForgotPass/ForgotPass';
+import { DataContext } from './context';
+
 
  const App = () => {
 
   const products = useFirestore('PRODUCTS')
-  const [user,setUser] = useState(null)
-  console.log(user);
-
+  const {user,dispatch} = useContext(DataContext)
+  
   return ( 
     <div className="App">
-      <Navbar user={user} setUser={setUser} />
+      <Navbar user={user} dispatch={dispatch}/>
         <Switch>
           <Route exact path="/home" component={UserDashboard}/>
           <Route exact path="/shop" component={()=><ShopView products={products} />} />
           <Route exact path="/shop/cart" component={Cart}/>
-          <Route exact path="/auth" component={()=><Auth setUser = {setUser}/>} />
+          <Route exact path="/auth" component={()=><Auth />} />
           <Route exact path="/auth/forgotpassword" component={ForgotPass} />
           
           {/* <Route exact path="/shop/:categoryName" component={SelectedCategory}/> */}
