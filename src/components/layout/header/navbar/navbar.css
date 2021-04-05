@@ -1,5 +1,5 @@
 .appbar {
-  background-color: #b8d8be;
+  background-color: #111;
   height: 90px;
 }
 
@@ -15,6 +15,7 @@
 .logo {
   height: 80px;
   margin: 5px 10px;
+  color: #fff;
 }
 
 .brand {
@@ -22,19 +23,24 @@
 }
 
 .appbar-nav {
-  margin-left: 45%;
+  flex-grow: 1;
+  text-align: right;
+  margin-right: 80px;
 }
 
-a {
+.nav-link {
   cursor: pointer;
-  color: black;
   display: inline-block;
   padding: 20px;
   margin: auto 0px;
+  font-family: "AdobeCaslonPro";
+  font-size: 18px;
 }
 
-a:link {
-  font-family: "AdobeCaslonPro";
-  text-decoration: none;
-  font-size: 20px;
+.link {
+  color: rgb(126, 121, 121);
+}
+
+.active {
+  color: #fff;
 }

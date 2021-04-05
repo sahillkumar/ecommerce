@@ -1,15 +1,6 @@
 import React from 'react';
 import "images/tree.svg"
-import { Link } from 'react-router-dom';
 
-  const style2={
-      marginRight:"5px",
-      padding: "5px 15px",
-      textDecoration: "none",
-      display:" inline-block",
-      cursor:'pointer',
-      color:'#F9FDFE',
-  }
 
 const style={
     container:{
@@ -35,7 +26,7 @@ const Footer = () => {
     return ( 
         <div style={style.container}>
             <div style={{paddingBottom:5}}>
-                <img src="images/tree.svg" width="170"></img>
+                <img src="images/tree.svg" width="170" alt="organikart"></img>
             </div>
             <div>
             {/* <Link to="/"><div style={style2}>HOME</div></Link>

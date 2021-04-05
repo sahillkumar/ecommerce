@@ -1,0 +1,11 @@
+.products {
+  padding: 0px 70px 70px 70px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 40px;
+  row-gap: 40px;
+}
+
+.search-comp {
+  padding: 70px;
+}

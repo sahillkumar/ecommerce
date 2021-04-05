@@ -1,0 +1,91 @@
+.auth-container {
+  background-size: cover;
+  height: 100vh;
+  padding: 100px;
+  display: block;
+  background-color: rgb(206, 197, 197);
+}
+
+.label {
+  font-family: "Arrows";
+  font-size: 40px;
+  padding-top: 20px;
+}
+
+.paper {
+  margin: 50px auto;
+  width: 40%;
+  padding: 0px 40px;
+  padding-bottom: 40px;
+  background-color: white;
+}
+
+.auth-tab {
+  height: 100px;
+  width: 50%;
+  font-family: "AdobeCaslonPro";
+  margin-bottom: -10px;
+}
+
+.auth-tabs {
+  margin-bottom: 50px;
+}
+
+.btn-auth {
+  background-color: #222;
+  height: 50px;
+  width: 100%;
+  margin-top: 30px;
+  border-radius: 0;
+}
+
+.btn-auth:hover {
+  background-color: #222;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.forgotpass {
+  height: 50px;
+  font-size: medium;
+  margin: 12px auto;
+  font-weight: thin;
+}
+
+.forgotpass :active {
+  color: #222;
+}
+
+.errorMessage {
+  background-color: rgb(202, 70, 61);
+  font-size: 16px;
+  font-family: "ProximaNova";
+  margin-bottom: 10px;
+  color: #fff;
+  padding: 1px 5px;
+}
+
+.emailsent {
+  background-color: #333;
+  font-size: 20px;
+  padding: 10px;
+  font-family: "ProximaNova";
+  color: #fff;
+}
+
+.senticon {
+  color: #fff;
+  margin-left: 10px;
+}
+
+.box {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+}
