@@ -5,14 +5,14 @@ import ProductCard from '../productCard/ProductCard'
 import './products.css'
 
 
-const Products = ({prods}) => {
+const Products = ({prods,user}) => {
 
     return (
         <>  
             <div className="products">
                 {
                     prods ? prods.map((product,index)=>(
-                        <ProductCard key={index} product={product}/>
+                        <ProductCard key={index} product={product} user={user}/>
                     )) : <h1>loading....</h1>
                     
                 }

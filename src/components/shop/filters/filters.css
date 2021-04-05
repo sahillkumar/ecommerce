@@ -1,11 +1,6 @@
-.filters {
-  margin-top: 30px;
-}
-
 .tabs {
-  background-color: #b8d8be;
+  background-color: rgb(206, 197, 197);
   height: 70px;
-  width: 100%;
 }
 .tab {
   height: 70px;
@@ -17,10 +12,10 @@
   height: 50px;
   display: flex;
   margin: 15px;
-  border: 3px solid #618669;
+  border: 3px solid rgb(206, 197, 197);
 }
 .grid-item:hover {
-  background-color: rgb(141, 199, 155);
+  background-color: rgb(206, 197, 197);
 }
 
 .btn {
