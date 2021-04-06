@@ -1,10 +1,10 @@
 import { Button, Grid, Paper } from '@material-ui/core'
 import React, { useContext, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { DataContext } from '../../../../context'
 import { allProductsInCart } from '../cardhelper/cartHelper'
 import CartCard from '../cartCard/CartCard'
 import './cart.css'
-
 
 const Cart = () => {
     const {user} = useContext(DataContext)
@@ -44,9 +44,11 @@ const Cart = () => {
                                 <p>Discount on Mrp</p>
                                 <p>Total Amount</p>
                             </div>
-                            <Button variant="outlined" className="placeorder">
-                                Place Order
-                            </Button>
+                            <Link to="/order">
+                                <Button variant="outlined" className="placeorder">
+                                    Place Order
+                                </Button>
+                            </Link>
                         </Paper>
                     </Grid>
                 </>

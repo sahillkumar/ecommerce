@@ -1,9 +1,9 @@
 .auth-container {
   background-size: cover;
-  height: 100vh;
   padding: 100px;
+  padding-bottom: 50px;
   display: block;
-  background-color: rgb(206, 197, 197);
+  background: url(/images/aa.jpg);
 }
 
 .label {

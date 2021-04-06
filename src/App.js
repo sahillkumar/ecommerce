@@ -10,6 +10,7 @@ import Cart from './components/shop/all-order/cart/Cart';
 import Auth from './components/auth/authComp/Auth';
 import ForgotPass from './components/auth/ForgotPass/ForgotPass';
 import { DataContext } from './context';
+import Order from './components/shop/all-order/order/Order';
 
 
  const App = () => {
@@ -26,6 +27,7 @@ import { DataContext } from './context';
           <Route exact path="/shop/cart" component={Cart}/>
           <Route exact path="/auth" component={()=><Auth />} />
           <Route exact path="/auth/forgotpassword" component={ForgotPass} />
+          <Route exact path="/order" component={Order} />
           
           {/* <Route exact path="/shop/:categoryName" component={SelectedCategory}/> */}
           {/* <Route path="/shop/:id" component={SelectedItem}/>

@@ -4,8 +4,9 @@
 }
 
 .toolbar {
-  font-family: Arrows;
+  font-family: Benillia;
   font-weight: 500;
+  font-size: 13px;
 }
 
 .logo-brand {
@@ -19,7 +20,7 @@
 }
 
 .brand {
-  transform: translate(-95%, 74%);
+  transform: translate(-75%, 62%);
 }
 
 .appbar-nav {
