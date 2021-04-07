@@ -37,9 +37,9 @@ const Auth = ({setUser}) => {
   }
 
  //handleSubmit
-  const signUpSubmit = (email,password) => (e) =>{
+  const signUpSubmit = (email,password,name) => (e) =>{
    e.preventDefault()
-   signUp(email,password,setEmailSent,setError,setForm)
+   signUp(email,password,name,setEmailSent,setError,setForm)
   }
 
   const logInSubmit = (email,password) => (e) =>{
@@ -60,7 +60,10 @@ const Auth = ({setUser}) => {
   }
 
   return (
+    <>
+    
     <div className="auth-container">
+    <img src="/images/ss.jpg" className="flut"/>
       <div className="paper">
         <Tabs 
           value={value} 
@@ -78,7 +81,7 @@ const Auth = ({setUser}) => {
           <Tab label="Login" className="auth-tab"/>
         </Tabs>
         <TabPanel index={0} value={value}>
-          <form onSubmit={signUpSubmit(email,password)}>
+          <form onSubmit={signUpSubmit(email,password,name)}>
             <ErrorMessage error={error}/>
             {
               emailSent ? 
@@ -177,7 +180,7 @@ const Auth = ({setUser}) => {
         </TabPanel>
       </div>
     </div>
-      
+  </>
   )
 }
 

@@ -13,7 +13,7 @@ const ProductCard = ({product}) => {
     
 
     const handleAddToCart = (product) => () =>{
-        addItemToCart(product,user.uid)
+        addItemToCart(product,user.userId)
     }
 
     return ( 

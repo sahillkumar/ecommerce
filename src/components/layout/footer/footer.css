@@ -1,16 +1,10 @@
 .footer {
   background-color: black;
   color: white;
-  padding-top: 40px;
-  font-size: 14px;
-}
-
-.container {
-  width: 100%;
-}
-
-.follow {
-  margin-top: 50px;
+  padding-top: 20px;
+  font-size: 16px;
+  font-family: ProximaNova;
+  height: 400px;
 }
 
 .navbar-nav {
@@ -19,56 +13,22 @@
 
 .social {
   display: flex;
-  margin-left: -3%;
-}
-
-.footer-menu {
-  margin-top: 10px;
-  display: inline-block;
-  margin-left: -4%;
-  margin-top: 10px;
-  font-size: 12px;
-  font-weight: bold;
-  text-decoration: none;
+  text-align: center;
+  flex-grow: 1;
+  justify-content: center;
+  list-style-type: none;
 }
 
 .footer-icon {
   font-size: 30px;
-  margin: -6px;
+  margin: 0px 20px;
+  margin-top: 5px;
 }
 
 .footer-logo {
-  height: 80px;
-  float: right;
-  margin: -100px 0px;
-}
-
-.footer-end {
-  margin-top: 10px;
-  height: 260px;
-}
-
-.downloads {
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  float: right;
-  margin: -100px 0;
-}
-
-.cookiebar {
-  width: 100%;
-  margin-left: 0;
-  background-color: #000;
-}
-
-.gotit {
-  margin-right: 20px;
-}
-
-.learn {
-  margin-left: 20px;
+  height: 130px;
+  margin: auto;
+  margin-top: 50px;
 }
 
 footer a {

@@ -20,7 +20,7 @@ export const getProductsByCategory = async (value) =>{
             documents.push({
                 ...doc.data(),
                 id:doc.id
-            })
+            }) 
         })
     
     return documents

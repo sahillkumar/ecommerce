@@ -1,149 +1,173 @@
 import { Button, Container, Grid, Paper, TextField } from '@material-ui/core'
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import CssTextField from '../../../Reusable Components/CssTextField'
 import './order.css'
 import { displayRazorPay } from '../payment/paymentHelper'
+import { DataContext } from '../../../../context'
 function Order() {
+
+     const { user } = useContext(DataContext)
+     const [delDetails, setDelDetails] = useState({
+          phone:'',
+          paymentType:'',
+          house:'',
+          city:'',
+          state:'',
+          landmark:'',
+          street:'',
+          pincode:'',
+     })
+
+     const [err, setErr] = useState(false)
+
+     const { phone, paymentType , house, state,city, street, landmark, pincode} = delDetails
+
+     const handleChange=name=>({target:{value}})=>{
+          setErr(false)
+          setDelDetails({
+            ...delDetails,
+            [name]:value
+          })
+     }
+
+     const handleSubmit = (e) =>{
+          e.preventDefault();
+          displayRazorPay()
+     }
+
      return (
           <div className="order">
                <Paper className="place-order">
                     <h3 className="brand-header">Organikart</h3>
+                    <form onSubmit={handleSubmit}>
                     <Grid  className="personal" spacing={2}>
                          <CssTextField
                               disabled
-                              autoFocus
-                              required
                               margin="normal"
+                              variant="outlined"
                               id="name"
-                              value=""
+                              value={user.displayName}
                               label="Name"
-                              type="Name"
-                              onChange={()=>{}}
+                              type="String"
                               className="name"
                          />
                          <CssTextField
                               disabled
-                              autoFocus
-                              required
+                              variant="outlined"
                               margin="normal"
-                              id="name"
-                              value=""
+                              id="email"
+                              value={user.email}
                               label="Email"
-                              type="Name"
-                           
-                              onChange={()=>{}}
+                              type="email"
                               className="email"
                          />
                          <CssTextField
-                              disabled
-                              autoFocus
                               required
                               margin="normal"
-                              id="name"
-                              value=""
-                              label="mobile no."
-                              type="Name"
-                              
-                              onChange={()=>{}}
+                              id="phone"
+                              variant="outlined"
+                              value={phone}
+                              label="Phone No."
+                              type="tel"
+                              onChange={handleChange('phone')}
                               className="phone"
+                              inputProps={{
+                                   pattern:"[6789][0-9]{9}"
+                              }}
+                             
                          />
                          <CssTextField
-                              disabled
-                              autoFocus
+                              variant="outlined"
                               required
                               margin="normal"
-                              id="name"
-                              value=""
+                              id="paymentType"
+                              value={paymentType}
                               label="Payment Type"
-                              type="Name"
-                              
-                              onChange={()=>{}}
+                              type="String"
+                              onChange={handleChange('paymentType')}
                               className="payment"
                          />
                          
                     </Grid>
                     <Grid className="address">
                          <CssTextField
-                              disabled
-                              autoFocus
                               required
+                              variant="outlined"
                               margin="normal"
-                              id="name"
-                              value=""
-                              label="House No"
-                              type="Name"
-                              onChange={()=>{}}
+                              id="house"
+                              value={house}
+                              label="House No."
+                              type="String"
+                              onChange={handleChange('house')}
                               className="house-no"
                          />
                          <CssTextField
-                              disabled
-                              autoFocus
                               required
                               margin="normal"
-                              id="name"
-                              value=""
+                              id="street"
+                              value={street}
                               label="Street"
-                              type="Name"
-                              onChange={()=>{}}
+                              type="String"
+                              variant="outlined"
+                              onChange={handleChange('street')}
                               className="street"
                          />
                          <CssTextField
-                              disabled
-                              autoFocus
                               required
                               margin="normal"
-                              id="name"
-                              value=""
+                              id="landmark"
+                              value={landmark}
+                              variant="outlined"
                               label="Landmark"
-                              type="Name"
-                           
-                              
-                              onChange={()=>{}}
+                              type="String"
+                              onChange={handleChange('landmark')}
                               className="landmark"
                          />
                          <CssTextField
-                              disabled
-                              autoFocus
                               required
                               margin="normal"
-                              id="name"
-                              value=""
+                              id="city"
+                              variant="outlined"
+                              value={city}
                               label="City"
-                              type="Name"
-                              onChange={()=>{}}
+                              type="String"
+                              onChange={handleChange('city')}
                               className="city"
                          />
                          <CssTextField
-                              disabled
-                              autoFocus
                               required
                               margin="normal"
-                              id="name"
-                              value=""
+                              id="state"
+                              value={state}
                               label="State"
-                              type="Name"
-                              onChange={()=>{}}
+                              variant="outlined"
+                              type="String"
+                              onChange={handleChange('state')}
                               className="state"
                          />
                          <CssTextField
-                              disabled
-                              autoFocus
                               required
                               margin="normal"
-                              id="name"
-                              value=""
+                              id="pincode"
+                              value={pincode}
+                              variant="outlined"
                               label="pincode"
-                              type="Name"
-                              onChange={()=>{}}
+                              type="String"
+                              onChange={handleChange('pincode')}
                               className="pincode"
+                         
+                              inputProps={{
+                                   pattern:"[0-9]{6}",
+                                   maxLength:6
+                              }}
                          />
                     </Grid>
-
                     <Button variant="contained"        className="confirm-order"
-                    onClick={displayRazorPay}
+                    type="submit"
                     >
                          Confirm  &   Proceed
                     </Button>
+                    </form>
                </Paper>
           </div>
      )

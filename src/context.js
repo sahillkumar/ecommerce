@@ -1,5 +1,4 @@
 import React, { useReducer } from 'react'
-import useFirestore from './firebase/useFirestore';
 
 export const DataContext = React.createContext()
 
