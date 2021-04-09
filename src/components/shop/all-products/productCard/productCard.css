@@ -77,9 +77,12 @@
 
 .addtocart {
   color: rgb(138, 135, 135);
+  background-color: transparent;
+  border: 0;
+  outline: 0;
   position: relative;
   float: right;
-  bottom: 10px;
+  bottom: 20px;
 }
 
 .addtocart:hover {

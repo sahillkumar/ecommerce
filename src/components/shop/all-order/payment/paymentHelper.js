@@ -1,30 +1,65 @@
-export const displayRazorPay = async () =>{
+import { firestore } from "../../../../firebase/config"
+
+export const displayRazorPay = async (user,delDetails,productsincart,setDelDetails,setThankyou,amount) =>{
      const res = await loadRazorPay("https://checkout.razorpay.com/v1/checkout.js")
      if(!res){
           alert('Loading razorpay sdk failed')
           return
      }
 
+     const data = await fetch('http://localhost:8080/order',{
+                              method: 'POST',
+                              headers: {
+                                   'Content-Type': 'application/json',
+                                   'Accept': 'application/json',
+                                   credentials: 'same-origin',
+                              },
+                              body:JSON.stringify({
+                                   amount:amount
+                              })
+                         }     
+                         )
+                         .then((data)=>data.json())
+
      var options = {
-          "key": "rzp_test_VWrfBoZUaiDY2m", // Enter the Key ID generated from the Dashboard
-          "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-          "currency": "INR",
+          "key": "rzp_test_E2NtDVyf6BMKXm",
+          "amount": data.amount, 
+          "currency": data.currency,
           "name": "Organikart",
-          "description": "Test Transaction",
-          "image": "https://example.com/your_logo",
-          // "order_id": "order_9A33XWu170gUtm", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+          
+          "image": "http://localhost:3000/images/tree2.svg",
+          "order_id": data.id,
           "handler": function (response){
-              alert(response.razorpay_payment_id);
-              alert(response.razorpay_order_id);
-              alert(response.razorpay_signature)
+              const obj = {
+                   ...response,
+                   productsincart,
+              }
+               firestore.collection('USERS').doc(user.userId).collection('order').doc(response.orderId).set(obj).then(()=>{
+                    const cartProds = firestore.collection('USERS').doc(user.userId).collection('cart')
+                    cartProds.get().then((querySnapshot)=>{
+                         querySnapshot.forEach((doc)=>{
+                              doc.ref.delete()
+                         })
+                    })
+                    setDelDetails({
+                         phone:'',
+                         paymentType:'',
+                         house:'',
+                         city:'',
+                         state:'',
+                         landmark:'',
+                         street:'',
+                         pincode:'',
+                         name:'',
+                         email:''
+                   })
+                   setThankyou(true)
+               })
           },
           "prefill": {
-              "name": "Gaurav Kumar",
-              "email": "gaurav.kumar@example.com",
-              "contact": "9999999999"
-          },
-          "notes": {
-              "address": "Razorpay Corporate Office"
+              "name": user.displayName,
+              "email": user.email,
+              "contact": delDetails.phone
           },
           "theme": {
               "color": "#222"
@@ -58,6 +93,12 @@ const loadRazorPay = (src) =>{
           document.body.appendChild(script)
      })
 }
+
+
+
+
+
+
 
 // import React from 'react';
 // import Backdrop from '@material-ui/core/Backdrop';

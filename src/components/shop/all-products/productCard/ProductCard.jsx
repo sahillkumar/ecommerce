@@ -1,19 +1,23 @@
 import React, { useContext } from 'react'
-import { CardActionArea, CardContent, CardMedia, Card, Typography, Tooltip} from '@material-ui/core'
+import {  CardContent, CardMedia, Card, Tooltip} from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import './productCard.css'
 import AddShoppingCartSharpIcon from '@material-ui/icons/AddShoppingCartSharp';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import { addItemToCart } from '../../all-order/cardhelper/cartHelper';
+import { addItemToCart } from '../../all-order/cartHelper/cartHelper';
 import { DataContext } from '../../../../context';
 
 const ProductCard = ({product}) => {
 
     const {user} = useContext(DataContext)
-    
 
-    const handleAddToCart = (product) => () =>{
-        addItemToCart(product,user.userId)
+    const handleAddToCart = (product) =>{
+        if(user == null){
+            alert('Please Login First !')
+        }else{
+            addItemToCart(product,user.userId)
+        }
+        
     }
 
     return ( 
@@ -46,11 +50,16 @@ const ProductCard = ({product}) => {
                         <span className="discount-percent">
                             ({product.discountPercentage}%)
                         </span>
-                        <span className="addtocart">
+                        <button 
+                            className="addtocart" 
+                            onClick={()=>handleAddToCart(product)}
+                        >
                             <Tooltip title="Add to Cart"  placement="bottom-start">
-                                <AddShoppingCartSharpIcon fontSize="large" onClick={handleAddToCart(product)} />
+                                <AddShoppingCartSharpIcon 
+                                    fontSize="large" 
+                                    />
                             </Tooltip>
-                        </span>
+                        </button>
                     </div>
                 </CardContent>
                

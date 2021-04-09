@@ -35,7 +35,7 @@ export const signUp =  (email,password,name,setEmailSent,setError,setForm) =>{
     });
 } 
 
-export const logIn = async (email,password,setError,setForm,setUser,dispatch) =>{
+export const logIn = async (email,password,setError,setForm,dispatch) =>{
    auth.signInWithEmailAndPassword(email,password)
   .then((userCredential) => {
     var user = userCredential.user;
@@ -59,7 +59,6 @@ export const logIn = async (email,password,setError,setForm,setUser,dispatch) =>
     setError(false)
   },err => setError(err.message))
   .catch((error) => {
-    var errorCode = error.code;
     var errorMessage = error.message;
     setError(errorMessage)
   });

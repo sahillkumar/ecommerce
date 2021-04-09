@@ -20,7 +20,7 @@
 }
 
 .price-text {
-  padding-left: 50px;
+  padding: 0px 50px;
   text-align: left;
 }
 
@@ -37,4 +37,19 @@
 
 .amount-heading {
   font-size: 20px;
+}
+
+.data {
+  float: right;
+}
+
+.underline {
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
+
+.empty-cart {
+  margin: 200px auto;
+  font-size: 20px;
+  font-family: AdobeCaslonPro;
 }

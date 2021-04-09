@@ -1,13 +1,17 @@
-import { Button, Container, Grid, Paper, TextField } from '@material-ui/core'
+import { Button, Grid, Paper } from '@material-ui/core'
 import React, { useContext, useState } from 'react'
 import CssTextField from '../../../Reusable Components/CssTextField'
 import './order.css'
 import { displayRazorPay } from '../payment/paymentHelper'
 import { DataContext } from '../../../../context'
+import { useEffect } from 'react'
+import { useHistory } from 'react-router'
 function Order() {
 
-     const { user } = useContext(DataContext)
+     const { user,productsincart,amount } = useContext(DataContext)
      const [delDetails, setDelDetails] = useState({
+          name:user.displayName,
+          email:user.email,
           phone:'',
           paymentType:'',
           house:'',
@@ -18,9 +22,13 @@ function Order() {
           pincode:'',
      })
 
+     let history = useHistory()
+
+     const [thankyou, setThankyou] = useState(false)
+
      const [err, setErr] = useState(false)
 
-     const { phone, paymentType , house, state,city, street, landmark, pincode} = delDetails
+     const { phone, paymentType , house, state,city, street, landmark, pincode,name,email} = delDetails
 
      const handleChange=name=>({target:{value}})=>{
           setErr(false)
@@ -30,9 +38,17 @@ function Order() {
           })
      }
 
+
+     useEffect(() => {
+          if(thankyou){
+               history.push('/shop/success')
+          }
+          
+     }, [thankyou])
+
      const handleSubmit = (e) =>{
           e.preventDefault();
-          displayRazorPay()
+          displayRazorPay(user,delDetails,productsincart,setDelDetails,setThankyou,amount)
      }
 
      return (
@@ -46,7 +62,7 @@ function Order() {
                               margin="normal"
                               variant="outlined"
                               id="name"
-                              value={user.displayName}
+                              value={name}
                               label="Name"
                               type="String"
                               className="name"
@@ -56,7 +72,7 @@ function Order() {
                               variant="outlined"
                               margin="normal"
                               id="email"
-                              value={user.email}
+                              value={email}
                               label="Email"
                               type="email"
                               className="email"
@@ -162,8 +178,9 @@ function Order() {
                               }}
                          />
                     </Grid>
-                    <Button variant="contained"        className="confirm-order"
-                    type="submit"
+                    <Button variant="contained"        
+                         className="confirm-order"
+                         type="submit"
                     >
                          Confirm  &   Proceed
                     </Button>

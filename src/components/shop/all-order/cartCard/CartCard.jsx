@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import {CardContent, CardMedia, Card,  Grid, ButtonGroup, Button} from '@material-ui/core'
-import { removeItemFromCart } from '../cardhelper/cartHelper';
+import { removeItemFromCart } from '../cartHelper/cartHelper';
 
 import './cartcard.css'
 import { DataContext } from '../../../../context';
@@ -14,12 +14,13 @@ function CartCard({prod,reload,setReload,setTotalMrp}) {
 
      const removeFromCart = () =>{
           removeItemFromCart(user.userId,prod.id)
-          console.log("removed");
           setReload(!reload)
+          // alert('Item Removed !')
+          setAction('rem')
      }
 
      const addToWishlist = () =>{
-          console.log("added to wishlist");
+          alert('Added to Wishlist')
      }
 
      const [qty, setQty] = useState(1)
@@ -55,7 +56,10 @@ function CartCard({prod,reload,setReload,setTotalMrp}) {
           }else if(action ===''){
                setTotalMrp(prev => prev - (prod.discountMrp*4))
           }
-     }, [qty,action])
+          else if(action ==='rem'){
+               setTotalMrp(prev => prev - (prod.discountMrp*qty))
+          }
+     }, [qty,action,setTotalMrp,prod.discountMrp])
 
      return (
           <>

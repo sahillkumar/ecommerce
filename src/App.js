@@ -11,6 +11,8 @@ import Auth from './components/auth/authComp/Auth';
 import ForgotPass from './components/auth/ForgotPass/ForgotPass';
 import { DataContext } from './context';
 import Order from './components/shop/all-order/order/Order';
+import PrivateRoute from './privateRoute';
+import Thankyou from './components/shop/all-order/thankyou/Thankyou';
 
 
  const App = () => {
@@ -23,16 +25,12 @@ import Order from './components/shop/all-order/order/Order';
       <Navbar user={user} dispatch={dispatch}/>
         <Switch>
           <Route exact path="/home" component={UserDashboard}/>
+          <PrivateRoute exact path="/shop/cart" component={Cart} />
           <Route exact path="/shop" component={()=><ShopView products={products} />} />
-          <Route exact path="/shop/cart" component={Cart}/>
           <Route exact path="/auth" component={()=><Auth />} />
           <Route exact path="/auth/forgotpassword" component={ForgotPass} />
-          <Route exact path="/order" component={Order} />
-          
-          {/* <Route exact path="/shop/:categoryName" component={SelectedCategory}/> */}
-          {/* <Route path="/shop/:id" component={SelectedItem}/>
-          
-          <Route path="/contact" component={Contact} /> */} 
+          <PrivateRoute exact path="/shop/success" component={Thankyou} />
+          <PrivateRoute exact path="/shop/order" component={Order} />
           <Redirect to="/home"/>
         </Switch>
       <Footer/>
@@ -42,21 +40,5 @@ import Order from './components/shop/all-order/order/Order';
 }
 
 export default App
-
-  // const SelectedCategory=({match})=>{
-  //   console.log('select category render ');
-  
-  //   const products = useFirestore('products')
-  //   console.log('select category render ',products);
-  //   const category = match.params.categoryName
-  //   return(
-  //     <>
-  //     {
-  //       category === 'All Products'?
-  //         <Products products={products}/>
-  //           : <Products products={products.filter(prod=>prod.category === category)}/>
-  //     }
-  //     </>
-  //   )}
 
  

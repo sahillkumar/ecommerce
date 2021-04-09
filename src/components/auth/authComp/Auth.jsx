@@ -1,22 +1,23 @@
 import {Button, Tabs,Tab } from '@material-ui/core';
-import React, { useContext, useReducer, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import DoneAllIcon from '@material-ui/icons/DoneAll';
 import './auth.css'
 import { logIn, signUp } from '../authHelper/authHelper';
 import TabPanel from '../../Reusable Components/TabPanel';
 import CssTextField from '../../Reusable Components/CssTextField';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import EmailSent from '../../Reusable Components/EmailSent';
 import ErrorMessage from '../../Reusable Components/ErrorMessage';
 import { DataContext } from '../../../context';
 
 
-const Auth = ({setUser}) => {
+const Auth = () => {
 
   const [error, setError] = useState(false)
   const [emailSent, setEmailSent] = useState(false)
   const [value, setValue] = useState(0)
-  const {state,dispatch} = useContext(DataContext)
+  const {dispatch} = useContext(DataContext)
+  let history = useHistory()
   
   //setForm
   const [form, setForm] = useState({
@@ -44,7 +45,8 @@ const Auth = ({setUser}) => {
 
   const logInSubmit = (email,password) => (e) =>{
     e.preventDefault()
-    logIn(email,password,setError,setForm,setUser,dispatch)
+    logIn(email,password,setError,setForm,dispatch)
+    history.push('/shop')
    }
 
 

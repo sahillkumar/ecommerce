@@ -36,11 +36,6 @@ const Navbar = ({user,dispatch}) => {
                         </NavLink>
                       </div>
                       <div className="nav-link">
-                        <NavLink to="/home" activeClassName="active" className="link"> 
-                          <AccountCircleIcon fontSize="large" />
-                        </NavLink>
-                      </div>
-                      <div className="nav-link">
                         <NavLink to="#" onClick={()=>
                           {signOut()
                           dispatch({
