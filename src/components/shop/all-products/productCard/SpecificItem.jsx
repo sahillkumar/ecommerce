@@ -1,11 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import "./specificItem.css";
 import { useParams } from "react-router-dom";
-import { getProductByID } from "./shop/shopHelper/shopHelper";
+import { getProductByID } from "../../shopHelper/shopHelper";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus, faHeart } from "@fortawesome/free-solid-svg-icons";
+import { addItemToCart } from '../../all-order/cardhelper/cartHelper';
+import { DataContext } from '../../../../context';
+
 const SpecificItem = () => {
   const [product, setProduct] = useState(null);
+  const {user} = useContext(DataContext)
+    
+
+    const handleAddToCart = (product) => () =>{
+        addItemToCart(product,user.uid)
+    }
+
 
   const getItem = async (id) => {
     const prod = await getProductByID(id);
@@ -25,14 +35,15 @@ const SpecificItem = () => {
           <h1>{prod.name.toUpperCase()}</h1>
           <p>{prod.description}</p>
           <div className = 'cost'>
-            <h4>Discount = {product.discountPercentage}%</h4>
+            <h4>{product.discountPercentage}% off</h4>
             <div className = 'prodPrice'>
-              <p>₹ {product.mrp}</p>
+              <p>MRP  ₹ {product.mrp}</p>
+              <p>BUY AT ₹ {product.mrp*(1-product.discountPercentage/100)}</p>
             </div>
           </div>
           <div className="buttons">
             <button>
-              <FontAwesomeIcon icon={faCartPlus} />
+              <FontAwesomeIcon icon={faCartPlus} onClick = {()=>handleAddToCart(prod.id)}/>
             </button>
             <button>
               <FontAwesomeIcon icon={faHeart} />

@@ -6,7 +6,7 @@ import { signOut } from '../../../auth/authHelper/authHelper';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 
-const Navbar = ({user,setUser}) => {
+const Navbar = ({user,dispatch}) => {
 
     return ( 
         <AppBar className="appbar" position="fixed" elevation="0">
@@ -41,7 +41,13 @@ const Navbar = ({user,setUser}) => {
                         </NavLink>
                       </div>
                       <div className="nav-link">
-                        <NavLink to="#" onClick={()=>signOut(setUser)} className="link"> 
+                        <NavLink to="#" onClick={()=>
+                          {signOut()
+                          dispatch({
+                            type:'user',user:null
+                          })
+                          }} 
+                          className="link"> 
                           Logout
                         </NavLink>
                       </div> 

@@ -1,0 +1,38 @@
+.cart {
+  margin-top: 100px;
+  margin-bottom: 30px;
+  padding-top: 50px;
+  width: 100%;
+  min-height: 90vh;
+  /* background-color: rgb(132, 212, 212); */
+}
+
+.amout-details {
+  font-family: "AdobeCaslonPro";
+  font-size: 14px;
+}
+
+.cart-price {
+  width: 80%;
+  float: left;
+  border-radius: 0;
+  /* border: 1px solid black; */
+}
+
+.price-text {
+  padding-left: 50px;
+  text-align: left;
+}
+
+.placeorder {
+  background-color: rgb(199, 55, 55);
+  border-radius: 0;
+  width: 80%;
+  margin: 20px auto;
+  color: white;
+  font-family: "ProximaNova";
+}
+
+.amount-heading {
+  font-size: 20px;
+}
