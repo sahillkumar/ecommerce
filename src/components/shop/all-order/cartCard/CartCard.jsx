@@ -64,7 +64,7 @@ function CartCard({prod,reload,setReload}) {
                             ({prod.discountPercentage}%)
                         </span>
                         <div className="delivery">+ &#8377;39 Delivery Charges</div>
-                        <div className="total" >Total</div>
+                       
                     </Grid>
                </CardContent>
           </Card>

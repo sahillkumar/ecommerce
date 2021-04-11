@@ -9,13 +9,13 @@ import ShopView from '../src/components/shop/all-products/shopView/ShopView'
 import Cart from './components/shop/all-order/cart/Cart';
 import Auth from './components/auth/authComp/Auth';
 import ForgotPass from './components/auth/ForgotPass/ForgotPass';
-<<<<<<< HEAD
-import SpecificItem from './components/SpecificItem';
-=======
+//<<<<<<< HEAD
+import SpecificItem from './components/shop/all-products/productCard/SpecificItem';
+//=======
 import { DataContext } from './context';
 
 
->>>>>>> ecommerce/version-1
+//>>>>>>> ecommerce/version-1
  const App = () => {
 
   const products = useFirestore('PRODUCTS')

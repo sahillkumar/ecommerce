@@ -55,3 +55,14 @@ div img {
   text-align: left;
   margin-left: 10px;
 }
+.cost > h4{
+  font-size: 25px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.prodPrice p{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.prodPrice :first-child{
+  opacity: 2;
+}

@@ -27,7 +27,12 @@ const Cart = () => {
     return (
         <Grid container className="cart">
         {
-            cartProducts.length === 0 ?  <div>Empty Cart</div> :
+            cartProducts.length === 0 ?  <div><h3>Your cart is empty!</h3><img style ={{
+                width: '50%',
+                position:'absolute',
+                left:'20%',
+                
+            }}src="https://www.apnashopping.in/assets/img/payment/Empty-Cart.jpg" alt="Cart Empty"/></div> :
                 <>
                     <Grid item xs={8} className="cart-items">
                         { 
