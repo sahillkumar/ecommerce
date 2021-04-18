@@ -109,7 +109,12 @@ function CartCard({prod,reload,setReload,setTotalMrp}) {
                         <span className="discount-percent">
                             ({prod.discountPercentage}%)
                         </span>
+{/* <<<<<<< HEAD */}
                         <div className="total" >Total : {total}</div>
+
+                        <div className="delivery">+ &#8377;39 Delivery Charges</div>
+                       
+{/* >>>>>>> origin/v2vt */}
                     </Grid>
                </CardContent>
           </Card>

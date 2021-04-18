@@ -12,7 +12,7 @@ const Navbar = ({user,dispatch}) => {
         <AppBar className="appbar" position="fixed" elevation="0">
           <Toolbar className="toolbar" >
             <div className="logo-brand">
-              <img src="images/tree.svg" className="logo" alt="Organikart"/>
+              <img src="images/main.png" className="logo" alt="Organikart"/>
               <div className="brand">OrganiKart</div>
             </div>
             <div className="appbar-nav">

@@ -1,4 +1,30 @@
 .whyus {
-  background-color: cadetblue;
-  height: 50vh;
+  padding: 100px;
+}
+
+.whyus-image {
+  text-align: left;
+}
+
+.whyus-img {
+  height: 500px;
+}
+
+.whyus-content {
+  padding: 0px;
+  text-align: center;
+}
+
+.whyus-header {
+  font-size: 2.2rem;
+  font-family: AdobeCaslonPro;
+  font-weight: 100;
+  margin-bottom: 10px;
+}
+
+.whyus-text {
+  padding: 0 50px;
+  font-size: 16px;
+  text-align: justify;
+  font-family: ProximaNova;
 }

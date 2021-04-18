@@ -1,5 +1,5 @@
 import {Button, Tabs,Tab } from '@material-ui/core';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import DoneAllIcon from '@material-ui/icons/DoneAll';
 import './auth.css'
 import { logIn, signUp } from '../authHelper/authHelper';
@@ -16,7 +16,7 @@ const Auth = () => {
   const [error, setError] = useState(false)
   const [emailSent, setEmailSent] = useState(false)
   const [value, setValue] = useState(0)
-  const {dispatch} = useContext(DataContext)
+  const {dispatch,user} = useContext(DataContext)
   let history = useHistory()
   
   //setForm
@@ -46,8 +46,14 @@ const Auth = () => {
   const logInSubmit = (email,password) => (e) =>{
     e.preventDefault()
     logIn(email,password,setError,setForm,dispatch)
-    history.push('/shop')
+   
    }
+
+   useEffect(() => {
+    if(user){
+      history.push('/shop')
+    }
+   }, [user])
 
 
   //handleTabchage

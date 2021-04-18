@@ -1,0 +1,90 @@
+.spec-prod {
+  margin-top: 90px;
+  padding: 60px 100px;
+}
+
+.spec-image {
+  text-align: left;
+}
+
+.spec-img {
+  height: 500px;
+  width: 600px;
+}
+
+.spec-content {
+  padding: 0px;
+  text-align: center;
+}
+
+.spec-text {
+  font-size: 16px;
+  text-align: justify;
+  font-family: ProximaNova;
+}
+
+.itemGrid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 650px;
+  width: auto;
+  margin: 2% 0%;
+  padding: 2% 2%;
+}
+
+div img {
+  width: 80%;
+}
+.img-container {
+  height: 500px;
+  flex: 50%;
+  margin-top: 20px;
+}
+.img-container img {
+  object-fit: cover;
+}
+
+.product-name {
+  font-family: AdobeCaslonPro;
+  font-size: 2rem;
+  font-weight: 100;
+  text-align: center;
+  padding: 10px;
+}
+.prodDetails {
+  padding: 0px 30px;
+  border: 2px solid rgb(192, 189, 189);
+}
+.prodDetails p {
+  font-size: 16px;
+  font-family: ProximaNova;
+}
+
+.det {
+  margin-top: 40px;
+}
+
+.buttons {
+  padding: 20px;
+  margin: 40px auto;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.buttons button {
+  font-size: 18px;
+  background: none;
+  border: none;
+  outline: none;
+  text-align: center;
+  margin: 0px 10px;
+  width: auto;
+  font-family: ProximaNova;
+  cursor: pointer;
+  color: #777;
+}
+
+.buttons button:hover {
+  color: #222;
+}

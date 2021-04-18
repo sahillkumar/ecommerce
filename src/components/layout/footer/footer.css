@@ -26,9 +26,14 @@
 }
 
 .footer-logo {
-  height: 130px;
-  margin: auto;
-  margin-top: 50px;
+  border-radius: 50%;
+}
+
+.logo-con {
+  width: 250px;
+  padding: 0;
+  background: black;
+  margin: 40px auto;
 }
 
 footer a {

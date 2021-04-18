@@ -11,6 +11,8 @@ export const allProductsInCart =async (userId) =>{
 }
 
 export const addItemToCart = async (item,userId) =>{
+
+   
      let flag = false;
      let cart = await firestore.collection('USERS').doc(userId).collection('cart').get()
      cart.forEach(doc=>{

@@ -30,8 +30,8 @@ function Footer() {
                          </ul>
                     </nav>
                     <hr/>
-                    <div>
-                         <img src="./images/tree.svg"  className="footer-logo"/>
+                    <div className="logo-con">
+                         <img src="/images/main.png"  className="footer-logo"/>
                     </div>
                </div>
           </footer>

@@ -41,11 +41,18 @@
 
 .cart-btns {
   width: 100%;
-  margin: 40px auto;
+  margin: 20px auto;
 }
 
 .cart-btn {
   border: none;
+  margin: 20px 20px;
+  outline: none;
+  background: none;
+}
+
+.cart-btn:hover {
+  background: none;
 }
 
 .total {

@@ -43,22 +43,23 @@ export const logIn = async (email,password,setError,setForm,dispatch) =>{
       setError('Please verify your email first :(')
       return;
     }
-    return firestore.collection('USERS').doc(user.uid).get()
-  })
-  .then((response)=>{
-    const userInfo = response.data()
-    dispatch({
-      type:'user',
-      user:userInfo
-    })
-    setForm({
-      email:'',
-      name:'',
-      password:''
-    })
-    setError(false)
-  },err => setError(err.message))
+    firestore.collection('USERS').doc(user.uid).get()
+    .then(response =>{
+      const userInfo = response.data()
+      dispatch({
+        type:'user',
+        user:userInfo
+      })
+      setForm({
+        email:'',
+        name:'',
+        password:''
+      })
+    
+    },err=>setError(err.message))
+  },err=>setError(err.message))
   .catch((error) => {
+    console.log("sahil catch");
     var errorMessage = error.message;
     setError(errorMessage)
   });

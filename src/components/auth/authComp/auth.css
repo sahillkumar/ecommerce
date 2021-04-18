@@ -5,7 +5,6 @@
 .label {
   font-family: Benillia;
   font-size: 40px;
-  padding-top: 20px;
 }
 
 .paper {
@@ -14,6 +13,17 @@
   transform: translateY(-127%);
   left: 25%;
   min-height: 480px;
+  padding: 0px 40px;
+  margin-top: -30px;
+  background-color: rgb(255, 255, 255);
+}
+
+.paper-fp {
+  position: absolute;
+  width: 40%;
+  transform: translateY(-145%);
+  left: 25%;
+  min-height: 400px;
   padding: 0px 40px;
   margin-top: -30px;
   background-color: rgb(255, 255, 255);

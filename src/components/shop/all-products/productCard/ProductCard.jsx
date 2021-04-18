@@ -22,24 +22,27 @@ const ProductCard = ({product}) => {
     }
 
     return ( 
-        <Link>
+        
             <Card className="product fade-in ">
+                <Link to = {`/productId/${product.id}`} >
                 <CardMedia
                     image={product.picUrl}
-                    className="prod-img "
-                >
+                    className="prod-img ">
+
                     <span className="favorite">
                         <Tooltip title="Add to favorites"  placement="bottom-start">
                             <FavoriteIcon fontSize="large"/>
                         </Tooltip>
                     </span>
+
                 </CardMedia>
+                </Link>
                 <CardContent className ="prod-content">
                     <strong className="prod-name">
                         {product.name}
                     </strong>
                     <strong className="short-description">
-                        short Descrption....
+                        short Descrption...
                     </strong>
                     <div className='price'>
                         <span className="prod-discount">
@@ -63,10 +66,8 @@ const ProductCard = ({product}) => {
                         </button>
                     </div>
                 </CardContent>
-               
-               
             </Card>
-        </Link>
+        
        
     )
 }
