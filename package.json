@@ -11,6 +11,7 @@
     "fast-sort": "^2.2.0",
     "firebase": "^8.2.7",
     "firebase-functions": "^3.13.2",
+    "moment": "^2.29.1",
     "razorpay": "^2.0.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

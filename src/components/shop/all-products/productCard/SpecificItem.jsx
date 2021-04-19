@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { getProductByID } from "../../shopHelper/shopHelper";
 import { Grid } from '@material-ui/core'
 import { DataContext } from '../../../../context';
-import { addItemToCart } from "../../all-order/cartHelper/cartHelper";
+import { addItemToCart, removeItemFromCart } from "../../all-order/cartHelper/cartHelper";
 import moment from 'moment';
 
 
@@ -12,8 +12,11 @@ const SpecificItem = () => {
   const [product, setProduct] = useState(null);
   const {user} = useContext(DataContext)
     
+  const addToWishlist = () =>{
+    alert('Added to Wishlist')
+  }
 
-    const handleAddToCart = (product) =>{
+  const handleAddToCart = (product) =>{
         if(user == null){
           alert('Please Login First !')
       }else{
@@ -51,10 +54,10 @@ const SpecificItem = () => {
               <p>Estimate Deivery <span className="data">{moment().add(5,'days').format("MMMM Do YYYY")}</span></p>
             </div>
             <div className="buttons">
-              <button onClick = {()=>handleAddToCart(prod.id)}>
+              <button onClick = {()=>handleAddToCart(prod)}>
                 BUY NOW
               </button>
-              <button>
+              <button onClick={addToWishlist}>
                 ADD TO WISHLIST
               </button>
           </div>
