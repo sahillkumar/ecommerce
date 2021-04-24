@@ -24,7 +24,7 @@ const ProductCard = ({product}) => {
     return ( 
         
             <Card className="product fade-in ">
-                <Link to = {`/productId/${product.id}`} >
+                <Link to = {`/shop/${product.id}`} >
                 <CardMedia
                     image={product.picUrl}
                     className="prod-img ">

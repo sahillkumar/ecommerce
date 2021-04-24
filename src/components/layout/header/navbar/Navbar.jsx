@@ -31,17 +31,18 @@ const Navbar = ({user,dispatch}) => {
                   (
                     <>
                       <div className="nav-link">
-                        <NavLink to="/shop/cart" activeClassName="active" className="link"> 
+                        <NavLink exact to="/cart" activeClassName="active" className="link"> 
                           Cart
                         </NavLink>
                       </div>
                       <div className="nav-link">
-                        <NavLink to="#" onClick={()=>
+                        <NavLink to="/homee" onClick={()=>
                           {signOut()
                           dispatch({
                             type:'user',user:null
                           })
                           }} 
+                          activeClassName="active"
                           className="link"> 
                           Logout
                         </NavLink>
@@ -49,7 +50,7 @@ const Navbar = ({user,dispatch}) => {
                     </>
                   ) : (
                     <div className="nav-link" >
-                      <NavLink to="/auth" className="link"> 
+                      <NavLink to="/auth" className="link" activeClassName="active"> 
                         Register / Login
                       </NavLink>
                   </div> 
