@@ -1,0 +1,39 @@
+.thankyou {
+  border-radius: 0;
+  font-size: 15px;
+  width: 400px;
+  height: 200px;
+  padding: 0;
+  margin: 20px auto;
+  background-color: transparent;
+  backdrop-filter: blur(2.5px);
+  border: 2px solid white;
+}
+
+.t-content {
+  padding: 0;
+  line-height: 1.5;
+  color: white;
+  font-weight: 500;
+}
+
+.t-brand {
+  font-family: Benillia;
+  font-size: 22px;
+  color: black;
+  padding-bottom: 15px;
+  font-weight: 700;
+}
+.t-container {
+  padding-top: 100px;
+  height: 90vh;
+  background: url("/images/delivery.jpg") no-repeat;
+  background-size: cover;
+}
+
+.cont {
+  margin-top: 15px;
+}
+.cont a {
+  font-weight: bold;
+}

@@ -16,6 +16,19 @@ export const getAllSortedProducts = async (field, direction) => {
   return documents;
 };
 
+// export const getProductsByCategory = async (value) =>{
+//     let documents = []
+//     const docs = await firestore.collection('PRODUCTS').where('category.title','==',value).get()
+//         docs.forEach(doc=>{
+//             documents.push({
+//                 ...doc.data(),
+//                 id:doc.id
+//             })
+//         })
+
+//     return documents
+// }
+
 export const getProductsByCategory = async (value) => {
   let documents = [];
   const docs = await firestore
@@ -50,10 +63,9 @@ export const sortProductsByCategory = async (value, field, direction) => {
 };
 
 export const getProductByID = async (id) => {
-    //console.log(id);
-    const prodRef = await firestore.collection("PRODUCTS").doc(id).get();
-    let doc = prodRef.data()
-    if(doc)
-      console.log("DOC", doc);
-    return prodRef.data();
-  }
+  //console.log(id);
+  const prodRef = await firestore.collection("PRODUCTS").doc(id).get();
+  let doc = prodRef.data();
+  if (doc) console.log("DOC", doc);
+  return prodRef.data();
+};

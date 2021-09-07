@@ -41,13 +41,13 @@
   text-align: left;
   text-decoration: none;
   font-size: 14px;
-  padding: 0px 15px 10px 15px;
+  padding: 0px 15px 5px 15px;
   color: gray;
 }
 
 .price {
   height: 30px;
-  padding: 5px 15px 15px 15px;
+  padding: 0px 15px 15px 15px;
   text-align: left;
   font-size: 16px;
   align-content: center;
@@ -77,9 +77,12 @@
 
 .addtocart {
   color: rgb(138, 135, 135);
+  background-color: transparent;
+  border: 0;
+  outline: 0;
   position: relative;
   float: right;
-  bottom: 10px;
+  bottom: 15px;
 }
 
 .addtocart:hover {

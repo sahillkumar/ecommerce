@@ -12,7 +12,7 @@ const Navbar = ({user,dispatch}) => {
         <AppBar className="appbar" position="fixed" elevation="0">
           <Toolbar className="toolbar" >
             <div className="logo-brand">
-              <img src="images/tree.svg" className="logo" alt="organikart"/>
+              <img src="images/main.png" className="logo" alt="Organikart"/>
               <div className="brand">OrganiKart</div>
             </div>
             <div className="appbar-nav">
@@ -31,22 +31,18 @@ const Navbar = ({user,dispatch}) => {
                   (
                     <>
                       <div className="nav-link">
-                        <NavLink to="/shop/cart" activeClassName="active" className="link"> 
+                        <NavLink exact to="/cart" activeClassName="active" className="link"> 
                           Cart
                         </NavLink>
                       </div>
                       <div className="nav-link">
-                        <NavLink to="/home" activeClassName="active" className="link"> 
-                          <AccountCircleIcon fontSize="large" />
-                        </NavLink>
-                      </div>
-                      <div className="nav-link">
-                        <NavLink to="#" onClick={()=>
+                        <NavLink to="/homee" onClick={()=>
                           {signOut()
                           dispatch({
                             type:'user',user:null
                           })
                           }} 
+                          activeClassName="active"
                           className="link"> 
                           Logout
                         </NavLink>
@@ -54,7 +50,7 @@ const Navbar = ({user,dispatch}) => {
                     </>
                   ) : (
                     <div className="nav-link" >
-                      <NavLink to="/auth" className="link"> 
+                      <NavLink to="/auth" className="link" activeClassName="active"> 
                         Register / Login
                       </NavLink>
                   </div> 

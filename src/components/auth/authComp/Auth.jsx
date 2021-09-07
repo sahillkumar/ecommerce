@@ -1,22 +1,23 @@
 import {Button, Tabs,Tab } from '@material-ui/core';
-import React, { useContext, useReducer, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import DoneAllIcon from '@material-ui/icons/DoneAll';
 import './auth.css'
 import { logIn, signUp } from '../authHelper/authHelper';
 import TabPanel from '../../Reusable Components/TabPanel';
 import CssTextField from '../../Reusable Components/CssTextField';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import EmailSent from '../../Reusable Components/EmailSent';
 import ErrorMessage from '../../Reusable Components/ErrorMessage';
 import { DataContext } from '../../../context';
 
 
-const Auth = ({setUser}) => {
+const Auth = () => {
 
   const [error, setError] = useState(false)
   const [emailSent, setEmailSent] = useState(false)
   const [value, setValue] = useState(0)
-  const {state,dispatch} = useContext(DataContext)
+  const {dispatch,user} = useContext(DataContext)
+  let history = useHistory()
   
   //setForm
   const [form, setForm] = useState({
@@ -30,6 +31,7 @@ const Auth = ({setUser}) => {
   //handleTabChange
   const handleChange=name=>({target:{value}})=>{
    setError(false)
+   //console.log(value)
    setForm({
      ...form,
      [name]:value
@@ -37,15 +39,22 @@ const Auth = ({setUser}) => {
   }
 
  //handleSubmit
-  const signUpSubmit = (email,password) => (e) =>{
+  const signUpSubmit = (email,password,name) => (e) =>{
    e.preventDefault()
-   signUp(email,password,setEmailSent,setError,setForm)
+   signUp(email,password,name,setEmailSent,setError,setForm)
   }
 
   const logInSubmit = (email,password) => (e) =>{
     e.preventDefault()
-    logIn(email,password,setError,setForm,setUser,dispatch)
+    logIn(email,password,setError,setForm,dispatch)
+   
    }
+
+   useEffect(() => {
+    if(user){
+      history.push('/shop')
+    }
+   }, [user])
 
 
   //handleTabchage
@@ -60,7 +69,10 @@ const Auth = ({setUser}) => {
   }
 
   return (
+    <>
+    
     <div className="auth-container">
+    <img src="/images/ss.jpg" className="flut"/>
       <div className="paper">
         <Tabs 
           value={value} 
@@ -78,7 +90,7 @@ const Auth = ({setUser}) => {
           <Tab label="Login" className="auth-tab"/>
         </Tabs>
         <TabPanel index={0} value={value}>
-          <form onSubmit={signUpSubmit(email,password)}>
+          <form onSubmit={signUpSubmit(email,password,name)}>
             <ErrorMessage error={error}/>
             {
               emailSent ? 
@@ -177,7 +189,7 @@ const Auth = ({setUser}) => {
         </TabPanel>
       </div>
     </div>
-      
+  </>
   )
 }
 

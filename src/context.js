@@ -1,10 +1,11 @@
 import React, { useReducer } from 'react'
-import useFirestore from './firebase/useFirestore';
 
 export const DataContext = React.createContext()
 
 const ACTION = {
-    USER:'user'
+    USER:'user',
+    PRODUCTSINCART:'productsincart',
+    AMOUNT:'amount'
 }
 
 function reducer(state,action){
@@ -14,6 +15,16 @@ function reducer(state,action){
                 ...state,
                 user:action.user
             }
+        case ACTION.PRODUCTSINCART :
+            return{
+                ...state,
+                productsincart:action.productsincart
+            }
+        case ACTION.AMOUNT :
+            return{
+                ...state,
+                amount:action.amount
+            }
         default:
             return state;
     }
@@ -22,13 +33,11 @@ function reducer(state,action){
 
 export const DataContextProvider = (props) =>{
 
-    const [state,dispatch] = useReducer(reducer,{user:null})
-    const {user} = state
-
-    console.log(user);
-
+    const [state,dispatch] = useReducer(reducer,{user:null,productsincart:null,amount:0})
+    const {user,productsincart,amount} = state
+    
     return(
-        <DataContext.Provider value={{user,dispatch}}>
+        <DataContext.Provider value={{user,dispatch,productsincart,amount}}>
             {props.children}
         </DataContext.Provider>
     )

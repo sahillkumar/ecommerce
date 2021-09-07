@@ -2,20 +2,26 @@ import React, { useState, useContext } from "react";
 import "./specificItem.css";
 import { useParams } from "react-router-dom";
 import { getProductByID } from "../../shopHelper/shopHelper";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartPlus, faHeart } from "@fortawesome/free-solid-svg-icons";
-import { addItemToCart } from '../../all-order/cardhelper/cartHelper';
-import { DataContext } from '../../../../context';
+import { Grid } from "@material-ui/core";
+import { DataContext } from "../../../../context";
+import { addItemToCart } from "../../all-order/cartHelper/cartHelper";
+import moment from "moment";
 
 const SpecificItem = () => {
   const [product, setProduct] = useState(null);
-  const {user} = useContext(DataContext)
-    
+  const { user } = useContext(DataContext);
 
-    const handleAddToCart = (product) => () =>{
-        addItemToCart(product,user.uid)
+  const addToWishlist = () => {
+    alert("Added to Wishlist");
+  };
+
+  const handleAddToCart = (product) => {
+    if (user == null) {
+      alert("Please Login First !");
+    } else {
+      addItemToCart(product, user.userId);
     }
-
+  };
 
   const getItem = async (id) => {
     const prod = await getProductByID(id);
@@ -27,30 +33,49 @@ const SpecificItem = () => {
 
   const renderProd = (prod) => {
     return (
-      <div className="itemGrid">
-        <div className="img-container">
-          <img src={prod.picUrl} alt="" />
-        </div>
-        <div className="prodDetails">
-          <h1>{prod.name.toUpperCase()}</h1>
-          <p>{prod.description}</p>
-          <div className = 'cost'>
-            <h4>{product.discountPercentage}% off</h4>
-            <div className = 'prodPrice'>
-              <p>MRP  ₹ {product.mrp}</p>
-              <p>BUY AT ₹ {product.mrp*(1-product.discountPercentage/100)}</p>
+      <Grid container className="spec-prod" spacing={0}>
+        <Grid item md={6} className="spec-image">
+          <img src={prod.picUrl} className="spec-img" />
+        </Grid>
+        <Grid item md={6} className="spec-content">
+          <div className="spec-text">
+            <div className="prodDetails">
+              <h1 className="product-name">{prod.name.toUpperCase()}</h1>
+              <p className="prod-det">{prod.details}</p>
+              <div className="det">
+                <p>
+                  Original Price <span className="data">₹{product.mrp}</span>
+                </p>
+                <p>
+                  Discount Percentage{" "}
+                  <span className="data">
+                    {product.discountPercentage}% off
+                  </span>
+                </p>
+                <p>
+                  Discount Price{" "}
+                  <span className="data">
+                    ₹{product.mrp * (1 - product.discountPercentage / 100)}
+                  </span>
+                </p>
+                <p>
+                  Sold By <span className="data">The Organic Tree</span>
+                </p>
+                <p>
+                  Estimate Deivery{" "}
+                  <span className="data">
+                    {moment().add(5, "days").format("MMMM Do YYYY")}
+                  </span>
+                </p>
+              </div>
+              <div className="buttons">
+                <button onClick={() => handleAddToCart(prod)}>BUY NOW</button>
+                <button onClick={addToWishlist}>ADD TO WISHLIST</button>
+              </div>
             </div>
           </div>
-          <div className="buttons">
-            <button>
-              <FontAwesomeIcon icon={faCartPlus} onClick = {()=>handleAddToCart(prod.id)}/>
-            </button>
-            <button>
-              <FontAwesomeIcon icon={faHeart} />
-            </button>
-          </div>
-        </div>
-      </div>
+        </Grid>
+      </Grid>
     );
   };
 

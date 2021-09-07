@@ -3,6 +3,9 @@ import { TextField, withStyles } from '@material-ui/core';
 
 const CssTextField = withStyles({
      root: {
+      "& .MuiInputBase-root": {
+        color: '#777',
+      },
        '& label.Mui-focused': {
          color: '#333',
        },
@@ -11,7 +14,7 @@ const CssTextField = withStyles({
            borderColor:'rgb(206, 197, 197)',
          },
          '&:hover fieldset': {
-           borderColor: '#333',
+        borderColor:'rgb(206, 197, 197)',
          },
          '&.Mui-focused fieldset': {
            border:'1px solid #333'

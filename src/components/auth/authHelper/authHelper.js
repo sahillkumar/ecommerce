@@ -1,7 +1,7 @@
 import { auth, firestore } from "../../../firebase/config";
 
 
-export const signUp =  (email,password,setEmailSent,setError,setForm) =>{
+export const signUp =  (email,password,name,setEmailSent,setError,setForm) =>{
    auth.createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
       var user = userCredential.user; 
@@ -9,11 +9,18 @@ export const signUp =  (email,password,setEmailSent,setError,setForm) =>{
         .then(()=>{
           setEmailSent(true)
           setError(false)
+          firestore.collection('USERS').doc(user.uid).set({
+            displayName:name,
+            email:email,
+            role:'regular',
+            userId:user.uid
+          })
           setForm({
             name:'',
             email:'',
             password:''
           })
+          
         },err=>{
           var errorMessage = err.message;
           setError(errorMessage)
@@ -28,7 +35,7 @@ export const signUp =  (email,password,setEmailSent,setError,setForm) =>{
     });
 } 
 
-export const logIn = (email,password,setError,setForm,setUser,dispatch) =>{
+export const logIn = async (email,password,setError,setForm,dispatch) =>{
    auth.signInWithEmailAndPassword(email,password)
   .then((userCredential) => {
     var user = userCredential.user;
@@ -36,25 +43,22 @@ export const logIn = (email,password,setError,setForm,setUser,dispatch) =>{
       setError('Please verify your email first :(')
       return;
     }
+    firestore.collection('USERS').doc(user.uid).get()
+    .then(response =>{
+      const userInfo = response.data()
+      dispatch({
+        type:'user',
+        user:userInfo
+      })
+      setForm({
+        email:'',
+        name:'',
+        password:''
+      })
     
-    dispatch({
-      type:'user',
-      user:user
-    })
-    
-    
-    
-  })
-  .then(()=>{
-    setForm({
-      email:'',
-      name:'',
-      password:''
-    })
-    setError(false)
-  },err => setError(err.message))
+    },err=>setError(err.message))
+  },err=>setError(err.message))
   .catch((error) => {
-    var errorCode = error.code;
     var errorMessage = error.message;
     setError(errorMessage)
   });
@@ -71,7 +75,6 @@ export const signOut = () =>{
 }
 
 export const forgotPass = (email,setEmail,setEmailSent,setError) =>{
-  console.log('sahil');
   auth.sendPasswordResetEmail(email)
     .then(()=>{
       setEmailSent(true)

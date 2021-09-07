@@ -1,34 +1,38 @@
 .auth-container {
-  background-size: cover;
-  height: 100vh;
-  padding: 100px;
-  display: block;
-  background-color: rgb(206, 197, 197);
+  margin-bottom: -5px;
 }
 
 .label {
-  font-family: "Arrows";
+  font-family: Benillia;
   font-size: 40px;
-  padding-top: 20px;
 }
 
 .paper {
-  margin: 50px auto;
+  position: absolute;
   width: 40%;
+  transform: translateY(-127%);
+  left: 25%;
+  min-height: 480px;
   padding: 0px 40px;
-  padding-bottom: 40px;
-  background-color: white;
+  margin-top: -30px;
+  background-color: rgb(255, 255, 255);
+}
+
+.paper-fp {
+  position: absolute;
+  width: 40%;
+  transform: translateY(-145%);
+  left: 25%;
+  min-height: 400px;
+  padding: 0px 40px;
+  margin-top: -30px;
+  background-color: rgb(255, 255, 255);
 }
 
 .auth-tab {
   height: 100px;
   width: 50%;
   font-family: "AdobeCaslonPro";
-  margin-bottom: -10px;
-}
-
-.auth-tabs {
-  margin-bottom: 50px;
 }
 
 .btn-auth {
@@ -46,6 +50,7 @@
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #777;
   transition: background-color 5000s ease-in-out 0s;
 }
 
@@ -88,4 +93,9 @@ input:-webkit-autofill:focus {
   align-items: center;
   justify-content: center;
   height: 100px;
+}
+
+.flut {
+  position: relative;
+  width: 100%;
 }

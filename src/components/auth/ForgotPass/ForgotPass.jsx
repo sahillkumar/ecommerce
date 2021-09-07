@@ -24,7 +24,8 @@ const ForgotPass = () => {
 
      return (
      <div className="auth-container">
-          <div className="paper">
+          <img src="/images/ss.jpg" className="flut"/>
+          <div className="paper-fp">
                <h3 className="label">OrganiKart</h3>
                <form onSubmit={handleSubmit(email)}>
                <ErrorMessage error={error}/>

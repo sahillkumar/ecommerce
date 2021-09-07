@@ -1,0 +1,56 @@
+.order {
+  padding: 95px 0;
+  padding-bottom: 10px;
+  background: url(/images/ss.jpg) no-repeat;
+  background-size: cover;
+}
+
+.place-order {
+  margin: auto;
+  max-width: 60%;
+  margin-bottom: 40px;
+  border-radius: 0;
+}
+
+.brand-header {
+  font-family: "Benillia";
+  font-size: 2.2rem;
+
+  padding-top: 10px;
+}
+
+.personal {
+  margin-top: -25px;
+}
+
+.address {
+  margin-bottom: 30px;
+}
+
+.name,
+.email,
+.payment,
+.phone,
+.house-no,
+.street,
+.landmark,
+.city,
+.state,
+.pincode {
+  width: 40%;
+  margin: 10px 30px;
+}
+
+.confirm-order {
+  color: white;
+  width: 60%;
+  padding: 10px;
+  background-color: #222;
+  height: 50px;
+  border-radius: 0;
+  margin-bottom: 40px;
+}
+
+.confirm-order:hover {
+  background-color: #222;
+}
