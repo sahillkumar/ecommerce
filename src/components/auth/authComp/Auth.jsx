@@ -31,6 +31,7 @@ const Auth = () => {
   //handleTabChange
   const handleChange=name=>({target:{value}})=>{
    setError(false)
+   //console.log(value)
    setForm({
      ...form,
      [name]:value

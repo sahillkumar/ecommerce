@@ -1,8 +1,9 @@
-import firebase from 'firebase/app'
-import 'firebase/auth'
-import 'firebase/firestore'
+import firebase from 'firebase/app' //core sdk. reqd
+import 'firebase/auth'             //firebase product in use
+import 'firebase/firestore'        //firebase product in use
 
 var firebaseConfig = {
+    // initializing firebase 
     apiKey: "AIzaSyAxv71KQKGPEqqpa47m8LwdsAUm3d9622o",
     authDomain: "organikart-store.firebaseapp.com",
     projectId: "organikart-store",

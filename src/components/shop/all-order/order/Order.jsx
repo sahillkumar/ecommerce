@@ -13,7 +13,6 @@ function Order() {
           name:user.displayName,
           email:user.email,
           phone:'',
-          paymentType:'',
           house:'',
           city:'',
           state:'',

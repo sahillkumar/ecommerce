@@ -59,7 +59,6 @@ export const logIn = async (email,password,setError,setForm,dispatch) =>{
     },err=>setError(err.message))
   },err=>setError(err.message))
   .catch((error) => {
-    console.log("sahil catch");
     var errorMessage = error.message;
     setError(errorMessage)
   });
@@ -76,7 +75,6 @@ export const signOut = () =>{
 }
 
 export const forgotPass = (email,setEmail,setEmailSent,setError) =>{
-  console.log('sahil');
   auth.sendPasswordResetEmail(email)
     .then(()=>{
       setEmailSent(true)

@@ -22,7 +22,7 @@ export const displayRazorPay = async (user,delDetails,productsincart,setDelDetai
                          .then((data)=>data.json())
 
      var options = {
-          "key": "rzp_test_E2NtDVyf6BMKXm",
+          "key": "rzp_test_iqdVEyiV6zKZ28",
           "amount": data.amount, 
           "currency": data.currency,
           "name": "Organikart",
