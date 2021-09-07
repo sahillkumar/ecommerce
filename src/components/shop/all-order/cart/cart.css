@@ -3,7 +3,7 @@
   margin-bottom: 30px;
   padding-top: 50px;
   width: 100%;
-  min-height: 90vh;
+  min-height: 83vh;
   /* background-color: rgb(132, 212, 212); */
 }
 
@@ -48,8 +48,18 @@
   margin-bottom: 20px;
 }
 
+.emp-con {
+  height: 400px;
+  margin: auto;
+  text-align: center;
+  padding: 50px;
+}
+
 .empty-cart {
-  margin: 200px auto;
-  font-size: 20px;
-  font-family: AdobeCaslonPro;
+  margin-top: 20px;
+  font-size: 30px;
+  margin-left: 20px;
+  font-family: ProximaNova;
+  display: block;
+  font-weight: bolder;
 }

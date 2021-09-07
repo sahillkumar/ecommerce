@@ -1,5 +1,10 @@
 import React from 'react'
-import { FaYoutube,FaFacebookSquare,FaInstagram,FaTwitter,FaLinkedin} from 'react-icons/fa';
+import YouTubeIcon from '@material-ui/icons/YouTube';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+
 import './footer.css'
 
 
@@ -12,20 +17,20 @@ function Footer() {
                     <nav className="nav">
                          <ul className="social">
                               <li className="footer-icon">
-                                   <a href="#"><FaYoutube/></a> 
+                                   <a href="#"><YouTubeIcon fontSize="large"/></a> 
                               </li>
                               <li className="footer-icon">
-                                   <a href="#"><FaFacebookSquare/></a> 
+                                   <a href="#"><FacebookIcon fontSize="large"/></a> 
                               </li>
                               <li className="footer-icon">
-                                   <a href="#"><FaInstagram/></a> 
+                                   <a href="#"><InstagramIcon fontSize="large"/></a> 
                               </li>
                     
                               <li className="footer-icon">
-                                   <a href="#"> <FaTwitter/></a> 
+                                   <a href="#"> <TwitterIcon fontSize="large"/></a> 
                               </li>
-                              <li className="footer-icon">
-                              <a><FaLinkedin/></a> 
+                              <li className="footer-icon " >
+                              <a><LinkedInIcon fontSize="large"/></a> 
                               </li>
                          </ul>
                     </nav>

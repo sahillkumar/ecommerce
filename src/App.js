@@ -27,13 +27,13 @@ import Thankyou from './components/shop/all-order/thankyou/Thankyou';
       <Navbar user={user} dispatch={dispatch}/>
         <Switch>
           <Route exact path="/home" component={()=><UserDashboard categories={categories} />}/>
-          <PrivateRoute exact path="/shop/cart" component={Cart} />
+          <PrivateRoute exact path="/cart" component={Cart} />
           <Route exact path="/shop" component={()=><ShopView products={products} />} />
           <Route exact path="/auth" component={()=><Auth />} />
           <Route exact path="/auth/forgotpassword" component={ForgotPass} />
           <PrivateRoute exact path="/shop/success" component={Thankyou} />
           <PrivateRoute exact path="/shop/order" component={Order} />
-          <Route exact path ="/productId/:id" component = {SpecificItem}/>
+          <Route exact path ="/shop/:id" component = {SpecificItem}/>
           {/* <Route exact path="/shop/:categoryName" component={SelectedCategory}/> */}
           {/* <Route path="/shop/:id" component={SelectedItem}/>
           

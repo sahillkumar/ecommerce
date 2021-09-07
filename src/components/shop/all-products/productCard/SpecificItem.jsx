@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { getProductByID } from "../../shopHelper/shopHelper";
 import { Grid } from '@material-ui/core'
 import { DataContext } from '../../../../context';
-import { addItemToCart, removeItemFromCart } from "../../all-order/cartHelper/cartHelper";
+import { addItemToCart } from "../../all-order/cartHelper/cartHelper";
 import moment from 'moment';
 
 

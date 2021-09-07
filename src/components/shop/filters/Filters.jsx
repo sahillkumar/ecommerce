@@ -1,8 +1,6 @@
 import { Button, Grid, Slider, Tab, Tabs } from '@material-ui/core'
 import React,{useState} from 'react'
-import sort from 'fast-sort'
 import { Link } from 'react-router-dom'
-import { byNumber, byValue } from 'sort-es'
 import useFirestore from '../../../firebase/useFirestore'
 import { AllProducts, getAllSortedProducts, getProducts, getProductsByCategory, sortProductsByCategory } from '../shopHelper/shopHelper'
 import './filters.css'

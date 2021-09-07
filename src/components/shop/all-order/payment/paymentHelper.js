@@ -22,12 +22,16 @@ export const displayRazorPay = async (user,delDetails,productsincart,setDelDetai
                          .then((data)=>data.json())
 
      var options = {
+<<<<<<< HEAD
           "key": "rzp_test_iqdVEyiV6zKZ28",
+=======
+          "key": "rzp_test_mPpRSVNBlZgNlg",
+>>>>>>> 6a1e8f05aa2e8e8e621220d04693538c6db49246
           "amount": data.amount, 
           "currency": data.currency,
           "name": "Organikart",
           
-          "image": "http://localhost:3000/images/tree2.svg",
+          "image": "http://localhost:3000/images/logo.png",
           "order_id": data.id,
           "handler": function (response){
               const obj = {
@@ -68,13 +72,8 @@ export const displayRazorPay = async (user,delDetails,productsincart,setDelDetai
      var rzp1 = new window.Razorpay(options);
      rzp1.open();
      rzp1.on('payment.failed', function (response){
-     alert(response.error.code);
-     alert(response.error.description);
-     alert(response.error.source);
-     alert(response.error.step);
-     alert(response.error.reason);
-     alert(response.error.metadata.order_id);
-     alert(response.error.metadata.payment_id);
+     alert("payment failed")
+     console.log(response);
      });
      
 }
