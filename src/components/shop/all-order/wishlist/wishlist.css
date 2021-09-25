@@ -1,11 +1,16 @@
-.cart {
+.wishlist {
+  min-height: 83vh;
   margin-top: 100px;
   margin-bottom: 30px;
-  padding-top: 50px;
+  background-color: beige;
+}
+
+.wishlist-container {
+  padding: 50px;
   width: 100%;
-  min-height: 83vh;
-  grid-template-columns: 1fr 1fr;
-  /* background-color: rgb(132, 212, 212); */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 40px;
 }
 
 .amout-details {

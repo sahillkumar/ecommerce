@@ -14,12 +14,23 @@ import { DataContext } from "./context";
 import Order from "./components/shop/all-order/order/Order";
 import PrivateRoute from "./privateRoute";
 import Thankyou from "./components/shop/all-order/thankyou/Thankyou";
+import Wishlist from "./components/shop/all-order/wishlist/Wishlist";
 
-//>>>>>>> ecommerce/version-1
 const App = () => {
   const products = useFirestore("PRODUCTS");
   const categories = useFirestore("CATEGORIES");
   const { user, dispatch } = useContext(DataContext);
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      dispatch({
+        type: "user",
+        user: foundUser,
+      });
+    }
+  }, []);
 
   return (
     <div className="App">
@@ -31,6 +42,8 @@ const App = () => {
           component={() => <UserDashboard categories={categories} />}
         />
         <PrivateRoute exact path="/cart" component={Cart} />
+        <PrivateRoute exact path="/wishlist" component={Wishlist} />
+
         <Route
           exact
           path="/shop"

@@ -3,10 +3,10 @@ import { CardContent, CardMedia, Card, Tooltip } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import "./productCard.css";
 import AddShoppingCartSharpIcon from "@material-ui/icons/AddShoppingCartSharp";
-import FavoriteIcon from "@material-ui/icons/Favorite";
 import { addItemToCart } from "../../all-order/cartHelper/cartHelper";
 
 import { DataContext } from "../../../../context";
+import { FavoriteBorderTwoTone } from "@material-ui/icons";
 
 const ProductCard = ({ product }) => {
   const { user } = useContext(DataContext);
@@ -22,13 +22,7 @@ const ProductCard = ({ product }) => {
   return (
     <Card className="product fade-in ">
       <Link to={`/shop/${product.id}`}>
-        <CardMedia image={product.picUrl} className="prod-img ">
-          <span className="favorite">
-            <Tooltip title="Add to favorites" placement="bottom-start">
-              <FavoriteIcon fontSize="large" />
-            </Tooltip>
-          </span>
-        </CardMedia>
+        <CardMedia image={product.picUrl} className="prod-img " />
       </Link>
       <CardContent className="prod-content">
         <strong className="prod-name">{product.name}</strong>
@@ -47,6 +41,11 @@ const ProductCard = ({ product }) => {
           >
             <Tooltip title="Add to Cart" placement="bottom-start">
               <AddShoppingCartSharpIcon fontSize="large" />
+            </Tooltip>
+          </button>
+          <button className="favorite" onClick={() => handleAddToCart(product)}>
+            <Tooltip title="Add to favorites" placement="bottom-start">
+              <FavoriteBorderTwoTone fontSize="large" />
             </Tooltip>
           </button>
         </div>

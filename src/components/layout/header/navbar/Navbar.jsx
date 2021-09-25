@@ -1,101 +1,112 @@
-import React from 'react';
-import { AppBar,Toolbar} from '@material-ui/core';
-import './navbar.css'
-import { NavLink } from 'react-router-dom';
-import { signOut } from '../../../auth/authHelper/authHelper';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import React from "react";
+import { AppBar, Toolbar } from "@material-ui/core";
+import "./navbar.css";
+import { NavLink } from "react-router-dom";
+import { signOut } from "../../../auth/authHelper/authHelper";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
-
-const Navbar = ({user,dispatch}) => {
-
-    return ( 
-        <AppBar className="appbar" position="fixed" elevation="0">
-          <Toolbar className="toolbar" >
-            <div className="logo-brand">
-              <img src="images/main.png" className="logo" alt="Organikart"/>
-              <div className="brand">OrganiKart</div>
-            </div>
-            <div className="appbar-nav">
+const Navbar = ({ user, dispatch }) => {
+  return (
+    <AppBar className="appbar" position="fixed" elevation="0">
+      <Toolbar className="toolbar">
+        <div className="logo-brand">
+          <img src="images/main.png" className="logo" alt="Organikart" />
+          <div className="brand">OrganiKart</div>
+        </div>
+        <div className="appbar-nav">
+          <div className="nav-link">
+            <NavLink to="/home" activeClassName="active" className="link">
+              Home
+            </NavLink>
+          </div>
+          <div className="nav-link">
+            <NavLink to="/shop" activeClassName="active" className="link">
+              Shop
+            </NavLink>
+          </div>
+          {user ? (
+            <>
               <div className="nav-link">
-                <NavLink to="/home" activeClassName="active" className="link">
-                  Home
+                <NavLink
+                  exact
+                  to="/wishlist"
+                  activeClassName="active"
+                  className="link"
+                >
+                  Wishlist
                 </NavLink>
               </div>
               <div className="nav-link">
-                <NavLink to="/shop" activeClassName="active" className="link"> 
-                  Shop
+                <NavLink
+                  exact
+                  to="/cart"
+                  activeClassName="active"
+                  className="link"
+                >
+                  Cart
                 </NavLink>
               </div>
-              {
-                  user ? 
-                  (
-                    <>
-                      <div className="nav-link">
-                        <NavLink exact to="/cart" activeClassName="active" className="link"> 
-                          Cart
-                        </NavLink>
-                      </div>
-                      <div className="nav-link">
-                        <NavLink to="/homee" onClick={()=>
-                          {signOut()
-                          dispatch({
-                            type:'user',user:null
-                          })
-                          }} 
-                          activeClassName="active"
-                          className="link"> 
-                          Logout
-                        </NavLink>
-                      </div> 
-                    </>
-                  ) : (
-                    <div className="nav-link" >
-                      <NavLink to="/auth" className="link" activeClassName="active"> 
-                        Register / Login
-                      </NavLink>
-                  </div> 
-                  )
-              }
+              <div className="nav-link">
+                <NavLink
+                  to="/home"
+                  onClick={() => {
+                    signOut();
+                    dispatch({
+                      type: "user",
+                      user: null,
+                    });
+                  }}
+                  activeClassName="active"
+                  className="link"
+                >
+                  Logout
+                </NavLink>
+              </div>
+            </>
+          ) : (
+            <div className="nav-link">
+              <NavLink to="/auth" className="link" activeClassName="active">
+                Register / Login
+              </NavLink>
             </div>
-          </Toolbar>
-        </AppBar>
-    
-     );
-}
- 
+          )}
+        </div>
+      </Toolbar>
+    </AppBar>
+  );
+};
+
 export default Navbar;
 
-
 // const classes= app();
-  // const [appbarDesign, setappbarDesign] = useState('appbarBefore')
+// const [appbarDesign, setappbarDesign] = useState('appbarBefore')
 
-  // const appbarRef= React.useRef();
-  // appbarRef.current=appbarDesign
+// const appbarRef= React.useRef();
+// appbarRef.current=appbarDesign
 
-  // useEffect(() => {
+// useEffect(() => {
 
-  //   const handleScoll=()=>{
-  //     const height = window.scrollY>310;
-  //     if(height){
-  //       setappbarDesign('appbarAfter')
-  //     }
-  //     else{
-  //       setappbarDesign('appbarBefore')
-  //     }
-  //   }
+//   const handleScoll=()=>{
+//     const height = window.scrollY>310;
+//     if(height){
+//       setappbarDesign('appbarAfter')
+//     }
+//     else{
+//       setappbarDesign('appbarBefore')
+//     }
+//   }
 
-  //   document.addEventListener('scroll',handleScoll)
+//   document.addEventListener('scroll',handleScoll)
 
-  // })
+// })
 
-  
 // const toolbarStyle = {
 //     display:"absolute",
 //     color:'white',
 //     padding: "5px 10px",
 //     width:"10%",
-//    
-//    
+//
+//
 //     fontSize:'1em'
 // }
 

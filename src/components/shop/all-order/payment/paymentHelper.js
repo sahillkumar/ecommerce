@@ -1,103 +1,108 @@
-import { firestore } from "../../../../firebase/config"
+import { firestore } from "../../../../firebase/config";
 
-export const displayRazorPay = async (user,delDetails,productsincart,setDelDetails,setThankyou,amount) =>{
-     const res = await loadRazorPay("https://checkout.razorpay.com/v1/checkout.js")
-     if(!res){
-          alert('Loading razorpay sdk failed')
-          return
-     }
+export const displayRazorPay = async (
+  user,
+  delDetails,
+  productsincart,
+  setDelDetails,
+  setThankyou,
+  amount
+) => {
+  const res = await loadRazorPay(
+    "https://checkout.razorpay.com/v1/checkout.js"
+  );
+  if (!res) {
+    alert("Loading razorpay sdk failed");
+    return;
+  }
 
-     const data = await fetch('http://localhost:8080/order',{
-                              method: 'POST',
-                              headers: {
-                                   'Content-Type': 'application/json',
-                                   'Accept': 'application/json',
-                                   credentials: 'same-origin',
-                              },
-                              body:JSON.stringify({
-                                   amount:amount
-                              })
-                         }     
-                         )
-                         .then((data)=>data.json())
+  const data = await fetch("http://localhost:8080/order", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      credentials: "same-origin",
+    },
+    body: JSON.stringify({
+      amount: amount,
+    }),
+  }).then((data) => data.json());
 
-     var options = {
-<<<<<<< HEAD
-          "key": "rzp_test_iqdVEyiV6zKZ28",
-=======
-          "key": "rzp_test_mPpRSVNBlZgNlg",
->>>>>>> 6a1e8f05aa2e8e8e621220d04693538c6db49246
-          "amount": data.amount, 
-          "currency": data.currency,
-          "name": "Organikart",
-          
-          "image": "http://localhost:3000/images/logo.png",
-          "order_id": data.id,
-          "handler": function (response){
-              const obj = {
-                   ...response,
-                   productsincart,
-              }
-               firestore.collection('USERS').doc(user.userId).collection('order').doc(response.orderId).set(obj).then(()=>{
-                    const cartProds = firestore.collection('USERS').doc(user.userId).collection('cart')
-                    cartProds.get().then((querySnapshot)=>{
-                         querySnapshot.forEach((doc)=>{
-                              doc.ref.delete()
-                         })
-                    })
-                    setDelDetails({
-                         phone:'',
-                         paymentType:'',
-                         house:'',
-                         city:'',
-                         state:'',
-                         landmark:'',
-                         street:'',
-                         pincode:'',
-                         name:'',
-                         email:''
-                   })
-                   setThankyou(true)
-               })
-          },
-          "prefill": {
-              "name": user.displayName,
-              "email": user.email,
-              "contact": delDetails.phone
-          },
-          "theme": {
-              "color": "#222"
-          }
+  var options = {
+    key: "rzp_test_mPpRSVNBlZgNlg",
+    amount: data.amount,
+    currency: data.currency,
+    name: "Organikart",
+
+    image: "http://localhost:3000/images/logo.png",
+    order_id: data.id,
+    handler: function (response) {
+      const obj = {
+        ...response,
+        productsincart,
       };
-     var rzp1 = new window.Razorpay(options);
-     rzp1.open();
-     rzp1.on('payment.failed', function (response){
-     alert("payment failed")
-     console.log(response);
-     });
-     
-}
+      firestore
+        .collection("USERS")
+        .doc(user.userId)
+        .collection("order")
+        .doc(response.orderId)
+        .set(obj)
+        .then(() => {
+          const cartProds = firestore
+            .collection("USERS")
+            .doc(user.userId)
+            .collection("cart");
+          cartProds.get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+              doc.ref.delete();
+            });
+          });
+          setDelDetails({
+            phone: "",
+            paymentType: "",
+            house: "",
+            city: "",
+            state: "",
+            landmark: "",
+            street: "",
+            pincode: "",
+            name: "",
+            email: "",
+          });
+          setThankyou(true);
+        });
+    },
+    prefill: {
+      name: user.displayName,
+      email: user.email,
+      contact: delDetails.phone,
+    },
+    theme: {
+      color: "#222",
+    },
+  };
+  var rzp1 = new window.Razorpay(options);
+  rzp1.open();
+  rzp1.on("payment.failed", function (response) {
+    alert("payment failed");
+    console.log(response);
+  });
+};
 
-const loadRazorPay = (src) =>{
-     return new Promise(resolve =>{
-          const script = document.createElement('script')
-          script.src = src
-          
-          script.onload = () =>{
-               resolve(true)
-          }
-          script.onerror = () =>{
-               resolve(false)
-          }
-          document.body.appendChild(script)
-     })
-}
+const loadRazorPay = (src) => {
+  return new Promise((resolve) => {
+    const script = document.createElement("script");
+    script.src = src;
 
-
-
-
-
-
+    script.onload = () => {
+      resolve(true);
+    };
+    script.onerror = () => {
+      resolve(false);
+    };
+    document.body.appendChild(script);
+  });
+};
 
 // import React from 'react';
 // import Backdrop from '@material-ui/core/Backdrop';

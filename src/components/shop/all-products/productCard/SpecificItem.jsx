@@ -1,22 +1,29 @@
 import React, { useState, useContext } from "react";
 import "./specificItem.css";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getProductByID } from "../../shopHelper/shopHelper";
 import { Grid } from "@material-ui/core";
 import { DataContext } from "../../../../context";
-import { addItemToCart } from "../../all-order/cartHelper/cartHelper";
-import moment from "moment";
+import {
+  addItemToCart,
+  addItemToWishlist,
+} from "../../all-order/cartHelper/cartHelper";
+// import moment from "moment";
 
 const SpecificItem = () => {
   const [product, setProduct] = useState(null);
   const { user } = useContext(DataContext);
 
-  const addToWishlist = () => {
-    alert("Added to Wishlist");
+  const addToWishlist = (product) => {
+    if (user === null) {
+      alert("Please Login First !");
+    } else {
+      addItemToWishlist(product, user.userId);
+    }
   };
 
   const handleAddToCart = (product) => {
-    if (user == null) {
+    if (user === null) {
       alert("Please Login First !");
     } else {
       addItemToCart(product, user.userId);
@@ -64,13 +71,17 @@ const SpecificItem = () => {
                 <p>
                   Estimate Deivery{" "}
                   <span className="data">
-                    {moment().add(5, "days").format("MMMM Do YYYY")}
+                    {/* {moment().add(5, "days").format("MMMM Do YYYY")} */}
                   </span>
                 </p>
               </div>
               <div className="buttons">
-                <button onClick={() => handleAddToCart(prod)}>BUY NOW</button>
-                <button onClick={addToWishlist}>ADD TO WISHLIST</button>
+                <Link to="/cart">
+                  <button onClick={() => handleAddToCart(prod)}>BUY NOW</button>
+                </Link>
+                <button onClick={() => addToWishlist(prod)}>
+                  ADD TO WISHLIST
+                </button>
               </div>
             </div>
           </div>

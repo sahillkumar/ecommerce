@@ -68,11 +68,19 @@
 }
 
 .favorite {
-  color: #fff;
+  color: rgb(138, 135, 135);
   position: relative;
-  top: 20px;
-  right: 20px;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  position: relative;
   float: right;
+  bottom: 15px;
+  cursor: pointer;
+}
+
+.favorite:hover {
+  color: rgb(238, 14, 14);
 }
 
 .addtocart {
@@ -83,6 +91,7 @@
   position: relative;
   float: right;
   bottom: 15px;
+  cursor: pointer;
 }
 
 .addtocart:hover {
