@@ -1,0 +1,30 @@
+.userProfileContainer{
+    padding: 25px 0;
+    margin-top: 90px;
+    min-height: 500px;
+    width: 100%;
+    background-color: #f5f5dc;    
+}
+
+.userLeftPane-item{
+    
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    cursor:pointer;
+    padding: 5px 2.4em;
+    background-color: rgb(128, 112, 112);
+    margin: 20px 40px;
+    min-height: 50px;
+    max-width: 50%;
+    border-radius: 50px;
+    color:white;
+    font-weight: 600;
+}
+.rightPaneUserProfile{
+    background-color: rgb(29, 29, 206);
+}
+.activeItem-true{
+    background-color: rgb(143, 238, 206);    
+    color:black;
+}

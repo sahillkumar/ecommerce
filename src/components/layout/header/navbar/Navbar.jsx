@@ -29,6 +29,17 @@ const Navbar = ({ user, dispatch }) => {
               <div className="nav-link">
                 <NavLink
                   exact
+                  to="/account"
+                  activeClassName="active"
+                  className="link"
+                >
+                  Profile
+                </NavLink>
+              </div>
+              
+              <div className="nav-link">
+                <NavLink
+                  exact
                   to="/wishlist"
                   activeClassName="active"
                   className="link"
@@ -46,6 +57,7 @@ const Navbar = ({ user, dispatch }) => {
                   Cart
                 </NavLink>
               </div>
+              
               <div className="nav-link">
                 <NavLink
                   to="/home"

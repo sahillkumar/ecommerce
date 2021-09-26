@@ -15,6 +15,7 @@ import Order from "./components/shop/all-order/order/Order";
 import PrivateRoute from "./privateRoute";
 import Thankyou from "./components/shop/all-order/thankyou/Thankyou";
 import Wishlist from "./components/shop/all-order/wishlist/Wishlist";
+import UserProfile from "./components/shop/all-order/userProfile/userProfile";
 
 const App = () => {
   const products = useFirestore("PRODUCTS");
@@ -43,7 +44,8 @@ const App = () => {
         />
         <PrivateRoute exact path="/cart" component={Cart} />
         <PrivateRoute exact path="/wishlist" component={Wishlist} />
-
+        <PrivateRoute exact path="/account" component={UserProfile} />
+        
         <Route
           exact
           path="/shop"
