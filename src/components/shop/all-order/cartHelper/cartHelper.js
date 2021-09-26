@@ -1,5 +1,6 @@
 import { firestore } from "../../../../firebase/config";
 
+
 export const allProductsInCart = async (userId) => {
   let documents = [];
   const docs = await firestore
@@ -11,6 +12,31 @@ export const allProductsInCart = async (userId) => {
     documents.push(doc.data());
   });
   return documents;
+};
+
+export const addItemToCart = async (item, userId) => {
+  let prods = JSON.parse(localStorage.getItem('cart'))
+  prods.push(item.id)
+  localStorage.setItem('cart',JSON.stringify(prods))
+  await firestore
+    .collection("USERS")
+    .doc(userId)
+    .collection("cart")
+    .doc(item.id)
+    .set(item);
+  
+};
+
+export const removeItemFromCart = async (userId, productId) => {
+  let prods = JSON.parse(localStorage.getItem('cart'))
+  prods = prods.filter(doc => doc !== productId)
+  localStorage.setItem('cart',JSON.stringify(prods))
+  await firestore
+    .collection("USERS")
+    .doc(userId)
+    .collection("cart")
+    .doc(productId)
+    .delete();
 };
 
 export const allProductsInWishlist = async (userId) => {
@@ -26,42 +52,11 @@ export const allProductsInWishlist = async (userId) => {
   return documents;
 };
 
-export const addItemToCart = async (item, userId) => {
-  let flag = false;
-  let cart = await firestore
-    .collection("USERS")
-    .doc(userId)
-    .collection("cart")
-    .get();
-  cart.forEach((doc) => {
-    if (doc.data().id === item.id) {
-      flag = true;
-    }
-  });
-
-  if (!flag) {
-    await firestore
-      .collection("USERS")
-      .doc(userId)
-      .collection("cart")
-      .doc(item.id)
-      .set(item);
-    alert("Added to Cart");
-  } else {
-    alert("Product Already in Cart");
-  }
-};
-
-export const removeItemFromCart = async (userId, productId) => {
-  await firestore
-    .collection("USERS")
-    .doc(userId)
-    .collection("cart")
-    .doc(productId)
-    .delete();
-};
-
 export const removeItemFromWishlist = async (userId, productId) => {
+
+  let prods = JSON.parse(localStorage.getItem('wishlist'))
+  prods = prods.filter(doc => doc !== productId)
+  localStorage.setItem('wishlist',JSON.stringify(prods))
   await firestore
     .collection("USERS")
     .doc(userId)
@@ -71,27 +66,24 @@ export const removeItemFromWishlist = async (userId, productId) => {
 };
 
 export const addItemToWishlist = async (item, userId) => {
-  let flag = false;
-  let wishlist = await firestore
+
+  let prods = JSON.parse(localStorage.getItem('wishlist'))
+  prods.push(item.id)
+  
+  localStorage.setItem('wishlist',JSON.stringify(prods))
+  
+  await firestore
     .collection("USERS")
     .doc(userId)
     .collection("wishlist")
-    .get();
-  wishlist.forEach((doc) => {
-    if (doc.data().id === item.id) {
-      flag = true;
-    }
-  });
-
-  if (!flag) {
-    await firestore
-      .collection("USERS")
-      .doc(userId)
-      .collection("wishlist")
-      .doc(item.id)
-      .set(item);
-    alert("Added to Wishlist");
-  } else {
-    alert("Product Already in Wishlist");
-  }
+    .doc(item.id)
+    .set(item);
+ 
 };
+
+export const buynow = async (item,userId) =>{
+  addItemToCart(item,userId)
+  removeItemFromWishlist(userId,item.id)
+}
+
+export const addToWishlistFromCart = ()=>{}

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext,useEffect } from "react";
 import "./specificItem.css";
 import { Link, useParams } from "react-router-dom";
 import { getProductByID } from "../../shopHelper/shopHelper";
@@ -6,29 +6,57 @@ import { Grid } from "@material-ui/core";
 import { DataContext } from "../../../../context";
 import {
   addItemToCart,
+  removeItemFromCart,
   addItemToWishlist,
+  removeItemFromWishlist,
 } from "../../all-order/cartHelper/cartHelper";
 // import moment from "moment";
 
 const SpecificItem = () => {
   const [product, setProduct] = useState(null);
   const { user } = useContext(DataContext);
+  const wishlist = JSON.parse (localStorage.getItem('wishlist'))
+  const cart = JSON.parse (localStorage.getItem('cart'))
+  const  [wish, setWish] = useState()
+  const [prodCart, setProdCart] = useState()
 
-  const addToWishlist = (product) => {
-    if (user === null) {
-      alert("Please Login First !");
-    } else {
-      addItemToWishlist(product, user.userId);
+  useEffect(() => {
+    if(product){
+      setWish(wishlist.includes(product.id))
+      setProdCart(cart.includes(product.id))
     }
-  };
+  
+  }, [product])
 
+ 
   const handleAddToCart = (product) => {
-    if (user === null) {
+    if (user == null) {
       alert("Please Login First !");
     } else {
+      setProdCart(true)
       addItemToCart(product, user.userId);
     }
   };
+
+  const removeFromCart = (prod) => {
+    setProdCart(false)
+    removeItemFromCart(user.userId, prod.id);
+  };
+
+  const handleAddToWishlist = (product)=>{
+    if(user === null){
+      alert("Please login First !")
+      return
+    }
+    setWish(true)
+    addItemToWishlist(product,user.userId)
+  }
+
+  const removeFromWishlist = (prod) => {
+    setWish(false)
+    removeItemFromWishlist(user.userId, prod.id);
+  };
+
 
   const getItem = async (id) => {
     const prod = await getProductByID(id);
@@ -69,19 +97,30 @@ const SpecificItem = () => {
                   Sold By <span className="data">The Organic Tree</span>
                 </p>
                 <p>
-                  Estimate Deivery{" "}
+                  Estimate Delivery{" "}
                   <span className="data">
                     {/* {moment().add(5, "days").format("MMMM Do YYYY")} */}
                   </span>
                 </p>
               </div>
               <div className="buttons">
-                <Link to="/cart">
+                {
+                  prodCart ?     
+                  <button onClick={() => handleAddToCart(prod)}>ALREADY IN CART</button>
+                 : <Link to="/cart">
                   <button onClick={() => handleAddToCart(prod)}>BUY NOW</button>
-                </Link>
-                <button onClick={() => addToWishlist(prod)}>
+                </Link> 
+                }
+            
+                {
+                  wish ? <button onClick={() => removeFromWishlist(prod)}>
+                  WISHLISTED
+                </button> :
+                  <button onClick={() => handleAddToWishlist(prod)}>
                   ADD TO WISHLIST
                 </button>
+                }
+                
               </div>
             </div>
           </div>
