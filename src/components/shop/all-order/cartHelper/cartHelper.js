@@ -86,4 +86,7 @@ export const buynow = async (item,userId) =>{
   removeItemFromWishlist(userId,item.id)
 }
 
-export const addToWishlistFromCart = ()=>{}
+export const moveToWishlist = (item,userId)=>{
+  addItemToWishlist(item,userId)
+  removeItemFromCart(userId,item.id)
+}
