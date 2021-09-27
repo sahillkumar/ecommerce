@@ -11,6 +11,13 @@ import { FavoriteBorderTwoTone } from "@material-ui/icons";
 const ProductCard = ({ product }) => {
   const { user } = useContext(DataContext);
 
+  useEffect(() => {
+    if(wishlist && cart){
+      setWish(wishlist.includes(product.id))
+      setProdCart(cart.includes(product.id))
+    }
+  }, [])
+
   const handleAddToCart = (product) => {
     if (user == null) {
       alert("Please Login First !");
