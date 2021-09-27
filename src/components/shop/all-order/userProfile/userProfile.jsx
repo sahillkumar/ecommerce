@@ -2,7 +2,11 @@ import React, {useState} from 'react';
 import { Button, Grid, Paper } from "@material-ui/core";
 import './userProfile.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faShoppingCart, faAddressCard } from '@fortawesome/free-solid-svg-icons'
+import {faShoppingBag ,faUser, faShoppingCart, faAddressCard } from '@fortawesome/free-solid-svg-icons'
+import PersonalDetails from './personalDetails/personalDetails';
+import UserOrders from './userOrders/userOrders';
+import UserAddress from './userAddress/userAddress';
+
 
 const UserProfile = () =>{
 
@@ -36,7 +40,7 @@ const UserProfile = () =>{
                     })
                 }}
             >
-                <FontAwesomeIcon  style = {{marginRight:'10px'}}icon = {faShoppingCart}/>
+                <FontAwesomeIcon  style = {{marginRight:'10px'}}icon = {faShoppingBag}/>
                 Orders
             </div>
            <div className = {`userLeftPane-item activeItem-${viewItem[3]}`}
@@ -53,10 +57,10 @@ const UserProfile = () =>{
             </div>
            </Grid>
 
-           <Grid  className = 'rightPaneUserProfile' item xs = {9}>
-            <div>
-                dhatt bc
-            </div>
+           <Grid className = 'rightPane-item' item xs = {8}>
+            {viewItem[1] && <PersonalDetails />}
+            {viewItem[2] && <UserOrders/>}
+            {viewItem[3] && <UserAddress />}
            </Grid>
 
 
