@@ -16,7 +16,7 @@ const PersonalDetails = () => {
   };
 
   return (
-    <Grid container className="personalDetailsContainer" spacing={0}>
+    <Grid container className="personalDetailsContainer fade-in" spacing={0}>
       <Grid item xs={5}>
         <TextField
           id="outlined-multiline-flexible"

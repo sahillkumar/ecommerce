@@ -1,8 +1,7 @@
 .personalDetailsContainer{
     margin: 1em;
-    background-color:rgba(216, 45, 45, 0);
     min-height: 400px;
-    max-width: fit-content;
+    max-width: 600px;
     padding-top: 1.5em;
     margin-right: 4em;
 }
@@ -13,5 +12,5 @@
 }
 
 .saveUserDets{
-    
+
 }
