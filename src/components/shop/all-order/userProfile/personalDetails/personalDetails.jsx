@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Button, Grid, Paper, Typography, TextField } from "@material-ui/core";
 import "./personalDetailsStyles.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faUserAstronaut} from '@fortawesome/free-solid-svg-icons'
 
 const PersonalDetails = () => {
   const [userDetails, setUserDetails] = useState({
@@ -17,6 +19,10 @@ const PersonalDetails = () => {
 
   return (
     <Grid container className="personalDetailsContainer fade-in" spacing={0}>
+      <Grid item xs = {10} >
+          <FontAwesomeIcon size = '3x' icon = {faUserAstronaut}/>
+      </Grid>
+      
       <Grid item xs={5}>
         <TextField
           id="outlined-multiline-flexible"
