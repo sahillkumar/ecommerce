@@ -64,7 +64,7 @@ export const logIn = async (email, password, setError, setForm, dispatch) => {
           .then(
             (response) => {
               const userInfo = response.data();
-
+              console.log('user logged in = ', userInfo);
               dispatch({
                 type: "user",
                 user: userInfo,

@@ -11,6 +11,18 @@
     border-radius: 7px;
 }
 
-.saveUserDets{
-
+.btn-edit{
+    height: 3em;
+    width: 12em;
+    background-color: rgb(65, 191, 250);
+    color:white;
+    border-radius: 10px;
+    font-size: 0.8em;
+    font-family: Helvetica, sans-serif;
+    font-weight: 600;
+    border-style: none !important;
+    box-shadow: 2px 1px 6px 1px rgb(185, 176, 176);
+}
+.btn-edit:hover{
+    box-shadow: 1px 5px 5px 1px rgb(196, 190, 190);
 }
