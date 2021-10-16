@@ -71,7 +71,7 @@ const PersonalDetails = () => {
         </Grid>
         <Grid item xs={5}>
           <TextField
-            defaultValue={userDetails.phone ? userDetails.phone : "Phone"}
+            defaultValue={userDetails.phone ? userDetails.phone : ""}
             inputProps={{
               pattern: "[6789][0-9]{9}",
             }}
@@ -88,7 +88,7 @@ const PersonalDetails = () => {
         </Grid>
         <Grid item xs={5}>
           <TextField
-            defaultValue={userDetails.address ? userDetails.address : "Address"}
+            defaultValue={userDetails.address ? userDetails.address : ""}
             disabled={formDisabled}
             id="outlined-multiline-flexible"
             label="Street Address"
@@ -102,7 +102,7 @@ const PersonalDetails = () => {
         </Grid>
         <Grid item xs={5}>
           <TextField
-            defaultValue={userDetails.city ? userDetails.city : "City"}
+            defaultValue={userDetails.city ? userDetails.city : ""}
             disabled={formDisabled}
             id="outlined-multiline-flexible"
             label="City"
@@ -116,7 +116,7 @@ const PersonalDetails = () => {
         </Grid>
         <Grid item xs={5}>
           <TextField
-            defaultValue={userDetails.zip ? userDetails.zip : "Zip"}
+            defaultValue={userDetails.zip ? userDetails.zip : ""}
             inputProps={{
               pattern: "[0-9]{6}",
               maxLength: 6,
