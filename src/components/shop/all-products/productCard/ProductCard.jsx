@@ -17,9 +17,17 @@ const ProductCard = ({ product}) => {
   const { user } = useContext(DataContext);
 
   useEffect(() => {
+<<<<<<< HEAD
     setWish(wishlist?.includes(product.id))
     setProdCart(cart?.includes(product.id))
   }, [])
+=======
+    if(wishlist && cart) {
+      setWish(wishlist.includes(product.id))
+      setProdCart(cart.includes(product.id))
+    }
+  }, [wishlist,cart])
+>>>>>>> main
 
   const handleAddToCart = (product) => {
     if (user == null) {

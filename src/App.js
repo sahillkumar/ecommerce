@@ -15,12 +15,29 @@ import Order from "./components/shop/all-order/order/Order";
 import PrivateRoute from "./privateRoute";
 import Thankyou from "./components/shop/all-order/thankyou/Thankyou";
 import Wishlist from "./components/shop/all-order/wishlist/Wishlist";
+<<<<<<< HEAD
 import UserProfile from "./components/shop/all-order/userProfile/userProfile";
+=======
+import { allProductsInCart, allProductsInWishlist } from "./components/shop/all-order/cartHelper/cartHelper";
+>>>>>>> main
 
 const App = () => {
+  const [wishList, setWishList] = useState()
+  const [cartProducts, setCartProducts] = useState()
   const products = useFirestore("PRODUCTS");
   const categories = useFirestore("CATEGORIES");
-  const { user, dispatch } = useContext(DataContext);
+  const { user, dispatch,productsInWishlist } = useContext(DataContext);
+
+  const itemsInWishlist = async (userId) => {
+    const products = await allProductsInWishlist(userId);
+    setWishList(products)
+  };
+
+  const itemsInCart = async (userId) => {
+    const products = await allProductsInCart(userId);
+    setCartProducts(products);
+  };
+
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user");
@@ -33,6 +50,35 @@ const App = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if(user && user.userId){
+      itemsInWishlist(user.userId)
+      itemsInCart(user.userId)
+    }
+  }, [user])
+
+  useEffect(() => {
+    if(wishList){
+      const ar = wishList.map(prod=> prod.id)
+      localStorage.setItem('wishlist',JSON.stringify(ar))
+      dispatch({
+        type:"productsInWishlist",
+        productsInWishlist : wishList
+      })
+    }
+  }, [wishList])
+
+  useEffect(() => {
+    if(cartProducts){
+      const ar = cartProducts.map(prod=> prod.id)
+      localStorage.setItem('cart',JSON.stringify(ar))
+      dispatch({
+        type:"productsincart",
+        productsincart : cartProducts
+      })
+    }
+  }, [cartProducts])
+
   return (
     <div className="App">
       <Navbar user={user} dispatch={dispatch} />
@@ -43,9 +89,16 @@ const App = () => {
           component={() => <UserDashboard categories={categories} />}
         />
         <PrivateRoute exact path="/cart" component={Cart} />
+<<<<<<< HEAD
         <PrivateRoute exact path="/wishlist" component={Wishlist} />
         <PrivateRoute exact path="/account" component={UserProfile} />
         
+=======
+        <PrivateRoute exact path="/wishlist"  >
+          <Wishlist wishlist = {productsInWishlist} />
+        </PrivateRoute>
+
+>>>>>>> main
         <Route
           exact
           path="/shop"

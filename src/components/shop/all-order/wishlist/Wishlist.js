@@ -5,9 +5,14 @@ import { DataContext } from "../../../../context";
 import { allProductsInWishlist } from "../cartHelper/cartHelper";
 import WishlistCard from "./card/wishlistCard";
 
-const Wishlist = () => {
+const Wishlist = ({wishlist}) => {
   const [reload, setReload] = useState(false);
   const { user, dispatch } = useContext(DataContext);
+
+  useEffect(() => {
+    setWishlistProducts(wishlist)
+ 
+  }, [wishlist])
 
   useEffect(() => {
     if (user && user.userId) {
@@ -24,14 +29,14 @@ const Wishlist = () => {
 
   return (
     <Grid container className="wishlist">
-      {wishlistProducts.length === 0 ? (
+      {wishlistProducts && wishlistProducts.length === 0 ? (
         <div className="emp-con">
           <img
             className="empty-img"
             src="/images/empty-cart.svg"
             alt="Cart Empty"
           />
-          <span className="empty-cart">Empty Cart</span>
+          <span className="empty-cart">No Products Here</span>
         </div>
       ) : (
         <Grid item className="wishlist-container">
