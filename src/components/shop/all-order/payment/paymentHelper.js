@@ -1,5 +1,5 @@
 import { firestore } from "../../../../firebase/config";
-
+import {addToOrders} from "../userProfile/userOrders/ordersHelper";
 export const displayRazorPay = async (
   user,
   delDetails,
@@ -70,6 +70,13 @@ export const displayRazorPay = async (
             email: "",
           });
           setThankyou(true);
+          console.log('thanks set to true');
+          productsincart.map(prod => {
+            addToOrders(user.userId, prod)}
+            
+            );
+            console.log('All added');
+
         });
     },
     prefill: {

@@ -7,6 +7,8 @@ import {
   faEdit,
   faSave,
 } from "@fortawesome/free-solid-svg-icons";
+import {fetchUserDetails, saveUserDetails} from './personalDetails-helper'
+
 
 const PersonalDetails = () => {
   const { displayName, email, phone, address, city, zip, userId } = JSON.parse(
@@ -30,6 +32,7 @@ const PersonalDetails = () => {
     else {
       // save data to backend
       localStorage.setItem("user", JSON.stringify(userDetails));
+      saveUserDetails(userId, userDetails);
       setFormDisabled(true);
     }
   };

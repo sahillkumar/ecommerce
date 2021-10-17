@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Button,
   Grid,
@@ -9,6 +9,7 @@ import {
   CardContent,
 } from "@material-ui/core";
 import "./userOrdersStyle.css";
+import { fetchAllOrders, addToOrders } from "./ordersHelper.js";
 
 const UserOrders = () => {
   let mockOrder = [
@@ -69,27 +70,37 @@ const UserOrders = () => {
     },
   ];
 
+  const [orders, setOrders] = useState([]);
+  const userOrders = async (userId) => {
+    const orders = await fetchAllOrders(userId);
+    console.log("orders fetched = ", orders);
+    setOrders(orders);
+  };
+
+  useEffect(() => {
+    const { userId } = JSON.parse(localStorage.getItem("user"));
+    userOrders(userId);
+  }, []);
+
   const renderOrder = (order) => (
     <Paper className="order-card fade-in ">
-      <CardMedia image={order.img} className="order-img" />
+      {console.log("order =", order)}
+      <CardMedia image={order.picUrl} className="order-img" />
       <CardContent className="cart-content">
         <Grid item xs={8}>
           <p className="cart-prod-name">
-            <span className="order-values">{order.name}</span>
+            <span className="order-values prod-name">{order.name}</span>
           </p>
           <p className="short-description-order">
             <span className="order-values">{order.description}</span>
           </p>
-          <p className="short-description-order">
-            Quantity : <span className="order-values">{order.quantity}</span>
-          </p>
-          <p className="short-description-order">
-            Date : <span className="order-values">{order.date} </span>
-          </p>
+          {<p className="short-description-order">
+            Info : <span className="order-values">{order?.details?.substring(0, 45)} </span>
+  </p>}
         </Grid>
         <Grid item xs={4} className="price">
           <span className="order-mrp">
-            <p>&#8377;{order.price}</p>
+            <p>&#8377;{order.mrp}</p>
           </span>
         </Grid>
       </CardContent>
@@ -97,16 +108,12 @@ const UserOrders = () => {
   );
 
   return (
-    <Grid container >
-      <p style = {{
-          fontFamily:'verdana',
-          fontSize:'2em',
-          margin:'20px 0px 0px 0px'
-      }}>
+    <Grid className = 'order-container'>
+      <p className = 'your-odrs'>
         Your Orders
       </p>
 
-      {mockOrder?.map((order) => order && renderOrder(order))}
+      {orders?.map((order) => order?.map((ord) => renderOrder(ord)))}
     </Grid>
   );
 };

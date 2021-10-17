@@ -2,18 +2,18 @@
     max-width: 90%;
     padding-bottom: 20px;
     max-height: 200px;
-    background-color: rgb(233, 230, 236);
+    background-color: rgba(192, 160, 223, 0.219);
     margin: 2em 0;
     border-radius: 15px;
-    
+
 }
 
 .order-img {
-    height: 90px;
-    width: 90px;
+    height: 100px;
+    width: 100px;
     float: left;
-    margin-left: 2em;
-    margin-top: 1.5em;
+    margin-left: 1.2em;
+    margin-top: 1.2em;
 }
 .order-mrp{
     font-size: large;
@@ -33,4 +33,20 @@
     font-weight: 600;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     opacity: .9;
+}
+.your-odrs{
+    display: flex;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.8em;
+    background: -webkit-linear-gradient(rgb(47, 233, 177), rgb(57, 10, 224));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.prod-name{
+    font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+}
+.cart-prod-name{
+    padding-top: 0px;
+    text-shadow: 1em;
+    margin-left: -20px;
 }

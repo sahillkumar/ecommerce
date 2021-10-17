@@ -3,7 +3,8 @@
     margin-top: 90px;
     min-height: 500px;
     width: 100%;
-    background-color: #f5f5dc;    
+    background-image: linear-gradient( rgba(110, 235, 235, 0.219) 40%,
+    rgba(202, 226, 240, 0.219) 80%);
 }
 
 .userLeftPane-item{    
@@ -22,11 +23,10 @@
     font-weight: 600;
 }
 .rightPane-item{
- box-shadow: 2px 1px 7px 4px rgba(17, 16, 16, 0.226);
- background-color: white;
+ box-shadow: 5px 1px 10px 2px rgba(17, 16, 16, 0.226);
+ background-color: transparent;
  padding-left: 5.5em;
- max-width: 70%;
- min-width: 30%;
+ min-width: 60%;
 }
 
 .userLeftPane-item:hover{
