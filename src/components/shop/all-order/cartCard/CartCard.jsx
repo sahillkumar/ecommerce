@@ -7,7 +7,7 @@ import {
   ButtonGroup,
   Button,
 } from "@material-ui/core";
-import { removeItemFromCart } from "../cartHelper/cartHelper";
+import { moveToWishlist, removeItemFromCart } from "../cartHelper/cartHelper";
 
 import "./cartcard.css";
 import { DataContext } from "../../../../context";
@@ -19,9 +19,12 @@ function CartCard({ prod, reload, setReload, setTotalMrp }) {
   const removeFromCart = () => {
     removeItemFromCart(user.userId, prod.id);
     setReload(!reload);
-    // alert('Item Removed !')
-    setAction("rem");
   };
+
+  const moveWishlist = ()=>{
+    moveToWishlist(prod,user.userId)
+    setReload(!reload)
+  }
 
   const addToWishlist = () => {
     alert("Added to Wishlist");
@@ -87,8 +90,8 @@ function CartCard({ prod, reload, setReload, setTotalMrp }) {
               <Button className="cart-btn" onClick={removeFromCart}>
                 Remove
               </Button>
-              <Button className="cart-btn" onClick={addToWishlist}>
-                Add to Wishlist
+              <Button className="cart-btn" onClick={moveWishlist}>
+                Move to Wishlist
               </Button>
             </ButtonGroup>
           </Grid>
@@ -100,12 +103,12 @@ function CartCard({ prod, reload, setReload, setTotalMrp }) {
             <span className="discount-percent">
               ({prod.discountPercentage}%)
             </span>
-            {/* <<<<<<< HEAD */}
+          
             <div className="total">Total : {total}</div>
 
             <div className="delivery">+ &#8377;39 Delivery Charges</div>
 
-            {/* >>>>>>> origin/v2vt */}
+          
           </Grid>
         </CardContent>
       </Card>

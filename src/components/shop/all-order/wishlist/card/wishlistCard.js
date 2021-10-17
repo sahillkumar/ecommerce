@@ -8,22 +8,26 @@ import {
   Button,
 } from "@material-ui/core";
 import {
-  removeItemFromCart,
+  buynow,
   removeItemFromWishlist,
 } from "../../cartHelper/cartHelper";
 
 import "./wishlistCard.css";
 import { DataContext } from "../../../../../context";
+import { Link } from "react-router-dom";
 
 function WishlistCard({ prod, reload, setReload }) {
   const { user } = useContext(DataContext);
-  const [action, setAction] = useState("");
 
-  const removeFromWishlist = () => {
-    removeItemFromWishlist(user.userId, prod.id);
+  const buyNow = () => {
+    buynow(prod,user.userId);
     setReload(!reload);
-    setAction("rem");
   };
+
+  const removeFromWishlist = () =>{
+    removeItemFromWishlist(user.userId,prod.id)
+    setReload(!reload)
+  }
 
   return (
     <>
@@ -45,9 +49,11 @@ function WishlistCard({ prod, reload, setReload }) {
               >
                 Remove
               </Button>
-              <Button className="buy-now-btn" onClick={removeFromWishlist}>
-                Buy Now
-              </Button>
+              <Link to="/cart" >
+                <Button className="buy-now-btn" onClick={buyNow}>
+                  Buy Now
+                </Button>
+              </Link>
             </ButtonGroup>
           </Grid>
           {/* <Grid item xs={4} className="price">

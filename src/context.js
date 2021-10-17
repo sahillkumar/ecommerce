@@ -5,7 +5,8 @@ export const DataContext = React.createContext()
 const ACTION = {
     USER:'user',
     PRODUCTSINCART:'productsincart',
-    AMOUNT:'amount'
+    AMOUNT:'amount',
+    WISHLISTPRODUCTS : 'productsInWishlist'
 }
 
 function reducer(state,action){
@@ -25,6 +26,11 @@ function reducer(state,action){
                 ...state,
                 amount:action.amount
             }
+        case ACTION.WISHLISTPRODUCTS :
+            return{
+                ...state,
+                wishlist : action.productsInWishlist
+            }
         default:
             return state;
     }
@@ -33,11 +39,12 @@ function reducer(state,action){
 
 export const DataContextProvider = (props) =>{
 
-    const [state,dispatch] = useReducer(reducer,{user:null,productsincart:null,amount:0})
-    const {user,productsincart,amount} = state
+    const [state,dispatch] = useReducer(reducer,{user:null,productsincart:null,amount:0,wishlist:[]})
+    const {user,productsincart,amount,productsInWishlist} = state
+  
     
     return(
-        <DataContext.Provider value={{user,dispatch,productsincart,amount}}>
+        <DataContext.Provider value={{user,dispatch,productsincart,amount,productsInWishlist}}>
             {props.children}
         </DataContext.Provider>
     )

@@ -1,4 +1,4 @@
-import React, { useState, useContext,useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./specificItem.css";
 import { Link, useParams } from "react-router-dom";
 import { getProductByID } from "../../shopHelper/shopHelper";
@@ -15,48 +15,45 @@ import {
 const SpecificItem = () => {
   const [product, setProduct] = useState(null);
   const { user } = useContext(DataContext);
-  const wishlist = JSON.parse (localStorage.getItem('wishlist'))
-  const cart = JSON.parse (localStorage.getItem('cart'))
-  const  [wish, setWish] = useState()
-  const [prodCart, setProdCart] = useState()
+  const wishlist = JSON.parse(localStorage.getItem("wishlist"));
+  const cart = JSON.parse(localStorage.getItem("cart"));
+  const [wish, setWish] = useState();
+  const [prodCart, setProdCart] = useState();
 
   useEffect(() => {
-    if(product && cart && wishlist){
-      setWish(wishlist.includes(product.id))
-      setProdCart(cart.includes(product.id))
+    if (product && wishlist && cart) {
+      setWish(wishlist.includes(product.id));
+      setProdCart(cart.includes(product.id));
     }
-  
-  }, [product])
+  }, [product, wishlist, cart]);
 
- 
   const handleAddToCart = (product) => {
     if (user == null) {
       alert("Please Login First !");
     } else {
-      setProdCart(true)
+      setProdCart(true);
       addItemToCart(product, user.userId);
     }
   };
 
   const removeFromCart = (prod) => {
-    setProdCart(false)
+    setProdCart(false);
     removeItemFromCart(user.userId, prod.id);
   };
 
-  const handleAddToWishlist = (product)=>{
-    if(user === null){
-      alert("Please login First !")
-      return
+  const handleAddToWishlist = (product) => {
+    if (user === null) {
+      alert("Please login First !");
+      return;
     }
-    setWish(true)
-    addItemToWishlist(product,user.userId)
-  }
-
-  const removeFromWishlist = (prod) => {
-    setWish(false)
-    removeItemFromWishlist(user.userId, prod.id);
+    setWish(true);
+    addItemToWishlist(product, user.userId);
   };
 
+  const removeFromWishlist = (prod) => {
+    setWish(false);
+    removeItemFromWishlist(user.userId, prod.id);
+  };
 
   const getItem = async (id) => {
     const prod = await getProductByID(id);
@@ -104,23 +101,27 @@ const SpecificItem = () => {
                 </p>
               </div>
               <div className="buttons">
-                {
-                  prodCart ?     
-                  <button onClick={() => handleAddToCart(prod)}>ALREADY IN CART</button>
-                 : <Link to="/cart">
-                  <button onClick={() => handleAddToCart(prod)}>BUY NOW</button>
-                </Link> 
-                }
-            
-                {
-                  wish ? <button onClick={() => removeFromWishlist(prod)}>
-                  WISHLISTED
-                </button> :
+                {prodCart ? (
+                  <button onClick={() => handleAddToCart(prod)}>
+                    ALREADY IN CART
+                  </button>
+                ) : (
+                  <Link to="/cart">
+                    <button onClick={() => handleAddToCart(prod)}>
+                      BUY NOW
+                    </button>
+                  </Link>
+                )}
+
+                {wish ? (
+                  <button onClick={() => removeFromWishlist(prod)}>
+                    WISHLISTED
+                  </button>
+                ) : (
                   <button onClick={() => handleAddToWishlist(prod)}>
-                  ADD TO WISHLIST
-                </button>
-                }
-                
+                    ADD TO WISHLIST
+                  </button>
+                )}
               </div>
             </div>
           </div>
