@@ -15,17 +15,16 @@ import Order from "./components/shop/all-order/order/Order";
 import PrivateRoute from "./privateRoute";
 import Thankyou from "./components/shop/all-order/thankyou/Thankyou";
 import Wishlist from "./components/shop/all-order/wishlist/Wishlist";
-<<<<<<< HEAD
 import UserProfile from "./components/shop/all-order/userProfile/userProfile";
-=======
 import { allProductsInCart, allProductsInWishlist } from "./components/shop/all-order/cartHelper/cartHelper";
->>>>>>> main
-
+import {fetchUserDetails} from './components/shop/all-order/userProfile/personalDetails/personalDetails-helper'
 const App = () => {
   const [wishList, setWishList] = useState()
   const [cartProducts, setCartProducts] = useState()
+  const [userInfo, setUserInfo] = useState({});
   const products = useFirestore("PRODUCTS");
   const categories = useFirestore("CATEGORIES");
+
   const { user, dispatch,productsInWishlist } = useContext(DataContext);
 
   const itemsInWishlist = async (userId) => {
@@ -54,8 +53,11 @@ const App = () => {
     if(user && user.userId){
       itemsInWishlist(user.userId)
       itemsInCart(user.userId)
+      fetchUserDetails(user.userId)
+        .then(data => data && data.user && localStorage.setItem('userInfo',JSON.stringify(data)))
     }
   }, [user])
+
 
   useEffect(() => {
     if(wishList){
@@ -89,16 +91,12 @@ const App = () => {
           component={() => <UserDashboard categories={categories} />}
         />
         <PrivateRoute exact path="/cart" component={Cart} />
-<<<<<<< HEAD
-        <PrivateRoute exact path="/wishlist" component={Wishlist} />
         <PrivateRoute exact path="/account" component={UserProfile} />
         
-=======
         <PrivateRoute exact path="/wishlist"  >
           <Wishlist wishlist = {productsInWishlist} />
         </PrivateRoute>
 
->>>>>>> main
         <Route
           exact
           path="/shop"

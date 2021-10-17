@@ -1,14 +1,15 @@
 import {firestore} from '../../../../../firebase/config';
 
 export const fetchUserDetails = async(userId) =>{
-    const data = await firestore
+    const info = await firestore
                 .collection('USERS')
                 .doc(userId)
                 .collection("userInfo")
-                .get()
-                .data();
-    console.log("user data =", data);
-    return data;
+                .get();
+    let user = [];
+    info.forEach(doc => user.push(doc.data()));
+    console.log(user[0]);
+    return(user[0]);
 }
 
 export const saveUserDetails = async(userId, data) =>{
@@ -19,11 +20,21 @@ export const saveUserDetails = async(userId, data) =>{
         .limit(1)
         .get();
 
-    const id = currentData.docs[0].id;
-    await firestore
+    const id = currentData?.docs[0]?.id;
+    console.log("id - ",{id, data});
+    if(id){
+        await firestore
         .collection("USERS")
         .doc(userId)
         .collection("userInfo")
         .doc(id)
         .update(data);
+    }
+    else{
+        await firestore
+        .collection("USERS")
+        .doc(userId)
+        .collection("userInfo")
+        .add({data});
+    }
 }
