@@ -8,7 +8,7 @@ export const fetchUserDetails = async(userId) =>{
                 .get();
     let user = [];
     info.forEach(doc => user.push(doc.data()));
-    console.log(user[0]);
+ //   console.log(user[0]);
     return(user[0]);
 }
 
@@ -21,7 +21,7 @@ export const saveUserDetails = async(userId, data) =>{
         .get();
 
     const id = currentData?.docs[0]?.id;
-    console.log("id - ",{id, data});
+    //console.log("id - ",{id, data});
     if(id){
         await firestore
         .collection("USERS")
