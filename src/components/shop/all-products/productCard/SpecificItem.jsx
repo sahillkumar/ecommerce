@@ -21,12 +21,12 @@ const SpecificItem = () => {
   const [prodCart, setProdCart] = useState()
 
   useEffect(() => {
-    if(product){
+    if(product && wishlist && cart){
       setWish(wishlist.includes(product.id))
       setProdCart(cart.includes(product.id))
     }
   
-  }, [product])
+  }, [product,wishlist,cart])
 
  
   const handleAddToCart = (product) => {
