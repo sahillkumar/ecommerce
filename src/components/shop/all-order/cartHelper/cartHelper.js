@@ -1,5 +1,5 @@
 import { firestore } from "../../../../firebase/config";
-
+import {showToast} from '../../../toasts/toasts-helper';
 
 export const allProductsInCart = async (userId) => {
   let documents = [];
@@ -18,12 +18,18 @@ export const addItemToCart = async (item, userId) => {
   let prods = JSON.parse(localStorage.getItem('cart'))
   prods.push(item.id)
   localStorage.setItem('cart',JSON.stringify(prods))
-  await firestore
+  try {
+    await firestore
     .collection("USERS")
     .doc(userId)
     .collection("cart")
     .doc(item.id)
     .set(item);
+  } catch (error) {
+    showToast('error', "Error in adding item to cart");
+    return;
+  }
+  showToast('success', 'Added to cart!')
   
 };
 
@@ -31,12 +37,19 @@ export const removeItemFromCart = async (userId, productId) => {
   let prods = JSON.parse(localStorage.getItem('cart'))
   prods = prods.filter(doc => doc !== productId)
   localStorage.setItem('cart',JSON.stringify(prods))
+ try {
   await firestore
-    .collection("USERS")
-    .doc(userId)
-    .collection("cart")
-    .doc(productId)
-    .delete();
+  .collection("USERS")
+  .doc(userId)
+  .collection("cart")
+  .doc(productId)
+  .delete();
+ } catch (error) {
+  showToast('error', "Error in removing item from cart");
+  return;
+ }
+ showToast('success', 'Removed from cart!')
+      
 };
 
 export const allProductsInWishlist = async (userId) => {
