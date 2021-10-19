@@ -16,27 +16,33 @@ import PrivateRoute from "./privateRoute";
 import Thankyou from "./components/shop/all-order/thankyou/Thankyou";
 import Wishlist from "./components/shop/all-order/wishlist/Wishlist";
 import UserProfile from "./components/shop/all-order/userProfile/userProfile";
-import { allProductsInCart, allProductsInWishlist } from "./components/shop/all-order/cartHelper/cartHelper";
-import {fetchUserDetails} from './components/shop/all-order/userProfile/personalDetails/personalDetails-helper'
+import {
+  allProductsInCart,
+  allProductsInWishlist,
+} from "./components/shop/all-order/cartHelper/cartHelper";
+import { fetchUserDetails } from "./components/shop/all-order/userProfile/personalDetails/personalDetails-helper";
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const App = () => {
-  const [wishList, setWishList] = useState()
-  const [cartProducts, setCartProducts] = useState()
+  const [wishList, setWishList] = useState();
+  const [cartProducts, setCartProducts] = useState();
   const [userInfo, setUserInfo] = useState({});
   const products = useFirestore("PRODUCTS");
   const categories = useFirestore("CATEGORIES");
 
-  const { user, dispatch,productsInWishlist } = useContext(DataContext);
+  const { user, dispatch, productsInWishlist } = useContext(DataContext);
 
   const itemsInWishlist = async (userId) => {
     const products = await allProductsInWishlist(userId);
-    setWishList(products)
+    setWishList(products);
   };
 
   const itemsInCart = async (userId) => {
     const products = await allProductsInCart(userId);
     setCartProducts(products);
   };
-
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user");
@@ -50,36 +56,39 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    if(user && user.userId){
-      itemsInWishlist(user.userId)
-      itemsInCart(user.userId)
-      fetchUserDetails(user.userId)
-        .then(data => data && data.user && localStorage.setItem('userInfo',JSON.stringify(data)))
+    if (user && user.userId) {
+      itemsInWishlist(user.userId);
+      itemsInCart(user.userId);
+      fetchUserDetails(user.userId).then(
+        (data) =>
+          data &&
+          data.user &&
+          localStorage.setItem("userInfo", JSON.stringify(data))
+      );
     }
-  }, [user])
-
-
-  useEffect(() => {
-    if(wishList){
-      const ar = wishList.map(prod=> prod.id)
-      localStorage.setItem('wishlist',JSON.stringify(ar))
-      dispatch({
-        type:"productsInWishlist",
-        productsInWishlist : wishList
-      })
-    }
-  }, [wishList])
+  }, [user]);
 
   useEffect(() => {
-    if(cartProducts){
-      const ar = cartProducts.map(prod=> prod.id)
-      localStorage.setItem('cart',JSON.stringify(ar))
+    if (wishList) {
+      const ar = wishList.map((prod) => prod.id);
+      localStorage.setItem("wishlist", JSON.stringify(ar));
       dispatch({
-        type:"productsincart",
-        productsincart : cartProducts
-      })
+        type: "productsInWishlist",
+        productsInWishlist: wishList,
+      });
     }
-  }, [cartProducts])
+  }, [wishList]);
+
+  useEffect(() => {
+    if (cartProducts) {
+      const ar = cartProducts.map((prod) => prod.id);
+      localStorage.setItem("cart", JSON.stringify(ar));
+      dispatch({
+        type: "productsincart",
+        productsincart: cartProducts,
+      });
+    }
+  }, [cartProducts]);
 
   return (
     <div className="App">
@@ -92,9 +101,9 @@ const App = () => {
         />
         <PrivateRoute exact path="/cart" component={Cart} />
         <PrivateRoute exact path="/account" component={UserProfile} />
-        
-        <PrivateRoute exact path="/wishlist"  >
-          <Wishlist wishlist = {productsInWishlist} />
+
+        <PrivateRoute exact path="/wishlist">
+          <Wishlist wishlist={productsInWishlist} />
         </PrivateRoute>
 
         <Route
@@ -113,6 +122,17 @@ const App = () => {
           <Route path="/contact" component={Contact} /> */}
         <Redirect to="/home" />
       </Switch>
+      <ToastContainer
+        position="top-right"
+        autoClose={1360}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Footer />
     </div>
   );
