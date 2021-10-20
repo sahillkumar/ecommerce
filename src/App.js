@@ -23,7 +23,6 @@ import {
 import { fetchUserDetails } from "./components/shop/all-order/userProfile/personalDetails/personalDetails-helper";
 
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   const [wishList, setWishList] = useState();
