@@ -1,20 +1,16 @@
 import { Button, Grid, Input, Tab, Tabs } from "@material-ui/core";
-import React, { useState } from "react";
-
-import {
-  getAllSortedProducts,
-  getProductsByCategory,
-  sortProductsByCategory,
-} from "../shopHelper/shopHelper";
+import React, { useEffect, useState } from "react";
 import "./filters.css";
 import TabPanel from "../../Reusable Components/TabPanel";
 
 const Filters = ({ setProds, allproducts, currentProds }) => {
   const [value, setValue] = useState(0);
   const [category, setCategory] = useState(null);
-  const [direction, setDirection] = useState(null);
   const [priceFilter, setPriceFilter] = useState({});
+  const [direction, setDirection] = useState();
   const [priceF, setPriceF] = useState(false);
+  const [prodByCategory, setProdByCategory] = useState();
+  const [sortedProducts, setSortedProducts] = useState();
 
   const categories = [
     "beauty essentials",
@@ -23,20 +19,22 @@ const Filters = ({ setProds, allproducts, currentProds }) => {
     "mugs",
     "clothing",
   ];
+
   const handleTabChange = (e, val) => {
     setValue(val);
   };
 
-  const getProductsBySelectedCategory = (val) => {
-    if (val == "all") return setProds(allproducts);
-    if (currentProds && currentProds.length !== 0) {
-      const ar = currentProds.filter((prod) => {
-        return prod.category.title === val;
-      });
-
-      setProds(ar);
+  useEffect(() => {
+    if (category) {
+      setProds(prodByCategory ?? []);
     }
-  };
+  }, [category]);
+
+  useEffect(() => {
+    if (direction) {
+      setProds(sortedProducts ?? []);
+    }
+  }, [direction, sortedProducts]);
 
   const addDel = (value) => {
     let element = document.getElementById(value);
@@ -61,35 +59,63 @@ const Filters = ({ setProds, allproducts, currentProds }) => {
     } else if (method === "remove") {
       removeDel(value);
       setCategory(null);
-      setProds(allproducts);
+      setProds([...allproducts]);
     }
   };
 
   const handleSort = (field, dir, method, id) => (e) => {
     if (method === "add") {
       addDel(id);
-
       setDirection(dir);
       sortProducts(field, dir);
     } else {
       removeDel(id);
+      setDirection(dir);
       sortProducts("name", "asc");
     }
   };
 
-  const sortProducts = async (field, direction) => {
-    if (currentProds.length < allproducts.length && category) {
-      const products = await sortProductsByCategory(category, field, direction);
-      setProds(products);
+  const getProductsBySelectedCategory = (val) => {
+    console.log(val);
+    if (val === "all") {
+      return;
     } else {
-      const products = await getAllSortedProducts(field, direction);
-      setProds(products);
+      const tempAr = priceF ? currentProds : allproducts;
+      const ar = tempAr.filter((prod) => {
+        return prod.category?.title === val;
+      });
+      setProdByCategory([...ar]);
     }
+  };
+
+  const sortProducts = (field, direction) => {
+    let tempAr = [];
+    if (category && priceF) tempAr = currentProds;
+    else if (category) tempAr = prodByCategory;
+    else if (priceF) tempAr = currentProds;
+    else tempAr = allproducts;
+
+    if (field === "discountMrp") {
+      if (direction === "asc") {
+        tempAr.sort((a, b) => a.discountMrp - b.discountMrp);
+      } else {
+        tempAr.sort((a, b) => b.discountMrp - a.discountMrp);
+      }
+    } else if (field === "discountPercentage") {
+      tempAr.sort((a, b) => b.discountPercentage - a.discountPercentage);
+    } else {
+      tempAr.sort((a, b) => {
+        const nameA = a.name.toLowerCase();
+        const nameB = b.name.toLowerCase();
+        return nameA.localeCompare(nameB);
+      });
+    }
+    setSortedProducts([...tempAr]);
   };
 
   const getProductsByRange = () => {
     const { min, max } = priceFilter;
-    const tempAr = category ? currentProds : allproducts;
+    const tempAr = category ? prodByCategory : allproducts;
     if (tempAr && tempAr.length !== 0) {
       const ar = tempAr.filter(
         (prod) => prod.discountMrp >= min && prod.discountMrp <= max
@@ -128,21 +154,6 @@ const Filters = ({ setProds, allproducts, currentProds }) => {
 
       <TabPanel value={value} index={0}>
         <Grid container justify="center">
-          <Grid item className="grid-item" justify="center" id="all">
-            <Button
-              className="btn"
-              onClick={handleFilter("category", "all", "add")}
-            >
-              all
-            </Button>
-            <span
-              className="remove"
-              style={{ display: "none" }}
-              onClick={handleFilter("category", "all", "remove")}
-            >
-              &#10005;
-            </span>
-          </Grid>
           {categories &&
             categories.map((category) => (
               <Grid

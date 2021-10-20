@@ -16,6 +16,10 @@ import PrivateRoute from "./privateRoute";
 import Thankyou from "./components/shop/all-order/thankyou/Thankyou";
 import Wishlist from "./components/shop/all-order/wishlist/Wishlist";
 import UserProfile from "./components/shop/all-order/userProfile/userProfile";
+import {
+  allProductsInCart,
+  allProductsInWishlist,
+} from "./components/shop/all-order/cartHelper/cartHelper";
 
 const App = () => {
   const [wishList, setWishList] = useState();

@@ -19,7 +19,6 @@
 }
 
 .btn {
-  color: grey;
   border-radius: 0;
 }
 
@@ -28,8 +27,8 @@
 }
 
 .act {
-  background-color: #b8d8be;
-  color: black;
+  background-color: rgb(221, 206, 206);
+  color: white;
 }
 
 .remove {
