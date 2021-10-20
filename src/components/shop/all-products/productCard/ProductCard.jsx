@@ -59,7 +59,10 @@ const ProductCard = ({ product}) => {
       </Link>
       <CardContent className="prod-content">
         <strong className="prod-name">{product.name}</strong>
-        <strong className="short-description">short Descrption...</strong>
+        <strong className="short-description">{
+          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere nesciunt, dolores illum nobis incidunt consectetur nam culpa magni ipsum dolor sit amet consectetur adipisicing elit. Iusto eaque numquam dolorem perferendis, pariatur sapiente. Magnam corrupti accusamus quas cum quos odit, rem aliquid vero deserunt perspiciatis? Aspernatur, maxime repudiandae."
+          .substring(0, Math.round(Math.random(2,4)*30))
+}</strong>
         <div className="price">
           <span className="prod-discount">&#8377;{product.discountMrp}</span>
           <span className="prod-mrp">

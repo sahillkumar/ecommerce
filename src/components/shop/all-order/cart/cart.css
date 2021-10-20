@@ -8,7 +8,7 @@
   /* background-color: rgb(132, 212, 212); */
 }
 
-.amout-details {
+.amount-details {
   font-family: "AdobeCaslonPro";
   font-size: 14px;
 }
@@ -17,6 +17,7 @@
   width: 80%;
   float: left;
   border-radius: 0;
+  box-shadow: 1px 1px 4px 2px rgba(0, 0, 0, 0.26);
   /* border: 1px solid black; */
 }
 
@@ -25,8 +26,7 @@
   text-align: left;
 }
 
-.placeorder,
-.placeorder:hover {
+.placeorder{
   background-color: rgb(199, 55, 55);
   border-radius: 0;
   width: 80%;
@@ -34,7 +34,18 @@
   color: white;
   font-family: "ProximaNova";
   margin-bottom: 30px;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  transition: all .3s;
 }
+.placeorder:hover{
+  background-color: white !important;
+  box-shadow: 1px 1px 5px 2px rgba(245, 73, 73, 0.801);
+  color:red !important;
+  font-weight: 800;
+  scale: 1.02;
+}
+
 
 .amount-heading {
   font-size: 20px;

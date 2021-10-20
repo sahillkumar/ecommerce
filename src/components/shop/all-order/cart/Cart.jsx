@@ -75,7 +75,7 @@ const Cart = () => {
                   />
                 ))}
             </Grid>
-            <Grid item xs={4} className="amout-details">
+            <Grid item xs={4} className="amount-details">
               <Paper className="cart-price">
                 <div className="price-text">
                   <p className="amount-heading">Billing Details</p>

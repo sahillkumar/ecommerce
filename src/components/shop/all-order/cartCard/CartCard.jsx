@@ -104,7 +104,7 @@ function CartCard({ prod, reload, setReload, setTotalMrp }) {
               ({prod.discountPercentage}%)
             </span>
           
-            <div className="total">Total : {total}</div>
+            <div className="total">Total : <span>&#8377;{total}</span></div>
 
             <div className="delivery">+ &#8377;39 Delivery Charges</div>
 
