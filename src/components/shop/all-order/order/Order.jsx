@@ -9,7 +9,7 @@ import { useHistory } from "react-router";
 function Order() {
   const { productsincart, amount } = useContext(DataContext);
   
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("userInfo"));
   const [delDetails, setDelDetails] = useState({
     name: user.displayName,
     email: user.email,

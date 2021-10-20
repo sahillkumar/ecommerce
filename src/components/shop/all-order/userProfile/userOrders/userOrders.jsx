@@ -10,7 +10,8 @@ import {
 } from "@material-ui/core";
 import "./userOrdersStyle.css";
 import { fetchAllOrders, addToOrders } from "./ordersHelper.js";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faBag} from '@fortawesome/free-solid-svg-icons'
 const UserOrders = () => {
   let mockOrder = [
     {
@@ -114,6 +115,11 @@ const UserOrders = () => {
       </p>
 
       {orders?.map((order) => order?.map((ord) => renderOrder(ord)))}
+      {orders.length < 1 && 
+      <div className = "no-orders" >
+        <h3>You haven't placed any orders yet.</h3>
+        <img className = 'fade-in' src="https://cdn.dribbble.com/users/721524/screenshots/4112199/media/1f1357e2a1886218a716c24a0d15462b.png?compress=1&resize=400x300" alt="img-empty-order"/>
+      </div>}
     </Grid>
   );
 };

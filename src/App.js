@@ -16,6 +16,8 @@ import PrivateRoute from "./privateRoute";
 import Thankyou from "./components/shop/all-order/thankyou/Thankyou";
 import Wishlist from "./components/shop/all-order/wishlist/Wishlist";
 import UserProfile from "./components/shop/all-order/userProfile/userProfile";
+import { fetchUserDetails } from "./components/shop/all-order/userProfile/personalDetails/personalDetails-helper";
+import { ToastContainer } from "react-toastify";
 import {
   allProductsInCart,
   allProductsInWishlist,
@@ -24,9 +26,11 @@ import {
 const App = () => {
   const [wishList, setWishList] = useState();
   const [cartProducts, setCartProducts] = useState();
+  //const [userInfo, setUserInfo] = useState({});
   const products = useFirestore("PRODUCTS");
   const categories = useFirestore("CATEGORIES");
-  const { user, dispatch, productsInWishlist } = useContext(DataContext);
+
+  const { user, dispatch } = useContext(DataContext);
 
   const itemsInWishlist = async (userId) => {
     const products = await allProductsInWishlist(userId);
@@ -53,6 +57,12 @@ const App = () => {
     if (user && user.userId) {
       itemsInWishlist(user.userId);
       itemsInCart(user.userId);
+      fetchUserDetails(user.userId).then(
+        (data) =>
+          data &&
+          data.user &&
+          localStorage.setItem("userInfo", JSON.stringify(data))
+      );
     }
   }, [user]);
 
@@ -90,6 +100,7 @@ const App = () => {
         <PrivateRoute exact path="/cart" component={Cart} />
         <PrivateRoute exact path="/wishlist" component={Wishlist} />
         <PrivateRoute exact path="/account" component={UserProfile} />
+        <PrivateRoute exact path="/account" component={UserProfile} />
 
         <Route
           exact
@@ -107,6 +118,17 @@ const App = () => {
           <Route path="/contact" component={Contact} /> */}
         <Redirect to="/home" />
       </Switch>
+      <ToastContainer
+        position="top-right"
+        autoClose={1360}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Footer />
     </div>
   );

@@ -7,13 +7,25 @@ import {
   faEdit,
   faSave,
 } from "@fortawesome/free-solid-svg-icons";
-import {fetchUserDetails, saveUserDetails} from './personalDetails-helper'
-
+import { fetchUserDetails, saveUserDetails } from "./personalDetails-helper";
 
 const PersonalDetails = () => {
-  const { displayName, email, phone, address, city, zip, userId } = JSON.parse(
+
+  let {displayName, phone, address, city, zip } = {};
+  if(localStorage.getItem('userInfo')){
+    const data = JSON.parse(localStorage.getItem('userInfo'));
+    displayName = data.displayName;
+    phone = data.phone;
+    address = data.address;
+    city = data.city;
+    zip = data.zip;
+  //  userId = data.userId;
+  }
+ 
+  const {email, userId} = JSON.parse(
     localStorage.getItem("user")
   );
+ 
   const [userDetails, setUserDetails] = useState({
     userId,
     displayName,
@@ -24,6 +36,7 @@ const PersonalDetails = () => {
     zip,
   });
 
+
   const [formDisabled, setFormDisabled] = useState(true);
 
   const handleForm = (e) => {
@@ -31,7 +44,7 @@ const PersonalDetails = () => {
     if (formDisabled) setFormDisabled(false);
     else {
       // save data to backend
-      localStorage.setItem("user", JSON.stringify(userDetails));
+      localStorage.setItem("userInfo", JSON.stringify(userDetails));
       saveUserDetails(userId, userDetails);
       setFormDisabled(true);
     }
@@ -46,7 +59,8 @@ const PersonalDetails = () => {
 
         <Grid item xs={5}>
           <TextField
-            defaultValue={userDetails.displayName}
+            value={userDetails.displayName}
+            
             disabled={formDisabled}
             id="outlined-multiline-flexible"
             label="Name"
@@ -74,6 +88,7 @@ const PersonalDetails = () => {
         </Grid>
         <Grid item xs={5}>
           <TextField
+            required={true}
             defaultValue={userDetails.phone ? userDetails.phone : ""}
             inputProps={{
               pattern: "[6789][0-9]{9}",
@@ -91,6 +106,7 @@ const PersonalDetails = () => {
         </Grid>
         <Grid item xs={5}>
           <TextField
+            required={true}
             defaultValue={userDetails.address ? userDetails.address : ""}
             disabled={formDisabled}
             id="outlined-multiline-flexible"
@@ -105,6 +121,7 @@ const PersonalDetails = () => {
         </Grid>
         <Grid item xs={5}>
           <TextField
+            required={true}
             defaultValue={userDetails.city ? userDetails.city : ""}
             disabled={formDisabled}
             id="outlined-multiline-flexible"
@@ -119,6 +136,7 @@ const PersonalDetails = () => {
         </Grid>
         <Grid item xs={5}>
           <TextField
+            required={true}
             defaultValue={userDetails.zip ? userDetails.zip : ""}
             inputProps={{
               pattern: "[0-9]{6}",
@@ -138,10 +156,7 @@ const PersonalDetails = () => {
 
         <Grid item xs={10}>
           {formDisabled ? (
-            <button
-              className = 'btn-edit'
-              onClick={() => setFormDisabled(false)}
-            >
+            <button className="btn-edit" onClick={() => setFormDisabled(false)}>
               CLICK TO EDIT{" "}
               <FontAwesomeIcon icon={faEdit} style={{ marginLeft: "1em" }} />
             </button>
@@ -150,8 +165,8 @@ const PersonalDetails = () => {
               variant="contained"
               type="Submit"
               style={{
-                backgroundColor:'#66bb6a',
-                color:'white',
+                backgroundColor: "#66bb6a",
+                color: "white",
                 height: "2.3em",
                 minWidth: "3em",
                 fontFamily: "Courier New (monospace)",
