@@ -16,12 +16,12 @@ const Navbar = ({ user, dispatch }) => {
         <div className="appbar-nav">
           <div className="nav-link">
             <NavLink to="/home" activeClassName="active" className="link">
-              Home
+              <span>Home</span>
             </NavLink>
           </div>
           <div className="nav-link">
             <NavLink to="/shop" activeClassName="active" className="link">
-              Shop
+              <span>Shop</span>
             </NavLink>
           </div>
           {user ? (
@@ -33,7 +33,7 @@ const Navbar = ({ user, dispatch }) => {
                   activeClassName="active"
                   className="link"
                 >
-                  Profile
+                  <span>Profile</span>
                 </NavLink>
               </div>
               
@@ -44,7 +44,7 @@ const Navbar = ({ user, dispatch }) => {
                   activeClassName="active"
                   className="link"
                 >
-                  Wishlist
+                  <span>Wishlist</span>
                 </NavLink>
               </div>
               <div className="nav-link">
@@ -54,7 +54,7 @@ const Navbar = ({ user, dispatch }) => {
                   activeClassName="active"
                   className="link"
                 >
-                  Cart
+                  <span>Cart</span>
                 </NavLink>
               </div>
               
@@ -71,7 +71,7 @@ const Navbar = ({ user, dispatch }) => {
                   activeClassName="active"
                   className="link"
                 >
-                  Logout
+                  <span>Logout</span>
                 </NavLink>
               </div>
             </>

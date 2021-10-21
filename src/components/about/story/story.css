@@ -1,5 +1,5 @@
 .story {
-  padding: 100px;
+  padding: 50px;
   background: rgb(243, 221, 182);
 }
 
@@ -10,6 +10,8 @@
 .our-story-img {
   height: 500px;
   width: 90%;
+  box-shadow: 2px 1px 8px 5px rgba(182, 161, 161, 0.849);
+  border-radius: 100px;
 }
 
 .story-content {
@@ -18,15 +20,23 @@
 }
 
 .story-header {
-  font-size: 2.2rem;
+  font-size: 3.0rem;
   font-family: AdobeCaslonPro;
   font-weight: 100;
-  margin-bottom: 10px;
+  margin-top: 0px;
+  display:flex;
+  color:rgb(168, 108, 108);
+  padding-left: 1em;
 }
-
+.story-content>hr{
+  width: 40em;
+  margin-right: 50px;
+  margin-bottom: 1em;
+}
 .story-text {
   padding: 0 50px;
-  font-size: 16px;
+  font-size: 18px;
+  color: rgb(75, 63, 63);
   text-align: justify;
   font-family: ProximaNova;
 }

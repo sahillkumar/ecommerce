@@ -1,5 +1,6 @@
 .whyus {
   padding: 100px;
+  background-color: rgb(228, 240, 240);
 }
 
 .whyus-image {
@@ -27,4 +28,12 @@
   font-size: 16px;
   text-align: justify;
   font-family: ProximaNova;
+}
+.line-why-us{
+  width: 200px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: black !important;
+  height: 0.4px !important;
+
 }
