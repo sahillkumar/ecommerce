@@ -1,5 +1,5 @@
 .spec-prod {
-  margin-top: 90px;
+  margin-top: 70px;
   padding: 60px 100px;
 }
 
@@ -8,13 +8,18 @@
 }
 
 .spec-img {
+  border-radius: 15px;
+  box-shadow: 1px 1px 10px 1px rgb(143, 143, 137);
   height: 500px;
   width: 600px;
 }
 
 .spec-content {
+  border-radius: 12px !important;
+  
   padding: 0px;
   text-align: center;
+  background-color: rgba(228, 226, 224, 0.178);
 }
 
 .spec-text {
@@ -85,6 +90,18 @@ div img {
   color: #777;
 }
 
+.buttons-spec-prod{
+  border-radius: 5px;
+  padding: 0px 10px;
+  width: 30%;
+  box-shadow: 1px 1px 5px 1px rgba(124, 120, 120, 0.473);
+  height: 2.5em;
+  background-color: rgb(255, 255, 255);
+}
 .buttons button:hover {
-  color: #222;
+  background: rgb(238, 101, 101);
+  scale: 1.2;
+  cursor: pointer;
+  color:white;
+
 }

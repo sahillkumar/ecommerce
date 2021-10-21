@@ -40,8 +40,8 @@
 }
 .placeorder:hover{
   background-color: white !important;
-  box-shadow: 1px 1px 5px 2px rgba(245, 73, 73, 0.801);
-  color:red !important;
+  box-shadow: 1px 1px 5px 2px rgba(236, 127, 127, 0.801);
+  color:rgb(247, 92, 92) !important;
   font-weight: 800;
   scale: 1.02;
 }

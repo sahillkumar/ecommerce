@@ -74,7 +74,7 @@ const ProductCard = ({ product}) => {
           {
             prodCart ?
             <button
-            className="addtocart"
+            className="addtocart cart-btn"
             onClick={() => removeFromCart(product)}
             style={{ color:"#111"}}
           >

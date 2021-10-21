@@ -10,67 +10,9 @@ import {
 } from "@material-ui/core";
 import "./userOrdersStyle.css";
 import { fetchAllOrders, addToOrders } from "./ordersHelper.js";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faBag} from '@fortawesome/free-solid-svg-icons'
-const UserOrders = () => {
-  let mockOrder = [
-    {
-      name: "Juice",
-      date: "20-01-2021",
-      price: "123",
-      img: "https://png.pngtree.com/png-vector/20191207/ourmid/pngtree-glass-of-orange-juice-illustration-vector-on-white-background-png-image_2043835.jpg",
-      id: "#23234234",
-      category: "beverages",
-      quantity: 3,
-      description:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta, animi?",
-    },
-    {
-      name: "Juice12",
-      date: "22-01-2021",
-      price: "183",
-      img: "https://png.pngtree.com/png-vector/20191207/ourmid/pngtree-glass-of-orange-juice-illustration-vector-on-white-background-png-image_2043835.jpg",
-      id: "#23234234",
-      category: "beverages",
-      quantity: 3,
-      description:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta, animi?",
-    },
-    {
-      name: "Juice12",
-      date: "22-01-2021",
-      price: "183",
-      img: "https://png.pngtree.com/png-vector/20191207/ourmid/pngtree-glass-of-orange-juice-illustration-vector-on-white-background-png-image_2043835.jpg",
-      id: "#23234234",
-      category: "beverages",
-      quantity: 3,
-      description:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta, animi?",
-    },
-    {
-      name: "Juice12",
-      date: "22-01-2021",
-      price: "183",
-      img: "https://png.pngtree.com/png-vector/20191207/ourmid/pngtree-glass-of-orange-juice-illustration-vector-on-white-background-png-image_2043835.jpg",
-      id: "#23234234",
-      category: "beverages",
-      quantity: 3,
-      description:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta, animi?",
-    },
-    {
-      name: "Juice12",
-      date: "232-01-2021",
-      price: "183",
-      img: "https://png.pngtree.com/png-vector/20191207/ourmid/pngtree-glass-of-orange-juice-illustration-vector-on-white-background-png-image_2043835.jpg",
-      id: "#23234234",
-      category: "beverages",
-      quantity: 3,
-      description:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta, animi?",
-    },
-  ];
 
+const UserOrders = () => {
+ 
   const [orders, setOrders] = useState([]);
   const userOrders = async (userId) => {
     const orders = await fetchAllOrders(userId);

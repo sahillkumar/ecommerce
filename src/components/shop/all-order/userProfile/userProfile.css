@@ -24,9 +24,10 @@
 }
 .rightPane-item{
  box-shadow: 5px 1px 10px 2px rgba(17, 16, 16, 0.226);
- background-color: transparent;
+ background-color: rgba(250, 250, 248, 0.274);
  padding-left: 5.5em;
  min-width: 60%;
+ border-radius: 12px;
 }
 
 .userLeftPane-item:hover{

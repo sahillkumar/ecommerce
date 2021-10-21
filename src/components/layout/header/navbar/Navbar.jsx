@@ -3,7 +3,6 @@ import { AppBar, Toolbar } from "@material-ui/core";
 import "./navbar.css";
 import { NavLink } from "react-router-dom";
 import { signOut } from "../../../auth/authHelper/authHelper";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 const Navbar = ({ user, dispatch }) => {
   return (

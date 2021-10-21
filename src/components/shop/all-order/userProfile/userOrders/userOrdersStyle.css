@@ -2,18 +2,18 @@
     max-width: 90%;
     padding-bottom: 20px;
     max-height: 200px;
-    background-color: rgba(192, 160, 223, 0.219);
+    background-color: rgba(204, 176, 233, 0.219);
     margin: 2em 0;
     border-radius: 15px;
 
 }
 
 .order-img {
-    height: 100px;
-    width: 100px;
+    height: 130px;
+    width: 130px;
     float: left;
-    margin-left: 1.2em;
-    margin-top: 1.2em;
+    margin-left: 1.7em;
+    margin-top: 1.8em;
 }
 .order-mrp{
     font-size: large;

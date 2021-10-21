@@ -68,7 +68,7 @@ const SpecificItem = () => {
 
   const renderProd = (prod) => {
     return (
-      <Grid container className="spec-prod" spacing={0}>
+      <Grid container className="spec-prod fade-in" spacing={0}>
         <Grid item md={6} className="spec-image">
           <img src={prod.picUrl} className="spec-img" />
         </Grid>
@@ -106,17 +106,17 @@ const SpecificItem = () => {
               <div className="buttons">
                 {
                   prodCart ?     
-                  <button onClick={() => handleAddToCart(prod)}>ALREADY IN CART</button>
+                  <button className ="buttons-spec-prod" onClick={() => handleAddToCart(prod)}>ALREADY IN CART</button>
                  : <Link to="/cart">
-                  <button onClick={() => handleAddToCart(prod)}>BUY NOW</button>
+                  <button className ="buttons-spec-prod" onClick={() => handleAddToCart(prod)}>BUY NOW</button>
                 </Link> 
                 }
             
                 {
-                  wish ? <button onClick={() => removeFromWishlist(prod)}>
+                  wish ? <button className ="buttons-spec-prod" onClick={() => removeFromWishlist(prod)}>
                   WISHLISTED
                 </button> :
-                  <button onClick={() => handleAddToWishlist(prod)}>
+                  <button className ="buttons-spec-prod" onClick={() => handleAddToWishlist(prod)}>
                   ADD TO WISHLIST
                 </button>
                 }
@@ -129,7 +129,7 @@ const SpecificItem = () => {
     );
   };
 
-  return <>{product ? renderProd(product) : <h2>dhtt bc</h2>}</>;
+  return <>{product ? renderProd(product) : <h2>!</h2>}</>;
 };
 export default SpecificItem;
 /*
