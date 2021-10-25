@@ -4,15 +4,18 @@ import "./story.css";
 
 const Story = () => {
   return (
-    <Grid container className="story" spacing={0}
-    data-aos="fade-down"
-    data-aos-offset="200"
-    data-aos-delay="50"
-    data-aos-duration="800"
-    data-aos-easing="ease-in-out"
-    data-aos-mirror="true"
-    data-aos-once="true"
-    data-aos-anchor-placement="top-center"
+    <Grid
+      container
+      className="story"
+      spacing={0}
+      data-aos="fade-up"
+      data-aos-offset="0"
+      data-aos-delay="0"
+      data-aos-duration="800"
+      data-aos-easing="ease-out"
+      data-aos-mirror="true"
+      data-aos-once="true"
+      data-aos-anchor-placement="top-center"
     >
       <Grid item md={6} className="story-image">
         <img src="images/story.jpg" className="our-story-img" />
@@ -21,18 +24,20 @@ const Story = () => {
         <h1 className="story-header">Our Story</h1>
         <div className="story-text">
           <hr className="line-why-us" />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
-          repellendus laudantium debitis inventore esse. Corporis quisquam eius
-          itaque hic nulla eum sed, sit odit libero voluptates soluta quasi
-          laborum nemo. Mollit enim velit nisi pariatur tempor sint. <br />
+          <strong>Vocal for Local</strong> - creating a source of income for the
+          hill farmer who are migrating to metro cities for jobs.
           <br />
-          Dolor adipisicing laborum consectetur fugiat do eiusmod aute pariatur
-          quis esse in quis commodo. Ex aliquip sit cillum sunt eu ut voluptate
-          ullamco ex officia consectetur aute sit velit. Ex sint ctur quis esse
-          in quis commodo. Ex aliquip sit cillum sunt eu ut voluptate ullamco ex
-          officia consectetur aute sit velit. Ex sint consectetur duis irure
-          mollit eu dolore et qui ea. Cupidatat tempor fugiat consequat aliqua
-          magna eiusmod anim in amet fugiat. Sint enim ipsum id commodo et.
+          <br />
+          <strong>Raising awareness</strong> among the city people regarding the
+          benefits of locally grown organic product.
+          <br />
+          <br />
+          <strong>Promoting the state culture.</strong>
+          <br />
+          <br />
+          We intend to bring together a wide range of products such as the local
+          organic food ,handcraft, etc. most of which are only seen in the hills
+          to generate sustainable livelihood for the community.
           <br />
           <br />
           <hr className="line-why-us" />
