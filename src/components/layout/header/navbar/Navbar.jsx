@@ -5,6 +5,10 @@ import { NavLink } from "react-router-dom";
 import { signOut } from "../../../auth/authHelper/authHelper";
 
 const Navbar = ({ user, dispatch }) => {
+
+  const changeTitleBar = (name) =>{
+    document.title = name;
+  }
   return (
     <AppBar className="appbar" position="fixed" elevation="0">
       <Toolbar className="toolbar">
@@ -13,19 +17,19 @@ const Navbar = ({ user, dispatch }) => {
           <div className="brand">OrganiKart</div>
         </div>
         <div className="appbar-nav">
-          <div className="nav-link">
+          <div className="nav-link" onClick = {() => changeTitleBar("Organikart")}>
             <NavLink to="/home" activeClassName="active" className="link">
               <span>Home</span>
             </NavLink>
           </div>
           <div className="nav-link">
-            <NavLink to="/shop" activeClassName="active" className="link">
+            <NavLink to="/shop" activeClassName="active" className="link" onClick = {() =>changeTitleBar("Shop")}>
               <span>Shop</span>
             </NavLink>
           </div>
           {user ? (
             <>
-              <div className="nav-link">
+              <div className="nav-link" onClick = {() =>changeTitleBar("Profile")}>
                 <NavLink
                   exact
                   to="/account"
@@ -36,7 +40,7 @@ const Navbar = ({ user, dispatch }) => {
                 </NavLink>
               </div>
               
-              <div className="nav-link">
+              <div className="nav-link" onClick = {() =>changeTitleBar("Wishlist")}>
                 <NavLink
                   exact
                   to="/wishlist"
@@ -46,7 +50,7 @@ const Navbar = ({ user, dispatch }) => {
                   <span>Wishlist</span>
                 </NavLink>
               </div>
-              <div className="nav-link">
+              <div className="nav-link" onClick = {() =>changeTitleBar("Cart")}>
                 <NavLink
                   exact
                   to="/cart"
@@ -57,7 +61,7 @@ const Navbar = ({ user, dispatch }) => {
                 </NavLink>
               </div>
               
-              <div className="nav-link">
+              <div className="nav-link" onClick = {() =>changeTitleBar("Organikart")}>
                 <NavLink
                   to="/home"
                   onClick={() => {
@@ -75,7 +79,7 @@ const Navbar = ({ user, dispatch }) => {
               </div>
             </>
           ) : (
-            <div className="nav-link">
+            <div className="nav-link" onClick = {() =>changeTitleBar("Login")}>
               <NavLink to="/auth" className="link" activeClassName="active">
                 Register / Login
               </NavLink>

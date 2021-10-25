@@ -47,6 +47,7 @@ const Auth = () => {
   const logInSubmit = (email,password) => (e) =>{
     e.preventDefault()
     logIn(email,password,setError,setForm,dispatch)
+    document.title = 'Shop';
    
    }
 
