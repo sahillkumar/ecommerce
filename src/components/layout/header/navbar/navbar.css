@@ -44,17 +44,17 @@
   height: 30px;
   min-width: 70px;
   width: fit-content;
-  color: rgb(250, 249, 249);
+  color: rgba(250, 249, 249, 0.74);
   background-color: rgb(39, 39, 37);
   border-color: rgba(250, 249, 249, 0.432);
   border-width: 2px ;
-  border-style: solid; 
   border-radius: 12px;
   align-items: center;
   justify-content: center;
 }
 
 .active {
+  border-style: solid; 
   color: rgb(15, 15, 15);
   font-family: inherit;
   font-size: 14px;
@@ -70,12 +70,12 @@
   height: 30px;
   min-width: 70px;
   width: fit-content;
-  color: rgb(250, 249, 249);
+  color: rgba(250, 249, 249, 0.74);
   background-color: rgb(39, 39, 37);
   border-color: rgba(250, 249, 249, 0.432);
   border-width: 2px ;
-  border-style: solid; 
   border-radius: 12px;
   align-items: center;
   justify-content: center;
+  border:none;
 }
