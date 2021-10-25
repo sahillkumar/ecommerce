@@ -9,7 +9,7 @@ import {
 import "./filters.css";
 import TabPanel from "../../Reusable Components/TabPanel";
 
-const Filters = ({ setProds, allproducts, currentProds }) => {
+const Filters = ({ setProds, allproducts, currentProds, actualProds }) => {
   const [value, setValue] = useState(0);
   const [category, setCategory] = useState(null);
   const [direction, setDirection] = useState(null);
@@ -29,11 +29,10 @@ const Filters = ({ setProds, allproducts, currentProds }) => {
 
   const getProductsBySelectedCategory = (val) => {
     if (val == "all") return setProds(allproducts);
-    if (currentProds && currentProds.length !== 0) {
-      const ar = currentProds.filter((prod) => {
+    if (actualProds && actualProds.length !== 0) {
+      const ar = actualProds.filter((prod) => {
         return prod.category.title === val;
       });
-
       setProds(ar);
     }
   };

@@ -13,7 +13,7 @@ const Search = ({setProds,allproducts,currentProds}) => {
                     placeholder="Search For Products..."
                 />
             </div> */}
-            <Filters setProds={setProds} allproducts={allproducts} currentProds={currentProds}/>
+            <Filters setProds={setProds} allproducts={allproducts} currentProds={currentProds} actualProds ={allproducts}/>
         </div>
     )
 }
