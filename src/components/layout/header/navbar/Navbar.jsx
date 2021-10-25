@@ -71,17 +71,17 @@ const Navbar = ({ user, dispatch }) => {
                       user: null,
                     });
                   }}
-                  activeClassName="active"
-                  className="link"
+                  //activeClassName="active"
+                  className="logout-link"
                 >
-                  <span>Logout</span>
+                  <span>Log out</span>
                 </NavLink>
               </div>
             </>
           ) : (
             <div className="nav-link" onClick = {() =>changeTitleBar("Login")}>
-              <NavLink to="/auth" className="link" activeClassName="active">
-                Register / Login
+              <NavLink to="/auth" className="link" activeClassName="active" id ='login'>
+                <span>Register / Login</span>
               </NavLink>
             </div>
           )}

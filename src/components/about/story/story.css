@@ -1,5 +1,7 @@
 .story {
   padding: 50px;
+  padding-top: 60px;
+  height : 700px;
   background: rgb(243, 221, 182);
 }
 

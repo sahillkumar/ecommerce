@@ -28,7 +28,6 @@
 .appbar-nav {
   flex-grow: 1;
   text-align: right;
-  margin-right: 80px;
 }
 
 .nav-link {
@@ -36,14 +35,47 @@
   display: inline-block;
   padding: 20px;
   margin: auto 0px;
-  font-family: "AdobeCaslonPro";
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .link {
-  color: rgb(126, 121, 121);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  display: flex;
+  height: 30px;
+  min-width: 70px;
+  width: fit-content;
+  color: rgb(250, 249, 249);
+  background-color: rgb(39, 39, 37);
+  border-color: rgba(250, 249, 249, 0.432);
+  border-width: 2px ;
+  border-style: solid; 
+  border-radius: 12px;
+  align-items: center;
+  justify-content: center;
 }
 
 .active {
-  color: #fff;
+  color: rgb(15, 15, 15);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 1000;
+  background-color: beige;
+}
+#login{
+  width: 160px;
+}
+.logout-link {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  display: flex;
+  height: 30px;
+  min-width: 70px;
+  width: fit-content;
+  color: rgb(250, 249, 249);
+  background-color: rgb(39, 39, 37);
+  border-color: rgba(250, 249, 249, 0.432);
+  border-width: 2px ;
+  border-style: solid; 
+  border-radius: 12px;
+  align-items: center;
+  justify-content: center;
 }
