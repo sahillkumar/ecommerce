@@ -16,18 +16,21 @@ export const getAllSortedProducts = async (field, direction) => {
   return documents;
 };
 
-// export const getProductsByCategory = async (value) =>{
-//     let documents = []
-//     const docs = await firestore.collection('PRODUCTS').where('category.title','==',value).get()
-//         docs.forEach(doc=>{
-//             documents.push({
-//                 ...doc.data(),
-//                 id:doc.id
-//             })
-//         })
+export const getProductsByCategory = async (value) => {
+  let documents = [];
+  const docs = await firestore
+    .collection("PRODUCTS")
+    .where("category.title", "==", value)
+    .get();
+  docs.forEach((doc) => {
+    documents.push({
+      ...doc.data(),
+      id: doc.id,
+    });
+  });
 
-//     return documents
-// }
+  return documents;
+};
 
 export const sortProductsByCategory = async (value, field, direction) => {
   let documents = [];

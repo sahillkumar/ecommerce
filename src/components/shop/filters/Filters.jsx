@@ -1,15 +1,19 @@
-import { Button, Grid, Input, Tab, Tabs } from "@material-ui/core";
-import React, { useState } from "react";
+import {
+  Button, Grid, Input, Tab, Tabs,
+} from '@material-ui/core';
+import React, { useState } from 'react';
 
 import {
   getAllSortedProducts,
   getProductsByCategory,
   sortProductsByCategory,
-} from "../shopHelper/shopHelper";
-import "./filters.css";
-import TabPanel from "../../Reusable Components/TabPanel";
+} from '../shopHelper/shopHelper';
+import './filters.css';
+import TabPanel from '../../Reusable Components/TabPanel';
 
-const Filters = ({ setProds, allproducts, currentProds, actualProds }) => {
+function Filters({
+  setProds, allproducts, currentProds, actualProds,
+}) {
   const [value, setValue] = useState(0);
   const [category, setCategory] = useState(null);
   const [direction, setDirection] = useState(null);
@@ -17,47 +21,45 @@ const Filters = ({ setProds, allproducts, currentProds, actualProds }) => {
   const [priceF, setPriceF] = useState(false);
 
   const categories = [
-    "beauty essentials",
-    "eatables",
-    "handicrafts",
-    "mugs",
-    "clothing",
+    'beauty essentials',
+    'eatables',
+    'handicrafts',
+    'mugs',
+    'clothing',
   ];
   const handleTabChange = (e, val) => {
     setValue(val);
   };
 
   const getProductsBySelectedCategory = (val) => {
-    if (val == "all") return setProds(allproducts);
+    if (val == 'all') return setProds(allproducts);
     if (actualProds && actualProds.length !== 0) {
-      const ar = actualProds.filter((prod) => {
-        return prod.category.title === val;
-      });
+      const ar = actualProds.filter((prod) => prod.category.title === val);
       setProds(ar);
     }
   };
 
   const addDel = (value) => {
-    let element = document.getElementById(value);
-    element.classList.add("act");
-    element.children[1].setAttribute("style", "display:visible;");
+    const element = document.getElementById(value);
+    element.classList.add('act');
+    element.children[1].setAttribute('style', 'display:visible;');
   };
 
   const removeDel = (value) => {
-    let element = document.getElementById(value);
-    element.classList.remove("act");
-    element.children[1].setAttribute("style", "display:none;");
+    const element = document.getElementById(value);
+    element.classList.remove('act');
+    element.children[1].setAttribute('style', 'display:none;');
   };
 
   const handleFilter = (key, value, method) => (e) => {
-    if (method === "add") {
+    if (method === 'add') {
       addDel(value);
       if (category && value !== category) {
         removeDel(category);
       }
       setCategory(value);
       getProductsBySelectedCategory(value);
-    } else if (method === "remove") {
+    } else if (method === 'remove') {
       removeDel(value);
       setCategory(null);
       setProds(allproducts);
@@ -65,14 +67,14 @@ const Filters = ({ setProds, allproducts, currentProds, actualProds }) => {
   };
 
   const handleSort = (field, dir, method, id) => (e) => {
-    if (method === "add") {
+    if (method === 'add') {
       addDel(id);
 
       setDirection(dir);
       sortProducts(field, dir);
     } else {
       removeDel(id);
-      sortProducts("name", "asc");
+      sortProducts('name', 'asc');
     }
   };
 
@@ -91,7 +93,7 @@ const Filters = ({ setProds, allproducts, currentProds, actualProds }) => {
     const tempAr = category ? currentProds : allproducts;
     if (tempAr && tempAr.length !== 0) {
       const ar = tempAr.filter(
-        (prod) => prod.discountMrp >= min && prod.discountMrp <= max
+        (prod) => prod.discountMrp >= min && prod.discountMrp <= max,
       );
       setProds(ar);
     }
@@ -106,7 +108,7 @@ const Filters = ({ setProds, allproducts, currentProds, actualProds }) => {
 
   const submitForm = (e) => {
     const { min, max } = priceFilter;
-    if (min === "" && max === "") return setProds(allproducts);
+    if (min === '' && max === '') return setProds(allproducts);
     setPriceF(true);
     getProductsByRange();
   };
@@ -130,20 +132,20 @@ const Filters = ({ setProds, allproducts, currentProds, actualProds }) => {
           <Grid item className="grid-item" justify="center" id="all">
             <Button
               className="btn"
-              onClick={handleFilter("category", "all", "add")}
+              onClick={handleFilter('category', 'all', 'add')}
             >
               all
             </Button>
             <span
               className="remove"
-              style={{ display: "none" }}
-              onClick={handleFilter("category", "all", "remove")}
+              style={{ display: 'none' }}
+              onClick={handleFilter('category', 'all', 'remove')}
             >
               &#10005;
             </span>
           </Grid>
-          {categories &&
-            categories.map((category) => (
+          {categories
+            && categories.map((category) => (
               <Grid
                 item
                 key={category}
@@ -153,14 +155,14 @@ const Filters = ({ setProds, allproducts, currentProds, actualProds }) => {
               >
                 <Button
                   className="btn"
-                  onClick={handleFilter("category", category, "add")}
+                  onClick={handleFilter('category', category, 'add')}
                 >
                   {category}
                 </Button>
                 <span
                   className="remove"
-                  style={{ display: "none" }}
-                  onClick={handleFilter("category", category, "remove")}
+                  style={{ display: 'none' }}
+                  onClick={handleFilter('category', category, 'remove')}
                 >
                   &#10005;
                 </span>
@@ -173,14 +175,14 @@ const Filters = ({ setProds, allproducts, currentProds, actualProds }) => {
           <Grid item id="sort-lth" className="grid-item" justify="center">
             <Button
               className="btn"
-              onClick={handleSort("discountMrp", "asc", "add", "sort-lth")}
+              onClick={handleSort('discountMrp', 'asc', 'add', 'sort-lth')}
             >
               price : low to high
             </Button>
             <span
               className="remove"
-              style={{ display: "none" }}
-              onClick={handleSort("discountMrp", "asc", "remove", "sort-lth")}
+              style={{ display: 'none' }}
+              onClick={handleSort('discountMrp', 'asc', 'remove', 'sort-lth')}
             >
               &#10005;
             </span>
@@ -188,14 +190,14 @@ const Filters = ({ setProds, allproducts, currentProds, actualProds }) => {
           <Grid item id="sort-htl" className="grid-item" justify="center">
             <Button
               className="btn"
-              onClick={handleSort("discountMrp", "desc", "add", "sort-htl")}
+              onClick={handleSort('discountMrp', 'desc', 'add', 'sort-htl')}
             >
               price : high to low
             </Button>
             <span
               className="remove"
-              style={{ display: "none" }}
-              onClick={handleSort("discountMrp", "desc", "remove", "sort-htl")}
+              style={{ display: 'none' }}
+              onClick={handleSort('discountMrp', 'desc', 'remove', 'sort-htl')}
             >
               &#10005;
             </span>
@@ -204,22 +206,22 @@ const Filters = ({ setProds, allproducts, currentProds, actualProds }) => {
             <Button
               className="btn"
               onClick={handleSort(
-                "discountPercentage",
-                "desc",
-                "add",
-                "sort-discount"
+                'discountPercentage',
+                'desc',
+                'add',
+                'sort-discount',
               )}
             >
               discount
             </Button>
             <span
               className="remove"
-              style={{ display: "none" }}
+              style={{ display: 'none' }}
               onClick={handleSort(
-                "discountPercentage",
-                "desc",
-                "remove",
-                "sort-discount"
+                'discountPercentage',
+                'desc',
+                'remove',
+                'sort-discount',
               )}
             >
               &#10005;
@@ -228,21 +230,21 @@ const Filters = ({ setProds, allproducts, currentProds, actualProds }) => {
         </Grid>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <Grid container justify="center" style={{ textAlign: "center" }}>
+        <Grid container justify="center" style={{ textAlign: 'center' }}>
           <form>
             <Input
               placeholder="Min Price"
               style={{ width: 150, marginRight: 80 }}
               required
               value={priceFilter.min}
-              onChange={setPrice("min")}
+              onChange={setPrice('min')}
             />
             <Input
               placeholder="Max Price"
               style={{ width: 150, marginRight: 80 }}
               required
               value={priceFilter.max}
-              onChange={setPrice("max")}
+              onChange={setPrice('max')}
             />
             <Button
               variant="contained"
@@ -255,9 +257,9 @@ const Filters = ({ setProds, allproducts, currentProds, actualProds }) => {
             {priceF && (
               <Button
                 variant="outlined"
-                style={{ background: "red", color: "white" }}
+                style={{ background: 'red', color: 'white' }}
                 onClick={() => {
-                  setPriceFilter({ min: "", max: "" });
+                  setPriceFilter({ min: '', max: '' });
                   setProds(allproducts);
                   setPriceF(!priceF);
                 }}
@@ -270,6 +272,6 @@ const Filters = ({ setProds, allproducts, currentProds, actualProds }) => {
       </TabPanel>
     </div>
   );
-};
+}
 
 export default Filters;

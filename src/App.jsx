@@ -21,7 +21,6 @@ import {
   allProductsInWishlist,
 } from "./components/shop/all-order/cartHelper/cartHelper";
 import { fetchUserDetails } from "./components/shop/all-order/userProfile/personalDetails/personalDetails-helper";
-
 import { ToastContainer } from "react-toastify";
 
 const App = () => {
