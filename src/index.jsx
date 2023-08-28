@@ -1,21 +1,21 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import { BrowserRouter } from "react-router-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './styles/global.scss';
+import { BrowserRouter } from 'react-router-dom';
 import {
   StylesProvider,
   MuiThemeProvider,
-  createMuiTheme,
-} from "@material-ui/core/styles";
-import DataContextProvider from "./context";
+  createMuiTheme
+} from '@material-ui/core/styles';
+import App from './App';
+import DataContextProvider from './context';
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#000",
-    },
-  },
+      main: '#000'
+    }
+  }
 });
 
 ReactDOM.render(
@@ -28,5 +28,5 @@ ReactDOM.render(
       </MuiThemeProvider>
     </StylesProvider>
   </DataContextProvider>,
-  document.getElementById("root")
+  document.getElementById('root')
 );

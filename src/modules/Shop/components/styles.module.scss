@@ -1,0 +1,24 @@
+.shop {
+  background-color: rgb(218, 218, 218);
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 50px 50px 50px 50px;
+  grid-template-rows: auto;
+  grid-template-areas:
+    ". sorter sorter sorter"
+    "filter . . ."
+    ". products products products";
+}
+
+.filter {
+  grid-area: filter;
+  background-color: red;
+}
+.sorter {
+  grid-area: sorter;
+  background-color: rebeccapurple;
+}
+.productsWrapper {
+  grid-area: products;
+  background-color: aqua;
+}
